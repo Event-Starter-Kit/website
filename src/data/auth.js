@@ -25,6 +25,8 @@
         logger.info("Configuring Passport middleware for Express");
         app.use(passport.initialize());
         app.use(passport.session());
+
+        app.passport = passport;
     };
 
 })(module.exports);

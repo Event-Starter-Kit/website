@@ -13,6 +13,7 @@
     "compression": "^1.0.9",
     "express": "^4.7.0",
     "express-mailer": "^0.2.3",
+    "express-session": "^1.7.0",
     "express-validator": "^2.3.0",
     "mailchimp": "^1.1.0",
     "mongodb": "^1.4.7",

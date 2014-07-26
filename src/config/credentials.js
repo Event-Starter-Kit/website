@@ -22,5 +22,8 @@ module.exports.credentials = {
             consumerKey: process.env.TWITTER_CONSUMER_KEY || "Put your consumer key here",
             consumerSecret: process.env.TWITTER_CONSUMER_SECRET || "Put your consumer secret here",
         }
+    },
+    session: {
+        secretPhrase : "my secret session phrase"
     }
 };

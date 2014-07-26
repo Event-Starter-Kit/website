@@ -5,6 +5,7 @@
     var path = require('path');
     var expressValidator = require('express-validator');
     var mailer = require('express-mailer');
+    var credentials = require("../config/credentials").credentials;
 
     expressConfig.init = function(app, express) {
 
@@ -57,8 +58,12 @@
             }
         });
 
-        require("../controllers/").init(app);
+        logger.debug("Configuring 'Express' session");
+        var session = require('express-session');
+        app.use(session({ secret: credentials.session.secretPhrase }));
+        
         require("../data/").init(app);
+        require("../controllers/").init(app);
 
         logger.info("Configuring 404 page");
         app.use(function(req, res, next) {

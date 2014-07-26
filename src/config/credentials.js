@@ -1,4 +1,7 @@
 module.exports.credentials = {
+    site:{
+        baseurl: "http://localhost:5000/"
+    },
     mongodb: {
         connectionString: process.env.CONNECTION_STRING || 'mongodb://localhost:27017/WEC-Website',
     },
@@ -19,8 +22,8 @@ module.exports.credentials = {
             consumerSecret: process.env.TWITTER_CONSUMER_SECRET || "Put your consumer secret here",
         },
         facebook: {
-            consumerKey: process.env.TWITTER_CONSUMER_KEY || "Put your consumer key here",
-            consumerSecret: process.env.TWITTER_CONSUMER_SECRET || "Put your consumer secret here",
+            consumerKey: process.env.FACEBOOK_CONSUMER_KEY || "Put your consumer key here",
+            consumerSecret: process.env.FACEBOOK_CONSUMER_SECRET || "Put your consumer secret here",
         }
     },
     session: {

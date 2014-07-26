@@ -15,7 +15,7 @@ logger.debug("Initializing development configuration.");
 var express = require("express");
 var app = express();
 
-var expressConfig = require("./config/express");
+var expressConfig = require("./express");
 
 logger.info("configuring express....");
 expressConfig.init(app, express);

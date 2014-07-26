@@ -1,1 +1,6 @@
 Home page
+
+
+@if (model.user) {
+	<div>@model.user.username</div>
+}

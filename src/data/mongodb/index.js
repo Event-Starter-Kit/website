@@ -1,13 +1,13 @@
 (function (database) {
 
   var mongodb = require("mongodb");
-  var configuration = require("../../config/credentials.js");
+  var credentials = require("../../config/credentials.js").credentials;
   var databaseInstance = null;
 
   database.getDatabase = function (next) {
     if (!databaseInstance) {
       // connect to the database
-      mongodb.MongoClient.connect(configuration.mongodb.connectionString, function (err, db) {
+      mongodb.MongoClient.connect(credentials.mongodb.connectionString, function (err, db) {
         if (err) {
           next(err, null);
         } else {

@@ -1,0 +1,17 @@
+{
+  "name": "Web-European-Conference",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Web-European-Conference/website",
+  "authors": [
+    "imperugo <imperugo@gmail.com>"
+  ],
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

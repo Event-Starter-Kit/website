@@ -1,0 +1,28 @@
+{
+  "name": "Web-European-Conference-Website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ugo Lattanzi - http://tostring.it",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.5.0",
+    "compression": "^1.0.9",
+    "express": "^4.7.0",
+    "express-mailer": "^0.2.3",
+    "express-validator": "^2.3.0",
+    "mailchimp": "^1.1.0",
+    "morgan": "^1.2.0",
+    "passport": "^0.2.0",
+    "passport-facebook": "^1.0.3",
+    "passport-github": "^0.1.5",
+    "passport-google": "^0.3.0",
+    "passport-twitter": "^1.0.2",
+    "underscore": "^1.6.0",
+    "vash": "^0.7.12-1",
+    "winston": "^0.7.3"
+  }
+}

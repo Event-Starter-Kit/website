@@ -20,15 +20,42 @@ Go inside `./grunt` folder
 
 This will set up the development environment and download any dependencies.
 
-Run the following command to compile the project to the `dist` directory:
+## Credentials ##
 
-    $ grunt build
+This website uses different socials (Twitter, Facebook, Mailchimp and so on) for several services like authentication, newsletter.
 
-For development you can run the following command to watch for changes and auto-compile:
+To get it work is important to set the appropriate value.
+There are two ways to do that:
 
-    $ grunt server
+1) Edit [configuration.js](https://github.com/Web-European-Conference/website/blob/master/src/config/credentials.js) file or set the environmental variables with the right values: you find the list of the needed environmental variables.
 
-## Compiled project
+You can do that by specifying them in the `gruntfile.js` as parameter in the `nodemon` plugin, like this.
 
+```js
+env: {
+    PORT: port,
+    MAILER_USERNAME: 'email',
+    MAILER_PASSWORD: 'password',
+    MAILCHIMP_KEY: 'mailchimp key',
+    MAILCHIMP_LIST_ID: 'mailchimp list id',
+},
+```
 
-**PLEASE NOTE:** Don't edit the files in the `compiled` directory. Any changes will be overwritten the next time the project is compiled.
+Or you can also simply configure them based on your OS. For example, with Mac OS X or Linux you will do
+
+```
+$ export MAILER_USERNAME='email'
+$ export MAILER_PASSWORD='password'
+$ export MAILCHIMP_KEY='mailchimp key'
+$ export MAILCHIMP_LIST_ID='mailchimp list id'
+```
+
+## Watch & serve ##
+
+```
+$ cd grunt
+$ grunt server
+```
+
+is not necessary Start and Stop the web server, Nodemon will monitoring all src folder (*.js) and restart the webserver when something changes.
+

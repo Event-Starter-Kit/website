@@ -6,6 +6,9 @@
     var twitterStrategy = require('passport-twitter').Strategy;
     var userData = require("../data/user");
 
+    app.enable = true;
+    app.order = 5;
+
     app.init = function(app, express) {
         logger.info("Passport: Configuring Twitter Strategy.");
         passport.use(new twitterStrategy({
@@ -61,17 +64,21 @@
         logger.info("Passport: Setup Authentication ('Serialize User').");
         passport.serializeUser(function(user, next) {
             logger.debug("Serializing user.");
-            next(null, user);
+            next(null, user.username);
         });
 
         logger.info("Passport: Setup Authentication ('Deserialize User').");
         passport.deserializeUser(function(key, next) {
-            logger.debug("Deserializing user.");
-            //key = username
-            var user = {
-                username: key
-            };
-            next(null, user);
+
+            logger.debug("Deserializing user. Username: " + key);
+
+            userData.getUser(key, function(err, user) {
+                if (err || !user) {
+                  next(null, false, { message: "Could not find user" });
+                } else {
+                  next(null, user);
+                }
+            });
         });
 
         logger.info("Express: Configuring Passport middleware for Express");

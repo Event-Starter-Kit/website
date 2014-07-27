@@ -3,6 +3,9 @@
 	var credentials = require("../config/credentials.js").credentials;
     var mailer = require('express-mailer');
 
+    app.enable = true;
+    app.order = 7;
+
 	app.init = function(app, express) {
         logger.info("Express: Configuring 'Mailer';");
 
@@ -17,4 +20,5 @@
             }
         });
 	};
+
 })(module.exports);

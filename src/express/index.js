@@ -1,11 +1,18 @@
 (function(controllers) {
     var logger = require("../utils/logger");
     var requires = require("../utils/requireAll");
-    var ctrls = requires.requireAll(__dirname + '/');
+    var middlewares = requires.requireAll(__dirname + '/');
+    var _ = require("underscore");
 
     controllers.init = function(app, express) {
-        ctrls.forEach(function(ctrl) {
-            ctrl.init(app, express);
+
+        var orderedMiddlewares = _.sortBy(middlewares, function(middleware){ 
+            return middleware.order; 
+        });
+
+
+        orderedMiddlewares.forEach(function(middleware) {
+            middleware.init(app, express);
         });
 
         require("../controllers/").init(app);

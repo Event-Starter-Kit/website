@@ -3,6 +3,9 @@
     var session = require('express-session');
     var credentials = require("../config/credentials.js").credentials;
 
+    app.enable = true;
+    app.order = 4;
+
     app.init = function(app, express) {
         logger.info("Express: Configuring 'Express' session");
         app.use(session({
@@ -11,4 +14,5 @@
             resave: true
         }));
     };
+
 })(module.exports);

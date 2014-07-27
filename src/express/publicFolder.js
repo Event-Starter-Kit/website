@@ -1,6 +1,9 @@
 (function(app){
 	var logger = require("../utils/logger");
 	var path = require('path');
+
+	app.enable = true;
+	app.order = 1;
 	
 	app.init = function(app, express) {
 		logger.info("Express: Setting 'Public' folder with caching maxAge: 1 Day.");
@@ -10,4 +13,5 @@
             maxAge: oneYear
         }));
 	};
+	
 })(module.exports);

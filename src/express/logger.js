@@ -2,6 +2,9 @@
 	var logger = require("../utils/logger");
 	var morgan = require('morgan');
 
+	app.enable = true;
+    app.order = 0;
+
 	app.init = function(app, express) {
 		logger.info("Express: Overriding 'Express' logger");
 		

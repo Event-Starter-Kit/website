@@ -1,6 +1,9 @@
 (function(app){
 	var logger = require("../utils/logger");
 	var path = require('path');
+
+	app.enable = true;
+    app.order = 9;
 	
 	app.init = function(app, express) {
 		//setup view engine

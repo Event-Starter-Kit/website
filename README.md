@@ -5,7 +5,8 @@ This site is built on top of [NodeJs](http://nodejs.org) and [MongoDb](http://ww
 Below the documentation:
 
 * [Setup](/docs/Setup.md)
-* [Loggin](/docs/Logging.md)
+* [Logging](/docs/Logging.md)
+* [Deploy](/docs/Deploy)
 
 ##License
 

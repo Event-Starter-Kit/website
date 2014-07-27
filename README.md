@@ -6,7 +6,7 @@ Below the documentation:
 
 * [Setup](/docs/Setup.md)
 * [Logging](/docs/Logging.md)
-* [Deploy](/docs/Deploy)
+* [Deploy](/docs/Deploy.md)
 
 ##License
 

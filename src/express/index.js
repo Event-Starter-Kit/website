@@ -10,6 +10,10 @@
             return middleware.order; 
         });
 
+        orderedMiddlewares = _.filter(orderedMiddlewares, function(middleware){ 
+            return middleware.enable === true; 
+        });
+
 
         orderedMiddlewares.forEach(function(middleware) {
             middleware.init(app, express);

@@ -36,6 +36,16 @@
         });
     };
 
+    data.getUserByFacebookUsername = function(facebookUsername, next) {
+        database.getDatabase(function(err, db) {
+            if (err) {
+                next(err);
+            } else {
+                db.users.findOne({ "facebook.username" : facebookUsername}, next);
+            }
+        });
+    };
+
     data.insertUser = function(user, next) {
         database.getDatabase(function(err, db) {
             if (err) {

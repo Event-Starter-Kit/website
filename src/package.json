@@ -19,6 +19,7 @@
     "mailchimp": "^1.1.0",
     "mongodb": "^1.4.7",
     "morgan": "^1.2.0",
+    "node-schedule": "^0.1.13",
     "passport": "^0.2.0",
     "passport-facebook": "^1.0.3",
     "passport-github": "^0.1.5",

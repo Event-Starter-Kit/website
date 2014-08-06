@@ -26,3 +26,6 @@ var port = process.env.port || 5000;
 app.listen(port, function() {
     logger.info("Listening on " + port);
 });
+
+var scheduler = require("./scheduler");
+scheduler.init();

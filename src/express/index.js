@@ -20,6 +20,7 @@
         });
 
         require("../controllers/").init(app);
+        require("../apis/").init(app);
 
         logger.info("Configuring 404 page");
         app.use(function(req, res, next) {

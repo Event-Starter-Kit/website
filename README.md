@@ -6,6 +6,7 @@ Below the documentation:
 
 * [Setup](/docs/Setup.md)
 * [Logging](/docs/Logging.md)
+* [API Documentation](/docs/ApiDoc.md)
 * [Deploy](/docs/Deploy.md)
 
 ##License

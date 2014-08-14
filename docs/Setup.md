@@ -54,7 +54,7 @@ $ export MAILCHIMP_LIST_ID='mailchimp list id'
 
 ```
 $ cd grunt
-$ grunt server
+$ grunt serve
 ```
 
 is not necessary Start and Stop the web server, Nodemon will monitoring all src folder (*.js) and restart the webserver when something changes.

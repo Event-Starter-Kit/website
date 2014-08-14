@@ -11,7 +11,7 @@
 		rule.second = 20;
 
 		var j = scheduler.scheduleJob(rule, function(){
-		    logger.debug('Taaaaaaaaac.');
+		    //logger.debug('Taaaaaaaaac.');
 		});
 	};
 

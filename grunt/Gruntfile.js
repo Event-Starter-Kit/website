@@ -12,6 +12,20 @@ module.exports = function(grunt) {
                 }
             }
         },
+        apidoc: {
+            api: {
+                src: "../src/",
+                dest: "../src/public/apidoc/",
+                options: {
+                    debug: true,
+                    includeFilters: [".*\\.js$"],
+                    excludeFilters: ["node_modules/"],
+                    marked: {
+                        gfm: true
+                    }
+                }
+            }
+        },
         nodemon: {
             dev: {
                 script: '../src/app.js',
@@ -22,7 +36,7 @@ module.exports = function(grunt) {
                         PORT: port
                     },
                     ext: 'js,coffee',
-                    watch: ['../src/','gruntfile.js'],
+                    watch: ['../src/', 'gruntfile.js'],
                     ignore: ['node_modules/**'],
                     // omit this property if you aren't serving HTML files and 
                     // don't want to open a browser tab on start
@@ -66,13 +80,13 @@ module.exports = function(grunt) {
                 sourceMap: true,
                 files: {
                     '../src/public/js/combined.min.js': [
-                                            '../src/public/js/vendor/jquery.js', 
-                                            '../src/public/js/foundation.min.js',
-                                            '../src/public/js/countdown.js',
-                                            '../src/public/js/owl-carousel.js',
-                                            '../src/public/js/jquery.backstretch.js',
-                                            '../src/public/js/custom.js'
-                                            ]
+                        '../src/public/js/vendor/jquery.js',
+                        '../src/public/js/foundation.min.js',
+                        '../src/public/js/countdown.js',
+                        '../src/public/js/owl-carousel.js',
+                        '../src/public/js/jquery.backstretch.js',
+                        '../src/public/js/custom.js'
+                    ]
                 }
             }
         }
@@ -81,8 +95,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-nodemon');
-    
-    
+    grunt.loadNpmTasks('grunt-apidoc');
+
+
     grunt.registerTask('build', ['uglify:js']);
-    grunt.registerTask('server', ['nodemon:dev', 'watch:server', 'uglify:js']);
+    grunt.registerTask('generateDoc', ['apidoc:api']);
+    grunt.registerTask('serve', ['nodemon:dev', 'watch:server', 'uglify:js']);
+    grunt.registerTask('superServe', ['apidoc:api','nodemon:dev', 'watch:server', 'uglify:js']);
 };

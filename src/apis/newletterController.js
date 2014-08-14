@@ -3,6 +3,47 @@
 
 	controller.init = function(app){
 		
+        /**
+         * @api {post} /api/notify/join/ Join the newsletter
+         * @apiName JoinNewsletter
+         * @apiGroup Newsletter
+         * @apiVersion 1.0.0
+         *
+         * @apiParam {string} email The email to join.
+         *
+         * @apiErrorTitle (400) 400 Bad Request
+         * @apiError (400) email The specifiend email is null or the format is invalid.
+         *
+         * @apiErrorExample Error-Response:
+         *     HTTP/1.1 400 Bad Request
+         *     {
+         *       [{
+         *           "param": "email",
+         *           "msg": "Field required"
+         *       }, {
+         *           "param": "email",
+         *           "msg": "Invalid email format"
+         *       }]
+         *     }
+         * 
+         * @apiErrorExample Error-Response:
+         *     HTTP/1.1 500 Internal Server Error
+         *     {
+         *       Something went wrong. Please try again.
+         *     }
+         *
+         * @apiSuccessExample Success-Response:
+         *     HTTP/1.1 201 Created
+         *     {
+         *       Thanks for signing up!
+         *     }
+         *
+         * @apiSuccessExample Success-Response:
+         *     HTTP/1.1 304 Not Modified
+         *     {
+         *       User already subscribed
+         *     }
+         */
 		app.post('/api/notify/join', function(req, res) {
 			req.assert('email', 'Field required').notEmpty();
             req.assert('email', 'Invalid email format').isEmail();

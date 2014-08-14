@@ -5,7 +5,7 @@
     var hasher = require("../utils/hasher");
     var passport = require('passport');
     var githubStrategy = require('passport-github').Strategy;
-    var userData = require("../data/user");
+    var userData = require("../data/userRepository");
 
     app.enable = true;
     app.order = 5;

@@ -2,7 +2,7 @@
 	var credentials = require("../../config/credentials").credentials;
     var logger = require("../../utils/logger");
 	var facebookStrategy = require('passport-facebook').Strategy;
-	var userData = require("../../data/user");
+	var userData = require("../../data/userRepository");
 
 	strategy.init = function(passport){
 		logger.info("Passport: Configuring Facebook Strategy.");

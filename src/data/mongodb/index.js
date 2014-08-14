@@ -16,6 +16,7 @@
             users: db.collection("users"),
             talks: db.collection("talks"),
             speakers: db.collection("speakers"),
+            sponsors: db.collection("sponsors")
           };
           next(null, databaseInstance);
         }

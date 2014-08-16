@@ -35,7 +35,7 @@ module.exports = function(grunt) {
                     env: {
                         PORT: port
                     },
-                    ext: 'js,coffee',
+                    ext: 'js,coffee,vash',
                     watch: ['../src/', 'gruntfile.js'],
                     ignore: ['node_modules/**'],
                     // omit this property if you aren't serving HTML files and 

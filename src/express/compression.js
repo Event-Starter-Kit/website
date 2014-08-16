@@ -2,7 +2,7 @@
 	var logger = require("../utils/logger");
 	var compression = require('compression');
 
-	app.enable = true;
+	app.enable = false;
     app.order = 6;
 	
 	app.init = function(app, express) {

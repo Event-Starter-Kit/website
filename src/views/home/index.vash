@@ -1,6 +1,12 @@
-Home page
+@html.extend('layout', function(model) {
+	@html.block("head", function (model) {
+	
+	})
 
+	@html.block("scripts", function (model) {
+	})
 
-@if (model.user) {
-	<div>@model.user.username</div>
-}
+	@html.block("body", function (model) {
+
+	})
+})

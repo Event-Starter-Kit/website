@@ -1,5 +1,7 @@
 var logger;
 var _ = require('underscore');
+var http = require('http');
+var live = require("./live");
 
 var env = _.find(process.argv.slice(2), function(arg) {
     if (arg.indexOf('env') === 0) {
@@ -23,9 +25,13 @@ logger.info("Express configured");
 
 var port = process.env.port || 5000;
 
-app.listen(port, function() {
+var server = http.createServer(app).listen(port, function(){
     logger.info("Listening on " + port);
 });
 
+live.init(server);
+
 var scheduler = require("./scheduler");
 scheduler.init();
+
+

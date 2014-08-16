@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+  <title>@model.conference.site.name</title>
+  @html.block("head")
+</head>
+<body>
+  <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <div id="logo">
+          <a href='/'>
+            <h4>@model.conference.site.name</h4>
+          </a>
+          @if (model.user) {
+            <div>@model.user.name</div>
+          }
+        </div>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav">
+            <a href="/">Home</a>
+          </li>
+          <li class="nav">
+            <a href="/register">Register</a>
+          </li>
+          <li class="nav">
+            <a href="/login">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <section id="body" class="container">
+    <div class="page-header">
+      <h1>@model.conference.site.name</h1>
+    </div>
+    @html.block("body")
+  </section>
+  <hr />
+  <footer class="container">
+    <p>@model.conference.site.name</p>
+  </footer>
+  <script src="/lib/socket.io-client/socket.io.js"></script>
+  <script>
+    var socket = io.connect();
+    socket.on("connect", function() {
+        socket.on('news', function (data) {
+            socket.emit('my other event', { my: 'data' });
+        });
+    });
+</script>
+  @html.block("scripts")
+</body>
+</html>

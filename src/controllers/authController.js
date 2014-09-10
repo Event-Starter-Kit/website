@@ -44,7 +44,7 @@
 
             userData.getUser(req.body.username, function(err, user) {
                 if (!user) {
-                    next(err, null);
+                    res.render("auth/user/register", { });
                     return;
                 }
 

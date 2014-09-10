@@ -56,4 +56,14 @@
         });
     };
 
+    data.updateUser = function(user, next) {
+        database.getDatabase(function(err, db) {
+            if (err) {
+                next(err);
+            } else {
+                db.users.update(user, next);
+            }
+        });
+    };
+
 })(module.exports);

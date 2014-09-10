@@ -3,9 +3,9 @@
 	var logger = require("../utils/logger");
 
     controller.init = function(app) {
-        app.get("/", function(req, res) {
+        app.get("/speakers", function(req, res) {
         	
-            res.render("home/index", { });
+            res.render("speakers/index", { });
         });
     };
 

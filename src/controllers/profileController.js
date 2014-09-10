@@ -6,10 +6,7 @@
         app.get("/profile", 
 			auth.ensureAuthenticated,
         	function(req, res) {
-            res.render("profile/index", {
-               applicationName: "Web European Conference",
-                title: "Web European Conference"
-            });
+            res.render("profile/index", { });
         });
     };
     

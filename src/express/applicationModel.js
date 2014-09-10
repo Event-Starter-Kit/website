@@ -7,7 +7,7 @@
     app.init = function(app, express) {
         app.use(function(req, res, next) {
 
-            logger.info("Express: Enabling Conference Model.");
+            logger.info("Express: Enabling application model.");
             var conference = require("../config/conference").conference;
 
             app.locals.conference = conference;

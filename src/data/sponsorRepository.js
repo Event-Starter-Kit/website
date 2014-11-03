@@ -1,7 +1,7 @@
 (function(data) {
 	var database = require("./mongodb");
 
-	data.getSonsors = function(pageIndex, pageSize, next) {
+	data.getSponsors = function(pageIndex, pageSize, next) {
         database.getDatabase(function(err, db) {
             if (err) {
                 next(err);

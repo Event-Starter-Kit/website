@@ -1,3 +1,9 @@
+/*
+    User info (All needed information like avatar, firstname, lastname)
+    Bio
+*/
+
+
 (function(data) {
 	var database = require("./mongodb");
 

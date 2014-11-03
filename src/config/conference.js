@@ -1,7 +1,8 @@
 module.exports.conference = {
     site: {
         baseurl: "http://localhost:5000/",
-        name: "Web European Conference"
+        name: "Web European Conference",
+        subtitle: "ASP.NET vNext, node.js, ruby, angular.js and much more"
     },
     date: {
         startdate: "2015-04-01 09:00",

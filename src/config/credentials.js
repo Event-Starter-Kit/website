@@ -11,9 +11,12 @@ module.exports.credentials = {
         listId: process.env.MAILCHIMP_LIST_ID || 'aaaaaaaaa'
     },
     session: {
-        secretPhrase : process.env.SESSION_SECRET_PHRASE || "my secret session phrase"
+        secretPhrase: process.env.SESSION_SECRET_PHRASE || "my secret session phrase"
     },
-    mongo:{
+    mongo: {
         connectionString: process.env.MONGODB_CONNECTION_STRING || "mongodb://<dbuser>:<dbpassword>@ds047632.mongolab.com:47632/dbname"
+    },
+    eventbrite: {
+        apiKey: process.env.EVENTBRITE_API_KEY || "my secret api key"
     }
 };

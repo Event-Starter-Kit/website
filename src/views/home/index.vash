@@ -1,12 +1,856 @@
-@html.extend('layout', function(model) {
-	@html.block("head", function (model) {
-	
-	})
+@html.extend('layout', function(model) { @html.block('body', function (model) {
 
-	@html.block("scripts", function (model) {
-	})
+<body id="index">
+    <!-- Preloader -->
+    <div id="mask">
+        <div id="loader">
+            <img src="/images/preloader.gif" alt="preloader" />
+        </div>
+    </div>
+    <!--/Preloader -->
+    <header id="mobileheader" class="navigation-bar-header light visible-xs"></header>
 
-	@html.block("body", function (model) {
+<section class="light" id="hero" style="height: 1228px;">
+    <div class="container">
+        <div class="home-bg">
+            <nav class="navigation navigation-social">
+                <ul class="navigation-bar">
+                    <li>
+                        <a href="https://twitter.com/webnextconf"><span class="fa fa-twitter"></span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/WebnextConf"><span class="fa fa-facebook"></span></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/Web-European-Conference"><span class="fa fa-github"></span></a>
+                    </li>
+                    <li>
+                        <a href="https://vimeo.com/webeuropeanconference"><span class="fa fa-vimeo-square"></span></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/100110205841080468535"><span class="fa fa-google-plus"></span></a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="hero-content text-center ">
+                <div class="row" style="width: 90%; margin: 0px auto 30px auto;">
+                    <img src="/images/logo.png" width="550" height="204" class="img-responsive" style="display: inline;" />
+                </div>
+                <div class="hero-small">
+                    <hr><span><span class="fa fa-calendar"></span>September 26, 2015
+                    <div class="sep"></div> <span class="fa fa-map-marker"></span>Universita' degli studi di Milano - Bicocca</span>
+                    <hr>
+                </div>
+                <div class="hero-big">Web European
+                    <br>Conference</div>
+                <a href="#price" id="getTicketsButton" class="btn btn-lg btn-3d">
+                      <i class="fa fa-play-circle fa-2x"></i> <span>Get tickets</span>
+                </a>
+                @*
+                <a href="/voting/proposal" id="voteSessions" class="btn btn-lg btn-3d">
+                      <i class="fa fa-play-circle fa-2x"></i> <span>Vote for your favorite sessions</span>
+                </a>
+                *@
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Menu -->
+<header id="header" class="navigation-bar-header light hidden-xs">
+    <div class="container">
+        <nav class="navigation">
+            <div class="navigation-txt visible-xs" data-toggle="dropdown">Home</div>
+            <button class="navigation-toggle visible-xs" type="button" data-toggle="dropdown">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <ul class="navigation-bar navigation-bar-left">
+                <li style="margin-right: 10px;"><img src="/images/logo-menu.png" width="162" height="60" />
+                </li>
+                <li class="active">
+                    <a href="#about">About</a>
+                </li>
+                <li>
+                    <a href="#schedule">Schedule</a>
+                </li>
+                <li>
+                    <a href="#speakers">Speakers</a>
+                </li>
+                <li>
+                    <a href="#price">Prices</a>
+                </li>
+                <li>
+                    <a href="#sponsors">Sponsors</a>
+                </li>
+                <li>
+                    <a href="#map">Location</a>
+                </li>
+                <li>
+                    <a href="http://blog.webnextconf.eu/" target="_blank">Blog</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<!-- End Menu -->
+<div class="clearfix"></div>
+<!-- About -->
+<section id="about" class="section dark">
+    <div class="container">
+        <div class="icon-wrap">
+            <span class="icon icon-office-10 icon-active"></span>
+        </div>
+        <h3>Modern Web development</h3>
+        <div class="sub-title" style="margin-bottom: 80px;">The first European Conference dedicated to the future of Development on all technologies.
+            <br />Everything about the newest and coolest framework for building modern web applications and websites:
+            <br />ASP.NET vNext, node.js, ruby, angular.js and much more.</div>
+        <br />
+        <br />
+        <section class="nav-tabs-simple">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active"><a href="#manifest" data-toggle="tab"><i class="icon icon-seo-icons-24"></i> Our Manifesto</a></li>
+                <li><a href="#topics" data-toggle="tab"><i class="icon icon-chat-messages-08"></i> Topics</a></li>
+                <li><a href="#aboutus" data-toggle="tab"><i class="icon icon-documents-bookmarks-12"></i> About us</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="manifest">
+                    <article class="row">
+                        <!--<div class="col-md-5 col-sm-5 animated hiding" data-animation="fadeInLeft" data-delay="500">
+                      <img class="img-responsive" src="assets/img/about-placeholder-starbucks.jpg" alt="starbuck" />
+                    </div>-->
+                        <div class="col-md-12 col-sm-12 text-left animated hiding" data-animation="fadeInRight" data-delay="500">
+                            <h6>What the conference is about</h6>
+                            <p>Modern web development is moving away from all the enterprisey features that used to rule the world of development in the past years, and is going to a more light-weight and simple approach. This is exactly what our conference is about.</p>
+                            <ul class="sub-list">
+                                <li><i class="icon icon-seo-icons-25"></i> Code Craftsmenship
+                                    <br/>Developers are taking back the control over the code they write, how they write it and which tools make them productive.</li>
+                                <li><i class="icon icon-education-science-16"></i> Tiny assemblable frameworks
+                                    <br/>Gone are the huge monolithic frameworks from one vendor: Modern Web Apps are a mix and match of different frameworks, technologies and languages.</li>
+                                <li><i class="icon icon-seo-icons-28"></i> BYOT
+                                    <br/>Bring Your Own Tool: Modern Web Development is about productivity the way you want it, not the way the vendor wants it to be.</li>
+                                <li><i class="icon icon-multimedia-33"></i> Mobile First
+                                    <br/>Web sites are now mostly viewed on mobile devices: web sites and apps must be built with that in mind.</li>
+                                <li><i class="icon icon-text-hierarchy-03"></i> DevOps
+                                    <br/>Gone are the days of the big-bang in production: now webapps are deployed automatically, many times a day.</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+                <div class="tab-pane fade" id="topics">
+                    <article class="row">
+                        <div class="col-md-12 col-sm-12 text-left animated hiding" data-animation="fadeInLeft" data-delay="500">
+                            <h6>What we will talk about</h6>
+                            <p>After a plenary session held by a prominent speaker, there will be some parallel tracks split in different rooms so that everyone will be able to attend the sessions that most suit them.</p>
+                            <p>Hereafter a selection of possible topics:</p>
+                            <ul class="sub-list">
+                                <li><i class="icon icon-seo-icons-02"></i>ASP.NET vNext</li>
+                                <li><i class="icon icon-text-hierarchy-04"></i>Node.js</li>
+                                <li><i class="icon icon-seo-icons-07"></i>Ruby</li>
+                                <li><i class="icon icon-ecology-16"></i>Javascript frameworks</li>
+                                <li><i class="icon icon-education-science-20"></i>Best practices for modern web development</li>
+                                <li><i class="icon icon-office-61"></i>Cloud</li>
+                                <li><i class="icon icon-graphic-design-30"></i>Continouos Deployment</li>
+                                <li><i class="icon icon-arrows-33"></i>And more...</li>
+                            </ul>
+                        </div>
+                        <!--<div class="col-md-5 col-sm-5 animated hiding" data-animation="fadeInRight" data-delay="500">
+                      <img class="img-responsive" src="assets/img/about-placeholder-mbp.jpg" alt="placeholder" />
+                    </div>-->
+                    </article>
+                </div>
+                <div class="tab-pane fade" id="aboutus">
+                    <article class="row">
+                        <!--<div class="col-md-5 col-sm-5 animated hiding" data-animation="fadeInLeft" data-delay="500">
+                      <img class="img-responsive" src="assets/img/about-placeholder-iphone.jpg" alt="iphone" />
+                    </div>-->
+                        <div class="col-md-12 col-sm-12 text-left animated hiding" data-animation="fadeInRight" data-delay="500">
+                            <h6>About the Web European Conference</h6>
+                            <p>The <strong>Web European Conference</strong> is at its second edition, after a successful first edition in 2012 under the name of Web.NET European Conference
+                                <!--<a href="http://2012.webnextconf.eu/"></a>-->.</p>
+                            <p>This year, with help of the university, we decided to do it bigger while keeping it free, so that more people can participate and be part of discussions about the latest trends in web development.</p>
+                            <p>The conference is the brainchild of <strong>Simone Chiaretta</strong>, <strong>Ugo Lattanzi</strong> and <strong>Gianluca Centulani</strong>, web developer with a passion for experimenting with the latest technologies, adopting the best practices and sharing them with others.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+<!--  End About -->
+<!-- Stats -->
+<section id="stat" class="section light">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="counter animated hiding" data-animation="fadeInDown" data-delay="0">
+                    <div class="stat"><span class="value" data-from="0" data-to="20">20</span>
+                    </div>
+                    <div class="stat-info">hours</div>
+                    <p class="small">Get ready to experience an intense day packed with lots of hours of good content, knowledge exchange and fun.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="counter animated hiding" data-animation="fadeInDown" data-delay="500">
+                    <div class="stat"><span class="value" data-from="0" data-to="20">20</span>
+                    </div>
+                    <div class="stat-info">speakers</div>
+                    <p class="small">We are expecting international speakers: the CFP is open now, expect to know more soon.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6 tablet-clear-left">
+                <div class="counter animated hiding" data-animation="fadeInDown" data-delay="1000">
+                    <div class="stat"><span class="value" data-from="0" data-to=10>10</span>+</div>
+                    <div class="stat-info">technologies</div>
+                    <p class="small">ASP.NET vNext, AngularJS, Node.js, Ruby, Git, Javascript, and much more: all modern web development technologies will be represented.</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <div class="counter animated hiding" data-animation="fadeInDown" data-delay="1500">
+                    <div class="stat"><span class="value" data-from="0" data-to="4">4</span>
+                    </div>
+                    <div class="stat-info">halls</div>
+                    <p class="small">To provide the best experience, we'll have a big plenary hall and other rooms for the sessions through the day.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Stats -->
 
-	})
-})
+<!-- Schedule Section -->
+<section id="schedule" class="section dark">
+    <div class="container">
+        <div class="icon-wrap"><span class="icon icon-active icon-text-hierarchy-07"></span></div>
+        <h3>Full schedule</h3>
+        <h6>All talks will be in english</h6>
+        <br />
+        <section class="nav-tabs-default">
+            <!-- Parent Nav Tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#TrackOne" data-toggle="tab">
+                        <div class="title">Track 1</div>
+                        <div class="subtitle">Room 1</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#TrackTwo" data-toggle="tab">
+                        <div class="title">Track 2</div>
+                        <div class="subtitle">Room 2</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#TrackThree" data-toggle="tab">
+                        <div class="title">Track 3</div>
+                        <div class="subtitle">Room 3</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#TrackFour" data-toggle="tab">
+                        <div class="title">Track 4</div>
+                        <div class="subtitle">Room 4</div>
+                    </a>
+                </li>
+            </ul>
+            <!-- Parent Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="TrackOne">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active">
+                            <div class="panel-group timeline-schedule" id="panelTimelineOne">
+
+                                @{var index = 0;}
+                                @model.tracks.track1.forEach(function(m)
+                                {
+                                    @{index++}
+                                    <div class="panel panel-default">
+                                        <div class="speaker-wrapper">
+                                        @if (m.author.avatarUrl == undefined)
+                                        {
+                                            <img src="/images/blank_avatar.jpg" class="img-responsive img-circle" alt="@m.author.firstname @m.author.lastname" />
+                                        }else{
+                                            <img src="@m.author.avatarUrl" class="img-responsive img-circle" alt="@m.author.firstname @m.author.lastname" />
+                                        }
+                                        </div>
+                                        <div class="panel-heading">
+                                            <div class="panel-title">
+                                                <div class="time">
+                                                    <i class="fa fa-clock-o"></i> @{ var data = new Date(m.time) } @data.getHours():@(("0" + data.getMinutes()).substr(-2))
+                                                </div>
+                                                <a data-toggle="collapse" data-parent="#panelTimelineOne" href="#item@index" class="collapsed">
+                                                @m.title
+                                                    <div class="pull-right fa fa-angle-up"></div>
+                                                    <div class="pull-right fa fa-angle-down"></div>
+                                                </a>
+                                          </div>
+                                      </div>
+                                      <div id="item@index" class="panel-collapse collapse">
+                                          <div class="panel-body">
+                                              <article>
+                                                  <p>@m.description</p>
+
+                                                    @if(m.author.firstname != "" && m.author.firstname != undefined)
+                                                    {
+                                                        <p class="author">
+
+                                                            @{var url = (m.author.blog != "" && m.author.blog != undefined) ? m.author.blog : "http://twitter.com/" + m.author.twitter;}
+                                                            <a href="@url" target="_blank">
+                                                                <strong>
+                                                                    <i class="fa fa-user"></i> 
+                                                                    @m.author.firstname @m.author.lastname
+                                                                </strong>
+                                                            </a>
+                                                        </p>
+                                                    }
+
+                                                  
+                                                  
+                                                    @if(m.tags.length > 0){
+                                                        <p class="tags"><strong><i class="fa fa-tags"></i> @m.tags</strong></p>
+                                                    }
+                                                  
+                                              </article>
+                                          </div>
+                                      </div>
+                                  </div>
+                                })
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="tab-pane fade in" id="TrackTwo">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active">
+                            <div class="panel-group timeline-schedule" id="panelTimelineTwo">
+
+                                @model.tracks.track2.forEach(function(m)
+                                {
+                                    @{index++}
+                                        <div class="panel panel-default">
+                                            <div class="speaker-wrapper">
+                                            @if (m.author.avatarUrl == undefined)
+                                            {
+                                                <img src="/images/blank_avatar.jpg" class="img-responsive img-circle" alt="@m.author.firstname @m.author.lastname" />
+                                            }else{
+                                                <img src="@m.author.avatarUrl" class="img-responsive img-circle" alt="@m.author.firstname @m.author.lastname" />
+                                            }
+                                            </div>
+                                            <div class="panel-heading">
+                                                <div class="panel-title">
+                                                    <div class="time">
+                                                        <i class="fa fa-clock-o"></i> @{ var data = new Date(m.time) } @data.getHours():@(("0" + data.getMinutes()).substr(-2))
+                                                    </div>
+                                                    <a data-toggle="collapse" data-parent="#panelTimelineTwo" href="#item@index" class="collapsed">
+                                                    @m.title
+                                                        <div class="pull-right fa fa-angle-up"></div>
+                                                        <div class="pull-right fa fa-angle-down"></div>
+                                                    </a>
+                                              </div>
+                                          </div>
+                                          <div id="item@index" class="panel-collapse collapse">
+                                              <div class="panel-body">
+                                                    <article>
+                                                      <p>@m.description</p>
+
+                                                        @if(m.author.firstname != "" && m.author.firstname != undefined)
+                                                        {
+                                                            <p class="author">
+                                                                @{var url = (m.author.blog != "" && m.author.blog != undefined) ? m.author.blog : "http://twitter.com/" + m.author.twitter;}
+                                                                <a href="@url" target="_blank">
+                                                                    <strong>
+                                                                        <i class="fa fa-user"></i> 
+                                                                        @m.author.firstname @m.author.lastname
+                                                                    </strong>
+                                                                </a>
+                                                            </p>
+                                                        }
+
+                                                      
+                                                      
+                                                        @if(m.tags.length > 0){
+                                                            <p class="tags"><strong><i class="fa fa-tags"></i> @m.tags</strong></p>
+                                                        }
+                                                      
+                                                    </article>
+                                              </div>
+                                          </div>
+                                      </div>
+                                    })
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="tab-pane fade in" id="TrackThree">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active">
+                            <div class="panel-group timeline-schedule" id="panelTimelineThree">
+
+                                @model.tracks.track3.forEach(function(m)
+                                {
+                                    @{index++}
+                                        <div class="panel panel-default">
+                                            <div class="speaker-wrapper">
+                                            @if (m.author.avatarUrl == undefined)
+                                            {
+                                                <img src="/images/blank_avatar.jpg" class="img-responsive img-circle" alt="@m.author.firstname @m.author.lastname" />
+                                            }else{
+                                                <img src="@m.author.avatarUrl" class="img-responsive img-circle" alt="@m.author.firstname @m.author.lastname" />
+                                            }
+                                            </div>
+                                            <div class="panel-heading">
+                                                <div class="panel-title">
+                                                   <div class="time">
+                                                        <i class="fa fa-clock-o"></i> @{ var data = new Date(m.time) } @data.getHours():@(("0" + data.getMinutes()).substr(-2))
+                                                    </div>
+                                                    <a data-toggle="collapse" data-parent="#panelTimelineThree" href="#item@index" class="collapsed">
+                                                    @m.title
+                                                        <div class="pull-right fa fa-angle-up"></div>
+                                                        <div class="pull-right fa fa-angle-down"></div>
+                                                    </a>
+                                              </div>
+                                          </div>
+                                          <div id="item@index" class="panel-collapse collapse">
+                                              <div class="panel-body">
+                                                    <article>
+                                                      <p>@m.description</p>
+
+                                                        @if(m.author.firstname != "" && m.author.firstname != undefined)
+                                                        {
+                                                            <p class="author">
+                                                                @{var url = (m.author.blog != "" && m.author.blog != undefined) ? m.author.blog : "http://twitter.com/" + m.author.twitter;}
+                                                                <a href="@url" target="_blank">
+                                                                    <strong>
+                                                                        <i class="fa fa-user"></i> 
+                                                                        @m.author.firstname @m.author.lastname
+                                                                    </strong>
+                                                                </a>
+                                                            </p>
+                                                        }
+
+                                                      
+                                                      
+                                                        @if(m.tags.length > 0){
+                                                            <p class="tags"><strong><i class="fa fa-tags"></i> @m.tags</strong></p>
+                                                        }
+                                                      
+                                                    </article>
+                                              </div>
+                                          </div>
+                                      </div>
+                                    })
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="tab-pane fade in" id="TrackFour">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active">
+                            <div class="panel-group timeline-schedule" id="panelTimelineFour">
+
+                                @model.tracks.track4.forEach(function(m)
+                                {
+                                    @{index++}
+                                        <div class="panel panel-default">
+                                            <div class="speaker-wrapper">
+                                            @if (m.author.avatarUrl == undefined)
+                                            {
+                                                <img src="/images/blank_avatar.jpg" class="img-responsive img-circle" alt="@m.author.firstname @m.author.lastname" />
+                                            }else{
+                                                <img src="@m.author.avatarUrl" class="img-responsive img-circle" alt="@m.author.firstname @m.author.lastname" />
+                                            }
+                                            </div>
+                                            <div class="panel-heading">
+                                                <div class="panel-title">
+                                                    <div class="time">
+                                                        <i class="fa fa-clock-o"></i> @{ var data = new Date(m.time) } @data.getHours():@(("0" + data.getMinutes()).substr(-2))
+                                                    </div>
+                                                    <a data-toggle="collapse" data-parent="#panelTimelineFour" href="#item@index" class="collapsed">
+                                                    @m.title
+                                                        <div class="pull-right fa fa-angle-up"></div>
+                                                        <div class="pull-right fa fa-angle-down"></div>
+                                                    </a>
+                                              </div>
+                                          </div>
+                                          <div id="item@index" class="panel-collapse collapse">
+                                              <div class="panel-body">
+                                                    <article>
+                                                      <p>@m.description</p>
+
+                                                        @if(m.author.firstname != "" && m.author.firstname != undefined)
+                                                        {
+                                                            <p class="author">
+                                                                @{var url = (m.author.blog != "" && m.author.blog != undefined) ? m.author.blog : "http://twitter.com/" + m.author.twitter;}
+                                                                <a href="@url" target="_blank">
+                                                                    <strong>
+                                                                        <i class="fa fa-user"></i> 
+                                                                        @m.author.firstname @m.author.lastname
+                                                                    </strong>
+                                                                </a>
+                                                            </p>
+                                                        }
+
+                                                      
+                                                      
+                                                        @if(m.tags.length > 0){
+                                                            <p class="tags"><strong><i class="fa fa-tags"></i> @m.tags</strong></p>
+                                                        }
+                                                      
+                                                    </article>
+                                              </div>
+                                          </div>
+                                      </div>
+                                    })
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+<!-- End Schedule Section -->
+
+<!-- Speakers Section -->
+<section id="speakers" class="section light">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="icon-wrap"><span class="icon icon-active icon-multimedia-12"></span></div>
+        <h3>Our speakers</h3>
+        <div class="sub-title">Look at our top speakers</div>
+        <br />
+        <br />
+
+        <section class="speakers-carousel">
+            <div id="speakers-carousel">
+
+                @model.speakers.forEach(function(m)
+                {
+                    <div class="speaker-item-container">
+                        <div class="speaker-item animated hiding" data-animation="fadeInUp" data-delay="0">
+                            <div class="img-wrapper">
+                                <img src="@m.avatarUrl" class="img-responsive img-circle" alt="@m.firstname @m.lastname" width="142" height="142" />
+                            </div>
+                            <div class="name">@m.firstname @m.lastname</div>
+                            <div class="sub">@m.role</div>
+                            <p class="small">@m.bio</p>
+                            <div class="social-link">
+                                @if(m.twitter && m.twitter != ""){
+                                    <a href="http://www.twitter.com/@m.twitter"><span class="fa fa-twitter"></span></a>
+                                }
+                                @if(m.site && m.site != ""){
+                                    <a href="@m.site"><span class="fa fa-link"></span></a>
+                                }
+                                
+                            </div>
+                        </div>
+                    </div>
+                })
+
+            </div>
+            <a class="carousel-nav carousel-prev"><i class="fa fa-angle-left fa-3x"></i></a>
+            <a class="carousel-nav carousel-next"><i class="fa fa-angle-right fa-3x"></i></a>
+        </section>
+        <!--<div class="btn-wrapper">
+          <a href="#" class="btn btn-sm btn-default">See all speakers</a>
+        </div>-->
+    </div>
+</section>
+<!-- End Speakers Section -->
+<!-- Price Section -->
+<section id="price" class="section dark">
+      <div class="container">
+        <div class="icon-wrap"><span class="icon icon-active icon-shopping-02"></span></div>
+        <h3>Pricetable</h3>
+        <div class="sub-title">The 4 options to attend the conference</div>
+		<br>
+		<br>
+        <div class="pricing-cols pricing-4-cols">
+
+          <div class="pricing-col animated fadeInLeft visible" data-animation="fadeInLeft" data-delay="0">
+              <div class="pricing-col-header">
+                  <h3 class="pricing-col-header-title">Free</h3>
+                  <h4 class="pricing-col-header-amount">
+                  <span class="pricing-col-amount">0€</span></h4>
+              </div>
+              <div class="pricing-col-content">
+                  <ul>
+                      <li>Ticket to the conference</li>
+                      <li>Bring your own food</li>
+                      <li>No T-Shirt</li>
+                  </ul>
+                  <a class="pricing-col-button" href="http://webnextconf.eventbrite.com/">Buy Now</a>
+              </div>
+          </div>
+          <div class="pricing-col pricing-col-featured">
+              <div class="pricing-ribbon">-20%</div>
+              <div class="pricing-col-header">
+                  <h3 class="pricing-col-header-title">Full Package</h3>
+                  <h4 class="pricing-col-header-amount"><span class="pricing-col-amount">€28</span></h4>
+              </div>
+              <div class="pricing-col-content">
+                  <ul>
+                      <li>Get the full experience</li>
+                      <li>Lunch provided with pre-conference happy-hour (25 september)</li>
+                      <li>You'll receive commemorative T-Shirt</li>
+                  </ul>
+                  <a class="pricing-col-button" href="http://webnextconf.eventbrite.com/">Buy Now</a>
+              </div>
+          </div>
+          <div class="pricing-col animated fadeInRight visible" data-animation="fadeInRight" data-delay="0">
+              <div class="pricing-col-header">
+                  <h3 class="pricing-col-header-title">Lunch only</h3>
+                  <h4 class="pricing-col-header-amount"><span class="pricing-col-amount">€15</span></h4>
+              </div>
+              <div class="pricing-col-content">
+                  <ul>
+                      <li>Ticket to the conference</li>
+                      <li>Lunch provided with pre-conference happy-hour (25 september)</li>
+                      <li>No T-Shirt</li>
+                  </ul>
+                  <a class="pricing-col-button" href="http://webnextconf.eventbrite.com/">Buy Now</a>
+              </div>
+          </div>
+
+          <div class="pricing-col animated fadeInRight visible" data-animation="fadeInRight" data-delay="0">
+              <div class="pricing-col-header">
+                  <h3 class="pricing-col-header-title">T-Shirt only</h3>
+                  <h4 class="pricing-col-header-amount"><span class="pricing-col-amount">€19</span></h4>
+              </div>
+              <div class="pricing-col-content">
+                  <ul>
+                      <li>Ticket to the conference</li>
+                      <li>Commemorative T-Shirt</li>
+                      <li>No lunch provided</li>
+                  </ul>
+                  <a class="pricing-col-button" href="http://webnextconf.eventbrite.com/">Buy Now</a>
+              </div>
+          </div>
+      </div>
+      </div>
+    </section>
+ <!-- End Price Section -->
+
+<!-- Newsletter -->
+<section id="newsletter" class="section dark">
+    <div class="overlay"></div>
+    <div class="container">
+        <article class="article-big animated fadeInDown visible" data-animation="fadeInDown" data-delay="0">
+            <h5>Newsletter <span class="highlight">Signup</span></h5>
+            <p>No Spam - only <span class="highlight">latest news</span>, price and activity updates!</p>
+            <form id="subscribe" class="form" method="post">
+                <div class="form-group form-inline">
+                    <input type="hidden" id="csrfToken" name="csrfToken" value="@model.csrfToken">
+                    <input type="email" class="form-control required" id="NewsletterEmail" name="NewsletterEmail" placeholder="your@email.com" required>
+                    <input type="submit" class="btn btn-xs btn-default" value="Submit">
+                    <span id="response"></span>
+                </div>
+            </form>
+        </article>
+    </div>
+</section>
+<!-- End Newsletter -->
+<!-- Sponsor -->
+<section class="section dark" id="sponsors">
+    <div class="container">
+        <div class="icon-wrap"><span class="icon icon-active icon-documents-bookmarks-12"></span>
+        </div>
+        <h3>Sponsors</h3>
+        <div class="sub-title">All of this wouldn't be possible without the support of these awesome partners</div>
+        <br>
+        <div class="row">
+            <ul class="list-inline">
+                <li>
+                    <a target="_blank" href="http://www.microsoft.com/it-it/default.aspx">
+                        <img class="inline-img" alt="Microsoft" src="/images/sponsor/microsoft.png">
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.braintreepayments.com/">
+                        <img class="inline-img" alt="Braintree dev" src="/images/sponsor/braintree-dev.png">
+                    </a>
+                </li>
+            </ul>
+            <ul class="list-inline">
+                <li>
+                    <a target="_blank" href="http://www.avanade.com/it-it/home">
+                        <img class="inline-img" alt="Avanade" src="/images/sponsor/avanade.png">
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://www.reply.eu/">
+                        <img class="inline-img" alt="Reply" src="/images/sponsor/reply.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://www.pipeline.it/">
+                        <img class="inline-img" alt="pipeline" src="/images/sponsor/pipeline.jpg">
+                    </a>
+                </li>
+            </ul>
+            <ul class="list-inline">
+                <li>
+                    <a target="_blank" href="https://www.jetbrains.com/">
+                        <img class="inline-img" alt="jetbrains" src="/images/sponsor/jetbrains.png">
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://www.smartcoretech.com/">
+                        <img class="inline-img" alt="smartcoretech" src="/images/sponsor/smartcore.jpg">
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.scientiamobile.com/">
+                        <img class="inline-img" alt="scientiamobile" src="/images/sponsor/scientia.png">
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://www.wpc2015.it/">
+                        <img class="inline-img" alt="WPC" src="/images/sponsor/WPC.png">
+                    </a>
+                </li>
+                
+            </ul>
+            <h3>Partners</h3>
+            <ul class="list-inline">
+                <li>
+                    <a target="_blank" href="http://www.greenbubble.it/">
+                        <img class="inline-img" alt="Greenbubble" src="/images/sponsor/greenbubble.png">
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://www.unimib.it/">
+                        <img class="inline-img" alt="Universita' degli studi di Milano - Bicocca" src="/images/sponsor/bicocca.png">
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://www.dotnetpodcast.com/">
+                        <img class="inline-img" alt="DotNet Podcast" src="/images/sponsor/dotnetpodcast.png">
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://milanojs.com/">
+                        <img class="inline-img" alt="{ Milano JS}" src="/images/sponsor/mijs.png">
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://www.refined.io/">
+                        <img class="inline-img" alt="Refined.io" src="/images/sponsor/refined.png">
+                    </a>
+                </li>
+            </ul>
+            <div class="btn-wrapper">
+                <a class="btn btn-sm btn-primary" href="/files/WEC2015_Sponsorship_Plan.pdf">Become a sponsor</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Sponsor -->
+<!-- Map -->
+<section id="map" class="dark">
+    <div id="canvas-map"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-sm-7 animated hiding location" data-animation="fadeInLeft" data-delay="0">
+                <h3>Location</h3>
+                <ul itemscope="" itemtype="http://schema.org/PostalAddress">
+                    <li itemprop="address"><i class="fa fa-map-marker highlight"></i>Universita' degli studi di Milano - Bicocca - <strong>Building U6</strong></li>
+                    <li itemprop="address">Piazza dell'Ateneo Nuovo, 1 - 20126 Milano</li>
+                    <li itemprop="email"><i class="fa fa-envelope highlight"></i><a href="mailto:info@@webnextconf.eu">info@@webnextconf.eu</a></li>
+                    <li itemscope="" itemtype="http://schema.org/Event"><i class="fa fa-clock-o highlight"></i>
+                        <time itemprop="startDate" datetime="2015-09-26T08:30">8:30</time> -
+                        <time itemprop="endDate" datetime="2015-09-26T19:00">19:00</time>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Map -->
+
+<!-- Location info -->
+<section id="directions" class="section dark">
+    <div class="container">
+        <div class="icon-wrap">
+            <span class="icon icon-office-25 icon-active"></span>
+        </div>
+        <h4>Directions and Hotel Info:</h4>
+        <br />
+        <br />
+        <section class="nav-tabs-simple">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active">
+                    <a href="#directions" data-toggle="tab">
+                        <i class="icon icon-shopping-24"></i> How to arrive
+                    </a>
+                </li>
+                <li>
+                    <a href="#hotels" data-toggle="tab">
+                        <i class="icon icon-shopping-17"></i> Hotels
+                    </a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="directions">
+                    <article class="row">
+                        <div class="col-md-12 col-sm-12 text-left animated hiding" data-animation="fadeInRight" data-delay="500">
+                            <h6>Aperitivo - Directions</h6>
+                            <p>The aperitivo alla Milanese, will be at <a href="http://www.lebanque.it/location/?mc_cid=ab496f3a21&mc_eid=e8442be9dc" target="_blank">Le Banque</a>, very close to Duomo and La Scala.</p>
+                            <p>Be on time: the aperitivo starts at 18:30</p>
+                            <p>The address is: Via Bassano Porrone, 6 Milano - here <a href="https://www.google.com/maps/place/Le+Banque/@45.4661873,9.1868502,17z/data=!3m1!4b1!4m2!3m1!1s0x0:0x68eab25775008fcf?mc_cid=ab496f3a21&mc_eid=e8442be9dc" target="_blank">Map on Google Maps</a></p>
+                            <p>&nbsp;</p>
+                            <h6>Conference - Directions</h6>
+                            <p>There are 3 airports in Milano: Malpensa, , Orio al Serio (Bergamo). They are all more or less 50-70 minutes Linate with public transports from Milano City Center, and the all cost between 6 and 12 euro.</p>
+                            <ul class="sub-list">
+                                <li><i class="icon icon-travel-transportation-01"></i> <strong>From Malpensa</strong>: Once you arrive at the airport just follow the sign for <a href="http://www.malpensaexpress.it/en/" target="_blank">Malpensa Express</a>. There is a train every 30 minutes from 6am till 1:30am. You will arrive in Milano Central Station or in Milano Cadorna. And from there you have access to the subway.</li>
+                                
+                                <li><i class="icon icon-travel-transportation-01"></i> <strong>From Linate</strong>: Public Bus n 72. This will take you to Piazza San Babila, a few minutes walk from Duomo, and with access to subway. You can also take the <a href="http://www.atm.it/en/AltriServizi/Trasporto/Pages/airbus.aspx" target="_blank">Air bus</a> that will take you to Milano Central Station.</li>
+
+                                <li><i class="icon icon-travel-transportation-01"></i> <strong>From Orio al Serio (Bergamo)</strong>: Take the <a href="http://www.orioshuttle.com/" target="_blank">Orio Shuttle</a>, a bus hat will take you to Milano Central Station.</li>
+                               
+                            </ul>
+                            <p>From the metro station take the Line 5 (Violet line direction Bignami) and take the Ponale Exit. From there 8 minutes walking (700mt)". </p>
+
+                        </div>
+                    </article>
+                </div>
+                <div class="tab-pane fade" id="hotels">
+                    <article class="row">
+                        <div class="col-md-12 col-sm-12 text-left animated hiding" data-animation="fadeInLeft" data-delay="500">
+                            <h6>Hotel conventions</h6>
+                            <ul class="sub-list">
+                                <li>
+                                    <i class="icon icon-shopping-17"></i>
+                                    The first hotel is <a href="https://www.hotelarcimboldi.it/" target="_blank">Hotel Arcimboldi</a>, just a few minutes walk from the venue. We'll have a 15% discount by specifying the code <strong>EUROPEAN WEB CONFERENCE</strong> when booking via email at <a href="mailto:arcimboldi@@bookingsolutions.it">arcimboldi@@bookingsolutions.it</a>.
+                                </li>
+                                <li>
+                                    <i class="icon icon-shopping-17"></i>
+                                    The first hotel is <a href="http://www.ideahotel.it/web/guest" target="_blank">Idea Hotel Bicocca</a>, just a few minutes walk from the venue. We'll have a 15% discount by specifying the code <strong>EUROPEAN WEB CONFERENCE</strong> when booking via email at <a href="mailto:bicocca@@bookingsolutions.it">bicocca@@bookingsolutions.it .</a>. .
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+<!--  End Location info  -->
+
+
+@html.include('footer')
+</body>
+}) })

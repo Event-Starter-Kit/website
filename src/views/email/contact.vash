@@ -1,0 +1,7 @@
+Hey you got a new contact from the website!<br/>
+<br/>
+<br/>
+
+Name: @model.otherProperty.name <br/>
+Email: @model.otherProperty.email <br/>
+Message: @model.otherProperty.message <br/>

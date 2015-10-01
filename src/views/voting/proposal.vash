@@ -1,0 +1,120 @@
+@html.extend('layout', function(model) { 
+	@html.block('body', function (model) {
+
+		<body id="index" class="register-page">
+			<header id="mobileheader" class="navigation-bar-header light visible-xs"></header>
+			    <!-- Hero Section -->
+			    <section id="hero" class="light ignore">
+			      <div class="container">
+			        <div class="home-bg">
+			          <div class="text-center ">
+			           <div class="container">
+							<div class="row">
+								<div class="col-md-12">
+									<h2>Vote your <span class="highlight">favorite proposal</span> now!</h2>
+									<div class="sub-title">We'll evaluate the session thanks your feedback.</div>
+									<br/>
+									<br/>
+								</div>
+								<div class="col-lg-10 col-lg-offset-1 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+
+									<div id="schedule" class="section dark">
+
+										<section class="nav-tabs-default">
+											<div class="tab-content">
+								                <div class="tab-pane fade in active" id="TrackOne">
+								                    <div class="tab-content">
+								                        <div class="tab-pane fade in active">
+													
+								                        	<input type="hidden" id="csrfToken" name="csrfToken" value="@model.csrfToken">
+
+														 	<div class="panel-group timeline-schedule" style="padding: 0;">
+																@{var index = 0;}
+																@model.tracks.forEach(function(m)
+								                                {
+								                                
+								                                    @{index++}
+								                                    <div class="panel panel-default">
+								                                        <div class="speaker-wrapper">
+								                                        @if (m.author.avatarUrl == undefined)
+								                                        {
+								                                            <img src="/images/blank_avatar.jpg" class="img-responsive img-circle" alt="@m.author.firstname @m.author.lastname" />
+								                                        }else{
+								                                            <img src="@m.author.avatarUrl" class="img-responsive img-circle" alt="@m.author.firstname @m.author.lastname" />
+								                                        }
+								                                        </div>
+								                                        <div class="panel-heading">
+								                                            <div class="panel-title">
+								                                                <a data-toggle="collapse" data-parent="#panelTimelineOne" href="#item@index" class="collapsed">
+								                                                @m.title
+								                                                    <div class="pull-right fa fa-angle-up"></div>
+								                                                    <div class="pull-right fa fa-angle-down"></div>
+								                                                </a>
+								                                          </div>
+								                                      </div>
+								                                      <div id="item@index" class="panel-collapse collapse">
+								                                          <div class="panel-body">
+								                                              <article>
+								                                                  <p>@m.description</p>
+								                                                  <p class="author"><a href="@m.author.blog"><strong><i class="fa fa-user"></i> @m.author.firstname @m.author.lastname</strong></a></p>
+								                                                  <p class="tags"><strong><i class="fa fa-tags"></i> @m.tags</strong></p>
+
+
+								                                                  	<form data-vote id="vote-@m._id.toHexString()">
+								                                						<input type="hidden" name="id" value="@m._id.toHexString()" />
+									                                                  <div class="form-inline">
+									                                                  	
+									                                                  	
+										                                                 
+										                                                  		<select name="vote" class="form-control" style="height: 34px;">
+										                                                  			<option value="">---</option>
+										                                                  			<option value="1">1</option>
+										                                                  			<option value="2">2</option>
+										                                                  			<option value="3">3</option>
+										                                                  			<option value="4">4</option>
+										                                                  			<option value="5">5</option>
+										                                                  			<option value="6">6</option>
+										                                                  			<option value="7">7</option>
+										                                                  			<option value="8">8</option>
+										                                                  			<option value="9">9</option>
+										                                                  			<option value="10">10</option>
+										                                                  		</select>
+
+										                                                  		<button type="submit" class="btn btn-primary" data-vote-button>Vote</button>
+
+										                                                 </div>
+
+									                                                 </form>
+									                                                 <div style="font-style: italic; color: #999; display: none;" id="voted-@m._id.toHexString()">You've voted!</div>
+								                                              </article>
+								                                          </div>
+								                                      </div>
+								                                  </div>
+								                                  
+								                                })
+								                            </div>
+								                        </div>
+								                    </div>
+								                </div>
+								            </div>
+								        </section>
+
+									</div>
+
+									<p class="agree-text center">By clicking you agree to our Terms of Service, Privacy Policy.<br>
+										Ventcamp v1.1© All rights reserved.</p>
+
+
+								</div>
+							</div>
+						</div>
+			          </div>          
+			        </div>
+			      </div>
+			    </section> 
+			    <!-- End Hero Section -->
+			@html.include('footer')
+		</body>
+
+	}) 
+})

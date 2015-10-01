@@ -1,1 +1,44 @@
-<h1>404</h1>
+@html.extend('layout', function(model) {
+  @html.block('body', function (model) {
+
+  <!-- start wrapper -->  
+      <div class="wrapper">  
+        <!-- start section -->
+        <section>
+          <header>
+            <div class="row">
+              <div class="large-12 columns">
+                <div class="large-8 medium-12 small-12 large-text-left small-text-center medium-text-center columns">
+                  
+                  <!-- start logo -->
+                  <img src="img/logo.png" alt="your logo goes here" />
+                  <!-- end logo -->
+
+                </div>
+              </div>
+            </div>
+          </header>
+
+          <div class="row">
+            <div class="large-12 large-centered columns">
+
+              	<!-- Rotator Title --> 
+	            <div id="rotate">
+	             <h1 class="rotate"><span>404 - Page not found</span></h1>
+	             <h1 class="rotate">Our website is <span>under construction</span></h1>
+	             Home page  <a href="/">here</a> 
+	            </div>
+	            <!-- End Rotator Title -->
+
+            </div>
+          </div>
+
+        </section>  
+        <!-- end section -->
+
+      <div class="push"></div><!-- for sticky footer -->
+
+    </div>
+    <!-- end wrapper -->
+  })
+})

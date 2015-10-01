@@ -26,8 +26,7 @@ if(GLOBAL.env != 'dev')
               level: 'debug',
               handleExceptions: false,
               json: false,
-              colorize: true,
-              'timestamp':true
+              colorize: true
           }),
 
       ],

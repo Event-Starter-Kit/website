@@ -1,31 +1,67 @@
 /* global GLOBAL */
 /// <reference path="../typings/express/express.d.ts"/>
-var cluster = require('cluster');
-var logger;
-var _ = require('underscore');
 
-var env = _.find(process.argv.slice(2), function(arg) {
-    if (arg.indexOf('env') === 0) {
-        return true;
+import * as express from 'express';
+import * as _ from 'underscore';
+import * as winston from 'winston';
+import * as loggerModule from './utils/logger';
+import * as environment from './config/environment';
+
+class startup {
+    private logger: winston.LoggerInstance;
+    private app: express.Express;
+
+    constructor() {
+        this.parseEnvironment();
+        this.configureLogger();
+        this.configureExpress();
     }
-});
 
-GLOBAL.env = (env !== undefined) ? env.substr(4, 3) : 'prod';
+    private parseEnvironment() {
+        var env = _.find(process.argv.slice(2), (arg) => {
+            if (arg.indexOf('env') === 0) {
+                return true;
+            }
+        });
 
-logger = require("./utils/logger");
-logger.debug("Initializing development configuration.");
+        GLOBAL.env = (env !== undefined)
+            ? env.substr(4, 3)
+            : 'prod';
+    }
 
-var express = require("express");
-var app = express();
+    private configureLogger() {
+        loggerModule.factory.configure();
+        this.logger = loggerModule.factory.logger();
 
-var expressConfig = require("./config/express");
+        this.logger.info("Logger Up & Running....");
+        this.logger.info("Environment: " + (environment.isDevEnvironment ? 'Dev' : 'Production'));
+    }
 
-logger.info("configuring express....");
-expressConfig.init(app, express);
-logger.info("Express configured");
+    private configureExpress() {
+        this.app = express();
+        
+        /*
+        var expressConfig = require("./config/express");
+        
+        logger.info("configuring express....");
+        expressConfig.init(app, express);
+        logger.info("Express configured");
+        
+        */
+    }
 
-var port = process.env.port || 5000;
+    public run() {
+        var port = process.env.port || 5000;
 
-app.listen(port, function() {
-    logger.info("Listening on " + port);
-});
+        this.app.listen(port, function() {
+            this.logger.info("Listening on " + port);
+        });
+    }
+}
+
+var srt = new startup();
+srt.run();
+
+
+
+

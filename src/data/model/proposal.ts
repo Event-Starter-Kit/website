@@ -1,4 +1,6 @@
-export class proposal {
+import * as model from './entitybase';
+
+export class proposal extends model.entitybase{
     title: string;
 	abstract: string;
 	date: Date;
@@ -13,6 +15,8 @@ export class proposal {
 		firstname: string,
 		lastname: string,
 		bio: string) {
+
+		super();
 
 		if (title) {
 			throw new Error("invalid title");

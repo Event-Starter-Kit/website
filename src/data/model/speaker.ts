@@ -1,6 +1,7 @@
+import * as model from './entitybase';
 import * as _ from 'underscore';
 
-export class speaker {
+export class speaker extends model.entitybase{
 	firstname: string;
 	lastname: string;
 	email: string;
@@ -13,11 +14,15 @@ export class speaker {
 	talks: talk[];
 
 	constructor(firstname: string, lastname: string, bio: string) {
+		
+		super();
+		
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.bio = bio;
 	}
 
+	
 	addTalk(talk: talk) {
 		this.talks.push(talk);
 	}

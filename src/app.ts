@@ -1,11 +1,9 @@
-/* global GLOBAL */
-/// <reference path="../typings/express/express.d.ts"/>
-
 import * as express from 'express';
 import * as _ from 'underscore';
 import * as winston from 'winston';
 import * as loggerModule from './utils/logger';
 import * as environment from './config/environment';
+import * as expressConfiguration from './config/express';
 
 class startup {
     private logger: winston.LoggerInstance;
@@ -24,7 +22,7 @@ class startup {
             }
         });
 
-        GLOBAL.env = (env !== undefined)
+        global.env = (env !== undefined)
             ? env.substr(4, 3)
             : 'prod';
     }
@@ -40,14 +38,9 @@ class startup {
     private configureExpress() {
         this.app = express();
         
-        /*
-        var expressConfig = require("./config/express");
-        
-        logger.info("configuring express....");
-        expressConfig.init(app, express);
-        logger.info("Express configured");
-        
-        */
+        this.logger.info("configuring express....");
+        new expressConfiguration.expressConfig(this.app).configure()
+        this.logger.info("Express configured");
     }
 
     public run() {

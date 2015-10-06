@@ -1,6 +1,6 @@
 import * as loggerFactory from '../utils/logger';
 import * as mongodb from 'mongodb';
-import * as database from 'database';
+import * as database from './database';
 
 var logger = loggerFactory.factory.logger();
 

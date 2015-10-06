@@ -6,13 +6,13 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "express/express.d.ts": {
-      "commit": "43861a1703feb7c6c413a4026a262c2ecb97eec0"
+      "commit": "05557455c49043ff0189182e27c9e04403a70802"
     },
     "winston/winston.d.ts": {
       "commit": "ebc69904eb78f94030d5d517b42db20867f679c0"
     },
     "node/node.d.ts": {
-      "commit": "98d3168c2c570352a3a7393788e2ec9fbb08ade6"
+      "commit": "05557455c49043ff0189182e27c9e04403a70802"
     },
     "moment/moment.d.ts": {
       "commit": "98d3168c2c570352a3a7393788e2ec9fbb08ade6"
@@ -28,6 +28,27 @@
     },
     "async/async.d.ts": {
       "commit": "98d3168c2c570352a3a7393788e2ec9fbb08ade6"
+    },
+    "compression/compression.d.ts": {
+      "commit": "05557455c49043ff0189182e27c9e04403a70802"
+    },
+    "serve-static/serve-static.d.ts": {
+      "commit": "05557455c49043ff0189182e27c9e04403a70802"
+    },
+    "mime/mime.d.ts": {
+      "commit": "05557455c49043ff0189182e27c9e04403a70802"
+    },
+    "express-validator/express-validator.d.ts": {
+      "commit": "05557455c49043ff0189182e27c9e04403a70802"
+    },
+    "cookie-parser/cookie-parser.d.ts": {
+      "commit": "05557455c49043ff0189182e27c9e04403a70802"
+    },
+    "express-session/express-session.d.ts": {
+      "commit": "05557455c49043ff0189182e27c9e04403a70802"
+    },
+    "csurf/csurf.d.ts": {
+      "commit": "05557455c49043ff0189182e27c9e04403a70802"
     }
   }
 }

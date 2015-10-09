@@ -43,7 +43,7 @@ class startup extends loggerBaseClass {
     public run() {
         var port = process.env.port || 5000;
 
-        this.app.listen(port, function() {
+        this.app.listen(port, () => {
             this.logger.info("Listening on " + port);
         });
     }

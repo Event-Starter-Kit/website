@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { controllerBase } from './controllerBase';
+import { controllerBase } from './helpers/controllerBase';
 import { scheduleData } from '../data/scheduleData';
 import { homeViewModel } from './viewModel/homeViewModel';
 

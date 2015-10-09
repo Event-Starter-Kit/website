@@ -1,5 +1,6 @@
-import { loggerFactory } from '../utils/LoggerFactory';
+import { loggerFactory } from '../utils/loggerFactory';
 import { loggerBaseClass } from '../loggerBaseClass';
+import { requireAll } from '../utils/requireAll';
 
 import * as credentials from '../config/credentials';
 import * as winston from 'winston';
@@ -31,6 +32,9 @@ export class expressConfig extends loggerBaseClass {
         this.configureSession();
         this.configureCsurf();
         this.configureLog();
+
+        let controllerFolder = path.dirname(module.parent.filename) + '/controllers/';
+        var ctrls = new requireAll().requireAll(controllerFolder);
         
         //need to initialized the controllers
         
@@ -103,7 +107,7 @@ export class expressConfig extends loggerBaseClass {
         this.logger.debug("Overriding 'Express' logger");
         this.app.use(require('morgan')("combined", {
             "stream": {
-                write: (message:string, encoding:any) => {
+                write: (message: string, encoding: any) => {
                     this.logger.info(message);
                 }
             }

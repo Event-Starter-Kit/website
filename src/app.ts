@@ -14,9 +14,7 @@ class startup extends loggerBaseClass {
         this.parseEnvironment();
  
         super();
-
-        this.logger.info("Logger Up & Running....");
-        this.logger.info("Environment: " + (environment.isDevEnvironment ? 'Dev' : 'Production'));
+        
         this.configureExpress();
     }
 

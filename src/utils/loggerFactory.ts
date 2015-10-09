@@ -14,6 +14,9 @@ export class loggerFactory {
             else {
                 this.file();
             }
+
+            loggerFactory.winston.info("Logger Up & Running....");
+            loggerFactory.winston.info("Environment: " + (environment.isDevEnvironment ? 'Dev' : 'Production'));
         }
     }
 

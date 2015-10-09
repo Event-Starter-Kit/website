@@ -1,4 +1,4 @@
-import { loggerBaseClass } from '../loggerBaseClass';
+import { loggerBaseClass } from '../../loggerBaseClass';
 import * as express from 'express';
 
 export class controllerBase extends loggerBaseClass {

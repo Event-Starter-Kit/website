@@ -40,7 +40,7 @@ gulp.task("build-ts", function () {
       // Return relative source map root directories per file.
       sourceRoot: function (file) {
         var sourceFile = path.join(file.cwd, file.sourceMap.file);
-        return path.relative(path.dirname(sourceFile), file.cwd) + "/../src";  // will probide the right location of the source files relative to the build folder
+        return path.relative(path.dirname(sourceFile), file.cwd) + "./../../src";  // will probide the right location of the source files relative to the build folder
       }
     }))
     

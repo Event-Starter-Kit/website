@@ -16,7 +16,7 @@ export class expressConfig extends loggerBaseClass {
 
     constructor(app: express.Express) {
         super();
-        
+
         this.app = app;
     }
 
@@ -30,8 +30,8 @@ export class expressConfig extends loggerBaseClass {
         this.configureCookieParser();
         this.configureSession();
         this.configureCsurf();
+        this.configureLog();
         
-        //need to add logger stream to express js
         //need to initialized the controllers
         
         this.configure404();
@@ -99,10 +99,21 @@ export class expressConfig extends loggerBaseClass {
         this.app.use(csrf());
     }
 
+    private configureLog() {
+        this.logger.debug("Overriding 'Express' logger");
+        this.app.use(require('morgan')("combined", {
+            "stream": {
+                write: (message:string, encoding:any) => {
+                    this.logger.info(message);
+                }
+            }
+        }));
+    }
+
     private configure404() {
         this.logger.info("Configuring 404 page");
         this.app.use((err: any, req: express.Request, res: express.Response, next: Function) => {
-            this.logger.debug("Unable to locate the specified url: "+ req.url);
+            this.logger.debug("Unable to locate the specified url: " + req.url);
             res.statusCode = 404;
             res.render("404");
         });

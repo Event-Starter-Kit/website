@@ -10,12 +10,13 @@ class startup extends loggerBaseClass {
     private app: express.Express;
 
     constructor() {
-        
-        this.parseEnvironment();
-        this.configureLogger();
 
+        this.parseEnvironment();
+ 
         super();
 
+        this.logger.info("Logger Up & Running....");
+        this.logger.info("Environment: " + (environment.isDevEnvironment ? 'Dev' : 'Production'));
         this.configureExpress();
     }
 
@@ -29,12 +30,6 @@ class startup extends loggerBaseClass {
         global.env = (env !== undefined)
             ? env.substr(4, 3)
             : 'prod';
-    }
-
-    private configureLogger() {
-        loggerFactory.configure();
-        this.logger.info("Logger Up & Running....");
-        this.logger.info("Environment: " + (environment.isDevEnvironment ? 'Dev' : 'Production'));
     }
 
     private configureExpress() {

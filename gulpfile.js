@@ -11,7 +11,7 @@ var path = require('path');
 var tsOptions = {
   //typescript: typescript, // use the local copy of the compiler
   noImplicitAny: true,
-  target: "ES6",
+  target: "ES5",
   //out: "application.js", concat everything in a single application
   //suppressExcessPropertyErrors: true, // typescript 1.6 breaking change!
   experimentalAsyncFunctions: true,

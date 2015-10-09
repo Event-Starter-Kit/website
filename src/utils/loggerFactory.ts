@@ -2,18 +2,23 @@ import { environment }  from '../config/environment';
 import * as winston from 'winston';
 
 export class loggerFactory {
+    private static isConfigured: boolean = false;
     static winston: winston.LoggerInstance;
 
-    static configure() {
-        if (environment.isDevEnvironment) {
-            this.coloredConsole();
-        }
-        else {
-            this.file();
+    private static configure() {
+
+        if (!this.isConfigured) {
+            if (environment.isDevEnvironment) {
+                this.coloredConsole();
+            }
+            else {
+                this.file();
+            }
         }
     }
 
     static logger(): winston.LoggerInstance {
+        loggerFactory.configure();
         return loggerFactory.winston;
     }
 

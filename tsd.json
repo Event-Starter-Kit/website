@@ -6,52 +6,52 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "express/express.d.ts": {
-      "commit": "05557455c49043ff0189182e27c9e04403a70802"
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
     },
     "winston/winston.d.ts": {
-      "commit": "ebc69904eb78f94030d5d517b42db20867f679c0"
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
     },
     "node/node.d.ts": {
-      "commit": "05557455c49043ff0189182e27c9e04403a70802"
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
     },
     "moment/moment.d.ts": {
-      "commit": "98d3168c2c570352a3a7393788e2ec9fbb08ade6"
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
     },
     "moment/moment-node.d.ts": {
-      "commit": "98d3168c2c570352a3a7393788e2ec9fbb08ade6"
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
     },
     "underscore/underscore.d.ts": {
-      "commit": "98d3168c2c570352a3a7393788e2ec9fbb08ade6"
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
     },
     "mongodb/mongodb.d.ts": {
-      "commit": "98d3168c2c570352a3a7393788e2ec9fbb08ade6"
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
     },
     "async/async.d.ts": {
-      "commit": "98d3168c2c570352a3a7393788e2ec9fbb08ade6"
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
     },
     "compression/compression.d.ts": {
-      "commit": "05557455c49043ff0189182e27c9e04403a70802"
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
     },
     "serve-static/serve-static.d.ts": {
-      "commit": "05557455c49043ff0189182e27c9e04403a70802"
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
     },
     "mime/mime.d.ts": {
-      "commit": "05557455c49043ff0189182e27c9e04403a70802"
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
     },
     "express-validator/express-validator.d.ts": {
-      "commit": "05557455c49043ff0189182e27c9e04403a70802"
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
     },
     "cookie-parser/cookie-parser.d.ts": {
-      "commit": "05557455c49043ff0189182e27c9e04403a70802"
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
     },
     "express-session/express-session.d.ts": {
-      "commit": "05557455c49043ff0189182e27c9e04403a70802"
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
     },
     "csurf/csurf.d.ts": {
-      "commit": "05557455c49043ff0189182e27c9e04403a70802"
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
     },
     "es6-promise/es6-promise.d.ts": {
-      "commit": "d6c98baa7fd703e449cf37f3ec39ed3bd92cfd35"
+      "commit": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
     }
   }
 }

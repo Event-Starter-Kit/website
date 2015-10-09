@@ -16,9 +16,6 @@ export class scheduleData extends dbBaseClass {
         var p = new Promise<talk[]>((resolve, reject) => {
 
             this.getDatabase()
-                .catch((reason) => {
-                    reject(reason);
-                })
                 .then(db => {
                     db.talk
                         .find()
@@ -31,6 +28,9 @@ export class scheduleData extends dbBaseClass {
                                 resolve(results);
                             }
                         });
+                })
+                 .catch((reason) => {
+                    reject(reason);
                 });
         });
 

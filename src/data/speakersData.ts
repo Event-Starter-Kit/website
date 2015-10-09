@@ -17,9 +17,6 @@ export class speakerData extends dbBaseClass {
         var p = new Promise<speaker[]>((resolve, reject) => {
 
             this.getDatabase()
-                .catch((reason) => {
-                    reject(reason);
-                })
                 .then(db => {
                     db.speakers
                         .find()
@@ -32,6 +29,9 @@ export class speakerData extends dbBaseClass {
                                 resolve(results);
                             }
                         });
+                })
+                .catch((reason) => {
+                    reject(reason);
                 });
         });
 

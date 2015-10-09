@@ -1,16 +1,15 @@
-import {entitybase} from './entitybase';
-import {authorInfo} from './authorInfo';
+import { entitybase } from './entitybase';
+import { authorInfo } from './authorinfo';
 
-export class proposal extends entitybase {
-    title: string;
+export class talk extends entitybase {
+	title: string;
 	abstract: string;
 	date: number;
 	tags: string[];
 	author: authorInfo;
-	numberOfVotes: number;
-	voteAverage: number;
+	trak: string;
 
-    constructor(title: string,
+	constructor(title: string,
 		abstract: string,
 		tags: string[],
 		firstname: string,
@@ -37,17 +36,4 @@ export class proposal extends entitybase {
 		this.tags = tags;
 		this.author = new authorInfo(firstname, lastname, bio);
     }
-
-	increaseVote() {
-		this.numberOfVotes++;
-	}
-
-	decreaseVote() {
-		this.numberOfVotes--;
-	}
-
-	updateAverage(average: number) {
-		this.voteAverage = average;
-	}
 }
-

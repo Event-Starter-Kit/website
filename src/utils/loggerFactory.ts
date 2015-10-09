@@ -1,6 +1,7 @@
-import * as environment from '../config/environment';
+import { environment }  from '../config/environment';
 import * as winston from 'winston';
-export class factory {
+
+export class loggerFactory {
     static winston: winston.LoggerInstance;
 
     static configure() {
@@ -13,11 +14,11 @@ export class factory {
     }
 
     static logger(): winston.LoggerInstance {
-        return factory.winston;
+        return loggerFactory.winston;
     }
 
     private static file() {
-        factory.winston = new winston.Logger({
+        loggerFactory.winston = new winston.Logger({
             transports: [
                 new winston.transports.File({
                     level: 'info',
@@ -34,7 +35,7 @@ export class factory {
     }
 
     private static coloredConsole() {
-        factory.winston = new winston.Logger({
+        loggerFactory.winston = new winston.Logger({
             transports: [
                 new winston.transports.Console({
                     level: 'debug',

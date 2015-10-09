@@ -1,7 +1,10 @@
-import * as model from './entitybase';
+import {entitybase} from './entitybase';
+import {authorInfo} from './authorInfo';
+import {talk} from './talk';
+
 import * as _ from 'underscore';
 
-export class speaker extends model.entitybase{
+export class speaker extends entitybase {
 	firstname: string;
 	lastname: string;
 	email: string;
@@ -14,15 +17,15 @@ export class speaker extends model.entitybase{
 	talks: talk[];
 
 	constructor(firstname: string, lastname: string, bio: string) {
-		
+
 		super();
-		
+
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.bio = bio;
 	}
 
-	
+
 	addTalk(talk: talk) {
 		this.talks.push(talk);
 	}
@@ -32,9 +35,3 @@ export class speaker extends model.entitybase{
 	}
 }
 
-class talk {
-	title: string;
-	abstract: string;
-	date: Date;
-	track: string;
-}

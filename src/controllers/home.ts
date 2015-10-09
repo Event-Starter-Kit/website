@@ -1,5 +1,33 @@
-/* global GLOBAL */
-/// <reference path="../../typings/express/express.d.ts"/>
+import * as express from 'express';
+import { controllerBase } from './controllerBase';
+import { scheduleData } from '../data/scheduleData';
+import { homeViewModel } from './viewModel/homeViewModel';
+
+export class homeController extends controllerBase {
+    private scheduleData: scheduleData;
+
+    constructor(app: express.Express) {
+        super(app);
+
+        this.scheduleData = new scheduleData();
+        this.home();
+    }
+
+    private home() {
+        this.app.get("/", (req, res) => {
+            let model = new homeViewModel(req);
+
+            this.scheduleData.getTalks()
+                .then(output => {
+                    model.talks = output;
+                    
+                     res.render("home/index", model);
+                });
+        });
+    }
+}
+
+/*
 
 (function(homeController) {
     var logger = require("../utils/logger.js");
@@ -83,3 +111,4 @@
 
 
 })(module.exports);
+*/

@@ -1,5 +1,5 @@
-const greetings = ['Welcome', 'Willkommen', 'Hey', 'Gruezi'];
-
-export function isDevEnvironment() : boolean{
-    return global.env == 'dev';
+export class environment {
+    static isDevEnvironment(): boolean {
+        return global.env === 'dev';
+    }
 }

@@ -13,3 +13,4 @@
 /// <reference path="cookie-parser/cookie-parser.d.ts" />
 /// <reference path="express-session/express-session.d.ts" />
 /// <reference path="csurf/csurf.d.ts" />
+/// <reference path="es6-promise/es6-promise.d.ts" />

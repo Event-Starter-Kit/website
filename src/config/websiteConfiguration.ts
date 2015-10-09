@@ -1,4 +1,4 @@
-export class website {
+export class websiteConfiguration {
 	title: string = "You conference name";
 	description: string = "You event description";
 	tags: string[] = ["tag1", "tag2", "tag3"];
@@ -10,7 +10,6 @@ export class website {
 		this.tracks.push(new track(3, "track3", 4, 100));
 		this.tracks.push(new track(4, "track4", 4, 100));
 	}
-
 }
 
 class track {

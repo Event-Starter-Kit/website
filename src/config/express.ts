@@ -1,6 +1,6 @@
-/// <reference path="../../typings/express/express.d.ts"/>
+import { loggerFactory } from '../utils/LoggerFactory';
+import { loggerBaseClass } from '../loggerBaseClass';
 
-import * as loggerModule from '../utils/logger';
 import * as credentials from '../config/credentials';
 import * as winston from 'winston';
 import * as express from 'express';
@@ -11,12 +11,12 @@ import * as cookieParser from 'cookie-parser';
 import * as session from 'express-session';
 import * as csrf from 'csurf';
 
-export class expressConfig {
-    private logger: winston.LoggerInstance;
+export class expressConfig extends loggerBaseClass {
     private app: express.Express;
 
     constructor(app: express.Express) {
-        this.logger = loggerModule.factory.logger();
+        super();
+        
         this.app = app;
     }
 

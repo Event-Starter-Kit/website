@@ -18,4 +18,3 @@ export class mongo {
 export class eventbrite {
     static apiKey: string = process.env.EVENTBRITE_API_KEY || "my secret api key"
 }
-

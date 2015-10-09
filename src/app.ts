@@ -6,7 +6,7 @@ import { expressConfig } from './config/express';
 import * as express from 'express';
 import * as _ from 'underscore';
 
-class Startup extends loggerBaseClass {
+class startup extends loggerBaseClass {
     private app: express.Express;
 
     constructor() {
@@ -45,7 +45,7 @@ class Startup extends loggerBaseClass {
         this.logger.info("Express configured");
     }
 
-    public Run() {
+    public run() {
         var port = process.env.port || 5000;
 
         this.app.listen(port, function() {
@@ -54,8 +54,8 @@ class Startup extends loggerBaseClass {
     }
 }
 
-var srt = new Startup();
-srt.Run();
+var srt = new startup();
+srt.run();
 
 
 

@@ -1,6 +1,6 @@
 import { loggerFactory } from '../utils/loggerFactory';
 import { loggerBaseClass } from '../loggerBaseClass';
-import { requireAll } from '../utils/requireAll';
+import { folder } from '../utils/folder';
 
 import * as credentials from '../config/credentials';
 import * as winston from 'winston';
@@ -34,10 +34,12 @@ export class expressConfig extends loggerBaseClass {
         this.configureLog();
 
         let controllerFolder = path.dirname(module.parent.filename) + '/controllers/';
-        var ctrls = new requireAll().requireAll(controllerFolder);
-        
-        //need to initialized the controllers
-        
+        var ctrls = new folder().requireAll(controllerFolder);
+
+        ctrls.forEach((ctrl) => {
+            var o =new ctrl[Object.keys(ctrl)[0]](this.app);
+        });
+
         this.configure404();
         this.configure500();
     }
@@ -132,48 +134,3 @@ export class expressConfig extends loggerBaseClass {
         });
     }
 }
-
-
-/*
-(function(expressConfig) {
-
-    var logger = require("../utils/logger");
-
-    var path = require('path');
-    var expressValidator = require('express-validator');
-    
-    var credentials = require("./credentials.js").credentials;
-    
-    
-
-    expressConfig.init = function(app, express) {      
-
-
-        logger.debug("Overriding 'Express' logger");
-        app.use(require('morgan')("combined",{
-            "stream": logger.stream
-        }));
-        
-        
-
-
-        mailer.extend(app, {
-            host: credentials.mailer.host,
-            secureConnection: credentials.mailer.secureConnection,
-            port: credentials.mailer.port,
-            transportMethod: 'SMTP',
-            auth: {
-                user: credentials.mailer.username,
-                pass: credentials.mailer.password
-            }
-        });
-
-        require("../controllers/").init(app);
-    
-        
-
-        
-    };
-
-})(module.exports);
-*/

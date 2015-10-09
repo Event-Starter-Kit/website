@@ -2,7 +2,7 @@ import {loggerBaseClass} from '../loggerBaseClass';
 import * as fs from 'fs';
 import * as path from 'path';
 
-export class requireAll extends loggerBaseClass {
+export class folder extends loggerBaseClass {
     constructor() {
         super();
     }

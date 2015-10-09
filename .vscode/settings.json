@@ -6,4 +6,15 @@
 		"**/bower_components": true,
 		"**/build" : true
 	}
+	
+	// VSCode is set to use typescript 1.5 internally, to use a newer version:
+	// MUST USE ABSOLUTE PATHS actually
+	
+	// Specifies the folder path containing the tsserver and lib*.d.ts files to use.
+	//"typescript.tsdk": "C:\\Work\\esk\\website\\node_modules\\typescript\\lib"
+	
+	// relative path is not working
+	//"typescript.tsdk": "${workspaceRoot}\\node_modules\\typescript\\lib"
+	//"typescript.tsdk": "node_modules/typescript/lib"
+	
 }

@@ -1,6 +1,6 @@
 import { loggerBaseClass } from '../../loggerBaseClass';
-import { dbContext } from './DbContext';
-import { dbFacility } from './DbFacility';
+import { dbContext } from './dbContext';
+import { dbFacility } from './dbFacility';
 
 import * as mongodb from 'mongodb';
 

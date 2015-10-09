@@ -8,20 +8,22 @@ export class dbContext extends loggerBaseClass {
 
     GetDbContext(): Promise<dbFacility> {
         var p = new Promise<dbFacility>((resolve, reject) => {
-            if (!dbContext) {
+            if (!dbContext.facility) {
                 mongodb.MongoClient.connect(credentials.mongo.connectionString, (err, db) => {
                     if (err) {
                         this.logger.error(err.message, err);
                         reject(err);
+                    } else {
+                        dbContext.facility = new dbFacility(db);
+                        resolve(dbContext.facility);
                     }
-                    dbContext.facility = new dbFacility(db);
-                    resolve(dbContext.facility);
+
                 });
             } else {
                 resolve(dbContext.facility);
             }
         });
-       
+
         return p;
     }
 }

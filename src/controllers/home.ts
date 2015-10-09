@@ -14,15 +14,17 @@ export class homeController extends controllerBase {
     }
 
     private home() {
-        var pippo = 2;
         this.app.get("/", (req, res) => {
-            let model = new homeViewModel(req);
-
+           
             this.scheduleData.getTalks()
                 .then(output => {
+                    let model = new homeViewModel(req);
                     model.talks = output;
                     
                      res.render("home/index", model);
+                })
+                .catch((err:Error) => {
+                    throw new Error(err.message);
                 });
         });
     }

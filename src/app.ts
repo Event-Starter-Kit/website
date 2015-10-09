@@ -26,8 +26,8 @@ class startup extends loggerBaseClass {
                 return true;
             }
         });
-
-        global.env = (env !== undefined)
+       
+        environment.env = (env !== undefined)
             ? env.substr(4, 3)
             : 'prod';
     }

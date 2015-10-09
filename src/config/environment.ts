@@ -1,5 +1,9 @@
 export class environment {
+    
+    // todo: create a setEnvironment method
+    static env: string;
+    
     static isDevEnvironment(): boolean {
-        return global.env === 'dev';
+        return environment.env === 'dev';
     }
 }

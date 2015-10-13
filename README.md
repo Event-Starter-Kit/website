@@ -2,7 +2,7 @@
 
 The site is built on top of [NodeJs](http://nodejs.org/) and the application requires some packages from the [NPM](https://www.npmjs.org/).
 
-First think to do is install the right packages:
+The First thing to do is to install the right packages:
 
 ```
 # Install grunt and bower
@@ -53,4 +53,20 @@ You can also just change the value directly in that file.
 $ grunt
 ```
 is not necessary Start and Stop the web server, Nodemon will monitoring all src folder (*.js)
+
+## Development Environment Setup ##
+
+```
+# Install node: http://www.nodejs.org
+
+# Install gulp
+$ npm install gulp -g
+
+# Install tsd
+$ npm install tsd -g
+
+# Install packages
+$ tsd install
+$ npm install
+```
 

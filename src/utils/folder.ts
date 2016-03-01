@@ -1,27 +1,26 @@
-import {loggerBaseClass} from '../loggerBaseClass';
-import * as fs from 'fs';
-import * as path from 'path';
+import {LoggerBaseClass} from "../loggerBaseClass";
+import * as Fs from "fs";
+import * as Path from "path";
 
-export class folder extends loggerBaseClass {
+export class Folder extends LoggerBaseClass {
     constructor() {
         super();
     }
 
-    requireAll(foldername: string): any[] {
+    public RequireAll(foldername: string): any[] {
 
-        this.logger.debug("Reading " + foldername + " .....");
+        this.Logger.debug("Reading " + foldername + " .....");
 
         let classes: any[] = [];
 
-        fs.readdirSync(foldername)
+        Fs.readdirSync(foldername)
             .forEach((file) => {
+                let f  = Path.parse(file);
 
-                var f  = path.parse(file);
-                
-                if (f.ext == ".js" && file !== 'index.js') {
-                    this.logger.debug("Requiring '" + f.name + "' from '" + foldername + "/" + file + "''");
+                if (f.ext === ".js" && file !== "index.js") {
+                    this.Logger.debug("Requiring '" + f.name + "' from '" + foldername + "/" + file + "''");
 
-                    var ctrl = require(foldername + file);
+                    let ctrl = require(foldername + file);
 
                     classes.push(ctrl);
                 }

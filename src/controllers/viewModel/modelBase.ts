@@ -1,15 +1,14 @@
-import { environment } from '../../config/environment';
-import { websiteConfiguration } from '../../config/websiteConfiguration';
-import * as csrf from 'csurf';
-import * as express from 'express';
+import { Environment } from "../../config/environment";
+import { WebsiteConfiguration } from "../../config/websiteConfiguration";
+import * as express from "express";
 
-export class modelBase {
-	config: websiteConfiguration;
-	csrfToken: string;
-	livereload: boolean;
+export class ModelBase {
+	public config: WebsiteConfiguration;
+	public csrfToken: string;
+	public livereload: boolean;
 
 	constructor(req: express.Request) {
-		this.livereload = environment.isDevEnvironment();
+		this.livereload = Environment.IsDevEnvironment();
 		this.csrfToken = req.csrfToken();
 	}
 }

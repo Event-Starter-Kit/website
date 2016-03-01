@@ -1,40 +1,19 @@
-import { dbBaseClass } from './dbHelpers/dbBaseClass';
-import { dbContext } from './dbHelpers/dbContext';
-import { dbFacility } from './dbHelpers/dbFacility';
-import { speaker } from './model/speaker';
+import { DbBaseClass } from "./dbHelpers/dbBaseClass";
+import { Speaker } from "./model/speaker";
 
-import * as mongodb from 'mongodb';
-
-export class speakerData extends dbBaseClass {
-    private db: dbFacility
+export class SpeakerData extends DbBaseClass {
 
     constructor() {
         super();
     }
 
-    getTalks(): Promise<speaker[]> {
+    public async GetTalks(): Promise<Speaker[]> {
+		let db = await this.GetDatabase();
+		let result = await db.Speakers
+					.find({})
+					.sort({ "order": 1 })
+					.toArray();
 
-        var p = new Promise<speaker[]>((resolve, reject) => {
-
-            this.getDatabase()
-                .then(db => {
-                    db.speakers
-                        .find()
-                        .sort({ "order": 1 })
-                        .toArray((err: Error, results: any) => {
-                            if (err) {
-                                this.logger.error(err.message, err);
-                                reject(err);
-                            } else {
-                                resolve(results);
-                            }
-                        });
-                })
-                .catch((reason) => {
-                    reject(reason);
-                });
-        });
-
-        return p;
+		return result;
     }
 }

@@ -1,9 +1,9 @@
-export class environment {
-    
+export class Environment {
+
     // todo: create a setEnvironment method
-    static env: string;
-    
-    static isDevEnvironment(): boolean {
-        return environment.env === 'dev';
+    public static Env: string;
+
+    public static IsDevEnvironment(): boolean {
+        return Environment.Env === "dev";
     }
 }

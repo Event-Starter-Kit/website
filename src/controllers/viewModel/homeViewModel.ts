@@ -1,12 +1,12 @@
-import * as express from 'express';
-import {modelBase} from './modelBase';
-import {talk} from '../../data/model/talk';
+import * as express from "express";
+import {ModelBase} from "./modelBase";
+import {Talk} from "../../data/model/talk";
 
 
-export class homeViewModel extends modelBase {
-	talks: talk[];
-	
+export class HomeViewModel extends ModelBase {
+	public talks: Talk[];
+
 	constructor(req: express.Request) {
-		super(req)
+		super(req);
 	}
 }

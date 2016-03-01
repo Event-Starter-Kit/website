@@ -1,36 +1,35 @@
-import { environment }  from '../config/environment';
-import * as winston from 'winston';
+import { Environment }  from "../config/environment";
+import * as winston from "winston";
 
-export class loggerFactory {
+export class LoggerFactory {
+	private static winston: winston.LoggerInstance;
     private static isConfigured: boolean = false;
-    static winston: winston.LoggerInstance;
 
-    private static configure() {
+	public static Logger(): winston.LoggerInstance {
+        LoggerFactory.Configure();
+        return LoggerFactory.winston;
+    }
 
+    private static Configure() {
         if (!this.isConfigured) {
-            if (environment.isDevEnvironment) {
-                this.coloredConsole();
+            if (Environment.IsDevEnvironment) {
+                this.ColoredConsole();
             }
             else {
-                this.file();
+                this.File();
             }
 
-            loggerFactory.winston.info("Logger Up & Running....");
-            loggerFactory.winston.info("Environment: " + (environment.isDevEnvironment ? 'Dev' : 'Production'));
+            LoggerFactory.winston.info("Logger Up & Running....");
+            LoggerFactory.winston.info("Environment: " + (Environment.IsDevEnvironment ? "Dev" : "Production"));
         }
     }
 
-    static logger(): winston.LoggerInstance {
-        loggerFactory.configure();
-        return loggerFactory.winston;
-    }
-
-    private static file() {
-        loggerFactory.winston = new winston.Logger({
+    private static File() {
+        LoggerFactory.winston = new winston.Logger({
             transports: [
                 new winston.transports.File({
-                    level: 'info',
-                    filename: './public/logs/all-logs.log',
+                    level: "info",
+                    filename: "./public/logs/all-logs.log",
                     handleExceptions: true,
                     json: true,
                     maxsize: 5242880, //5MB
@@ -42,11 +41,11 @@ export class loggerFactory {
         });
     }
 
-    private static coloredConsole() {
-        loggerFactory.winston = new winston.Logger({
+    private static ColoredConsole() {
+        LoggerFactory.winston = new winston.Logger({
             transports: [
                 new winston.transports.Console({
-                    level: 'debug',
+                    level: "debug",
                     handleExceptions: false,
                     json: false,
                     colorize: true

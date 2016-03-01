@@ -1,14 +1,14 @@
-import {entitybase} from './entitybase';
-import {authorInfo} from './authorInfo';
+import {Entitybase} from "./entitybase";
+import {AuthorInfo} from "./authorInfo";
 
-export class proposal extends entitybase {
-    title: string;
-	abstract: string;
-	date: number;
-	tags: string[];
-	author: authorInfo;
-	numberOfVotes: number;
-	voteAverage: number;
+export class Proposal extends Entitybase {
+    public Title: string;
+	public Abstract: string;
+	public Date: number;
+	public Tags: string[];
+	public Author: AuthorInfo;
+	public NumberOfVotes: number;
+	public VoteAverage: number;
 
     constructor(title: string,
 		abstract: string,
@@ -31,23 +31,23 @@ export class proposal extends entitybase {
 			throw new Error("invalid tags");
 		}
 
-		this.title = title;
-		this.abstract = abstract;
-		this.date = Date.now();
-		this.tags = tags;
-		this.author = new authorInfo(firstname, lastname, bio);
+		this.Title = title;
+		this.Abstract = abstract;
+		this.Date = Date.now();
+		this.Tags = tags;
+		this.Author = new AuthorInfo(firstname, lastname, bio);
     }
 
-	increaseVote() {
-		this.numberOfVotes++;
+	public IncreaseVote() {
+		this.NumberOfVotes++;
 	}
 
-	decreaseVote() {
-		this.numberOfVotes--;
+	public DecreaseVote() {
+		this.NumberOfVotes--;
 	}
 
-	updateAverage(average: number) {
-		this.voteAverage = average;
+	public UpdateAverage(average: number) {
+		this.VoteAverage = average;
 	}
 }
 

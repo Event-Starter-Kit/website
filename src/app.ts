@@ -1,55 +1,44 @@
-import { loggerBaseClass } from './loggerBaseClass';
-import { loggerFactory } from './utils/LoggerFactory';
-import { environment } from './config/environment';
-import { expressConfig } from './config/express';
+import { LoggerBaseClass } from "./loggerBaseClass";
+import { Environment } from "./config/environment";
+import { ExpressConfig } from "./config/express";
 
-import * as express from 'express';
-import * as _ from 'underscore';
+import * as Express from "express";
+import * as _ from "underscore";
 
-class startup extends loggerBaseClass {
-    private app: express.Express;
+class Startup extends LoggerBaseClass {
+    private app: Express.Express;
 
     constructor() {
-
-        this.parseEnvironment();
- 
-        super();
-        
-        this.configureExpress();
-    }
-
-    private parseEnvironment() {
-        var env = _.find(process.argv.slice(2), (arg) => {
-            if (arg.indexOf('env') === 0) {
+		//Parsing environment variables
+        let env = _.find(process.argv.slice(2), (arg) => {
+            if (arg.indexOf("env") === 0) {
                 return true;
             }
         });
-       
-        environment.env = (env !== undefined)
+        Environment.Env = (env !== undefined)
             ? env.substr(4, 3)
-            : 'prod';
+            : "prod";
+
+        super();
+        this.ConfigureExpress();
     }
 
-    private configureExpress() {
-        this.app = express();
-
-        this.logger.info("configuring express....");
-        new expressConfig(this.app).configure()
-        this.logger.info("Express configured");
-    }
-
-    public run() {
-        var port = process.env.port || 5000;
+	public Run() {
+        let port = process.env.port || 5000;
 
         this.app.listen(port, () => {
-            this.logger.info("Listening on " + port);
+            this.Logger.info("Listening on " + port);
         });
+    }
+
+    private ConfigureExpress() {
+        this.app = Express();
+
+        this.Logger.info("configuring express....");
+        new ExpressConfig(this.app).Configure();
+        this.Logger.info("Express configured");
     }
 }
 
-var srt = new startup();
-srt.run();
-
-
-
-
+let srt = new Startup();
+srt.Run();

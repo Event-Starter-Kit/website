@@ -1,26 +1,24 @@
-import * as express from 'express';
-import { controllerBase } from './helpers/controllerBase';
-import { scheduleData } from '../data/scheduleData';
-import { homeViewModel } from './viewModel/homeViewModel';
+import * as Express from "express";
+import { ControllerBase } from "./helpers/controllerBase";
+import { ScheduleData } from "../data/scheduleData";
+import { HomeViewModel } from "./viewModel/homeViewModel";
 
-export class homeController extends controllerBase {
-    private scheduleData: scheduleData;
+export class HomeController extends ControllerBase {
+    private scheduleData: ScheduleData;
 
-    constructor(app: express.Express) {
+    constructor(app: Express.Express) {
         super(app);
 
-        this.scheduleData = new scheduleData();
+        this.scheduleData = new ScheduleData();
         this.home();
     }
 
     private home() {
         this.app.get("/", (req, res) => {
-           
-            this.scheduleData.getTalks()
+            this.scheduleData.GetTalks()
                 .then(output => {
-                    let model = new homeViewModel(req);
+                    let model = new HomeViewModel(req);
                     model.talks = output;
-                    
                      res.render("home/index", model);
                 })
                 .catch((err:Error) => {

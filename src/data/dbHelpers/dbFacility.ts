@@ -1,15 +1,15 @@
-import * as mongodb from 'mongodb';
+import * as mongodb from "mongodb";
 
-export class dbFacility {
-    db: mongodb.Db;
-    talk: mongodb.Collection;
-    votes: mongodb.Collection;
-    speakers: mongodb.Collection;
+export class DbFacility {
+    public Db: mongodb.Db;
+    public Talk: mongodb.Collection;
+    public Votes: mongodb.Collection;
+    public Speakers: mongodb.Collection;
 
     constructor(db: mongodb.Db) {
-        this.db = db;
-        this.talk = db.collection("tracks");
-        this.speakers = db.collection("speakers")
+        this.Db = db;
+        this.Talk = db.collection("tracks");
+        this.Speakers = db.collection("speakers")
     }
 }
 

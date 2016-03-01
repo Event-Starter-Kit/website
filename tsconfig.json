@@ -1,7 +1,16 @@
 {
     "compilerOptions": {
-        "target": "ES5",
+        "target": "es6",
         "module": "commonjs",
         "sourceMap": true
-    }
+    },
+    "exclude": [
+       "typings/browser", 
+	   "typings/browser.d.ts",
+	   "typings/main",
+	   "typings/main.d.ts",
+        "node_modules",
+		"build",
+		".vscode"
+    ]
 }

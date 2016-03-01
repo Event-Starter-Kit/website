@@ -1,26 +1,31 @@
-export class websiteConfiguration {
-	title: string = "You conference name";
-	description: string = "You event description";
-	tags: string[] = ["tag1", "tag2", "tag3"];
-	tracks: track[] ;
+export class WebsiteConfiguration {
+	public Title: string = "You conference name";
+	public Description: string = "You event description";
+	public Tags: string[] = ["tag1", "tag2", "tag3"];
+	public Tracks: Track[] ;
 
 	constructor() {
-		this.tracks.push(new track(1, "track1", 4, 100));
-		this.tracks.push(new track(2, "track2", 4, 100));
-		this.tracks.push(new track(3, "track3", 4, 100));
-		this.tracks.push(new track(4, "track4", 4, 100));
+		this.Tracks.push(new Track(1, "track1", 4, 100));
+		this.Tracks.push(new Track(2, "track2", 4, 100));
+		this.Tracks.push(new Track(3, "track3", 4, 100));
+		this.Tracks.push(new Track(4, "track4", 4, 100));
 	}
 }
 
-class track {
+class Track {
 	constructor(trackNumber: number,
 		name: string,
 		numberOfSlot: number,
-		numberOfSeats: number
-		) {
+		numberOfSeats: number) 
+	{
+		this.TrackNumber = trackNumber;
+		this.Name = name;
+		this.NumberOfSlot = numberOfSlot;
+		this.NumberOfSeats = numberOfSeats;
 	}
-	trackNumber: number;
-	name: string;
-	numberOfSlot: number;
-	numberOfSeats: number;
+
+	public TrackNumber: number;
+	public Name: string;
+	public NumberOfSlot: number;
+	public NumberOfSeats: number;
 }

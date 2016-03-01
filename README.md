@@ -1,72 +1,67 @@
-## Setup ##
+# gaianet
+Gaia Intranet
 
-The site is built on top of [NodeJs](http://nodejs.org/) and the application requires some packages from the [NPM](https://www.npmjs.org/).
+Welcome to your new project.
+To run this application you have to install `Node 4.x` or greather. Get it [here](https://nodejs.org/en/)
 
-The First thing to do is to install the right packages:
+## Build tools
+if you don't have installed the following tools, please run these commands:
 
-```
-# Install grunt and bower
-$ npm install -g grunt-cli
+    $ npm install -g gulp
+    $ npm install -g typings
+    $ npm install -g typescript
+    $ npm install -g bower
+    
+## First run
+Go into the root folder and execute the following commands:
 
-$ cd src
-$ npm install
+    $ npm install
+    $ bower install
+    $ typings install
+   
+## Compile from command line
+This project uses Typescript, if you don't know what Typescript is, here the definition
 
-$ cd ..
+>TypeScript lets you write JavaScript the way you really want to.
+TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.
+Any browser. Any host. Any OS. Open Source.
 
-# Install packages
-$ npm install
-```
+For more info, take a look [here](http://www.typescriptlang.org/)
+
+From command line runs this command:
+
+    $ gulp build-ts
+
+Probably you'll get some errors during compilation but should be related to our code (not all typescript definitions are updated) and in any case everything should work.
+
+![Compilation errors](https://cloud.githubusercontent.com/assets/758620/13394673/45aec04a-deea-11e5-8b80-81ba60eaaa17.png)
+
+Now you should get a new folder into your repo `Build/Release`. Go there and run `node app.js' and everything should works (see credential section)
 
 ## Credentials ##
+This website uses some parameters to connect to MongoDB or other services.
 
-This website uses Mailchimp for the newsletter and also send emails using node and gmail (in my case, but is configurable).
+To get it work is important to set the appropriate environmental variables with the right values: you find the list of the needed environmental variables in the ```credentials.ts``` in src/config.
 
-To get it work is important to set the appropriate environmental variables with the right values: you find the list of the needed environmental variables in the ```credentials.js``` in src/config.
-
-You can do that by specifying them in the `gruntfile.js` as parameter in the `nodemon` plugin, like this.
 
 ```js
-env: {
-    PORT: port,
-    MAILER_USERNAME: 'email',
-    MAILER_PASSWORD: 'password',
-    MAILCHIMP_KEY: 'mailchimp key',
-    MAILCHIMP_LIST_ID: 'mailchimp list id',
-},
+export class Mongo {
+    public static ConnectionString: string = process.env.MONGODB_CONNECTION_STRING || "mongodb://<dbuser>:<dbpassword>@ds047632.mongolab.com:47632/dbname";
+}
+export class Ldap {
+    public static ServerUrl: URL = process.env.LDAP_SERVER_URL || "my LDAP server URL";
+    public static BindDomain: string = "admin account for the domain (eg. uid=admin,cn=users,dc=example,dc=com)";
+    public static BindPassword: string = "admin password";
+    public static SearchBase: string = "base search (eg. cn=users,dc=example,dc=com)";
+    public static SearchFilter: string = "my search filter";
+}
 ```
 
 Or you can also simply configure them based on your OS. For example, with Mac OS X or Linux you will do
 
 ```
-$ export MAILER_USERNAME='email'
-$ export MAILER_PASSWORD='password'
-$ export MAILCHIMP_KEY='mailchimp key'
-$ export MAILCHIMP_LIST_ID='mailchimp list id'
+$ export MONGODB_CONNECTION_STRING ='mongodb://<dbuser>:<dbpassword>@ds047632.mongolab.com:47632/dbname'
 ```
 
-
-You can also just change the value directly in that file.
-
-## Watch & serve ##
-
-```
-$ grunt
-```
-is not necessary Start and Stop the web server, Nodemon will monitoring all src folder (*.js)
-
-## Development Environment Setup ##
-
-```
-# Install node: http://www.nodejs.org
-
-# Install gulp
-$ npm install gulp -g
-
-# Install tsd
-$ npm install tsd -g
-
-# Install packages
-$ tsd install
-$ npm install
-```
+>you have to do this for all variables available on ```credentials.ts```
 

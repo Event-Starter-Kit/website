@@ -1,0 +1,21 @@
+{
+  "name": "GaiaNet",
+  "ambientDependencies": {
+    "async": "github:DefinitelyTyped/DefinitelyTyped/async/async.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
+    "compression": "github:DefinitelyTyped/DefinitelyTyped/compression/compression.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
+    "cookie-parser": "github:DefinitelyTyped/DefinitelyTyped/cookie-parser/cookie-parser.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
+    "csurf": "github:DefinitelyTyped/DefinitelyTyped/csurf/csurf.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
+    "express": "github:DefinitelyTyped/DefinitelyTyped/express/express.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
+    "express-session": "github:DefinitelyTyped/DefinitelyTyped/express-session/express-session.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
+    "express-validator": "github:DefinitelyTyped/DefinitelyTyped/express-validator/express-validator.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
+    "mime": "github:DefinitelyTyped/DefinitelyTyped/mime/mime.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
+    "moment": "github:DefinitelyTyped/DefinitelyTyped/moment/moment.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
+    "moment-node": "github:DefinitelyTyped/DefinitelyTyped/moment/moment-node.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
+    "mongodb": "github:DefinitelyTyped/DefinitelyTyped/mongodb/mongodb.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
+    "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
+    "passport": "github:DefinitelyTyped/DefinitelyTyped/passport/passport.d.ts#432545c4d99dba86a5229bed0e500f66f43b1baa",
+    "serve-static": "github:DefinitelyTyped/DefinitelyTyped/serve-static/serve-static.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
+    "underscore": "github:DefinitelyTyped/DefinitelyTyped/underscore/underscore.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
+    "winston": "github:DefinitelyTyped/DefinitelyTyped/winston/winston.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563"
+  }
+}

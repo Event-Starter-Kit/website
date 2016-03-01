@@ -1,10 +1,9 @@
-import { loggerBaseClass } from '../../loggerBaseClass';
-import * as express from 'express';
+import { LoggerBaseClass } from "../../loggerBaseClass";
+import * as Express from "express";
 
-export class controllerBase extends loggerBaseClass {
-	protected app: express.Express;
-	
-	constructor(app: express.Express) {
+export class ControllerBase extends LoggerBaseClass {
+	protected app: Express.Express;
+	constructor(app: Express.Express) {
 		super();
 
 		this.app = app;

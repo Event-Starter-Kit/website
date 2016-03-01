@@ -1,8 +1,8 @@
-export class entitybase{
-	id :string;
-	creationDate: number;
-	
+export class Entitybase {
+	public Id: string;
+	public CreationDate: number;
+
 	constructor(){
-		this.creationDate = Date.now();
+		this.CreationDate = Date.now();
 	}
 }

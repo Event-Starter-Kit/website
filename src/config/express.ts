@@ -1,27 +1,27 @@
-import { loggerFactory } from '../utils/loggerFactory';
-import { loggerBaseClass } from '../loggerBaseClass';
-import { folder } from '../utils/folder';
+import { LoggerBaseClass } from "../loggerBaseClass";
+import { Folder } from "../utils/folder";
 
-import * as credentials from '../config/credentials';
-import * as winston from 'winston';
-import * as express from 'express';
-import * as path from 'path';
-import * as compression from 'compression';
-import * as expressValidator from 'express-validator';
-import * as cookieParser from 'cookie-parser';
-import * as session from 'express-session';
-import * as csrf from 'csurf';
+import * as Credentials from "../config/credentials";
+import * as Express from "express";
+import * as Path from "path";
+import * as Compression from "compression";
+// Changed d.ts with this https://github.com/Microsoft/TypeScript/issues/3612#issuecomment-114822973
+import * as ExpressValidator from "express-validator"; 
+import * as CookieParser from "cookie-parser";
+import * as Session from "express-session";
+import * as Csrf from "csurf";
+import * as Passport from "passport";
 
-export class expressConfig extends loggerBaseClass {
-    private app: express.Express;
+export class ExpressConfig extends LoggerBaseClass {
+    private app: Express.Express;
 
-    constructor(app: express.Express) {
+    constructor(app: Express.Express) {
         super();
 
         this.app = app;
     }
 
-    configure() {
+    public Configure() {
         this.configureViewEngine();
         this.configureViewFolder();
         this.configureCompression();
@@ -31,104 +31,109 @@ export class expressConfig extends loggerBaseClass {
         this.configureCookieParser();
         this.configureSession();
         this.configureCsurf();
-        this.configureLog();
+        this.configureLog();;
 
-        let controllerFolder = path.dirname(module.parent.filename) + '/controllers/';
-        var ctrls = new folder().requireAll(controllerFolder);
+        let controllerFolder = Path.dirname(module.parent.filename) + "/controllers/";
+        let ctrls = new Folder().RequireAll(controllerFolder);
 
         ctrls.forEach((ctrl) => {
-            var o =new ctrl[Object.keys(ctrl)[0]](this.app);
+            new ctrl[Object.keys(ctrl)[0]](this.app);
         });
 
+		this.configurePassport();
         this.configure404();
         this.configure500();
     }
 
     private configureViewEngine() {
-        this.logger.debug("Setting 'Vash' as view engine");
+        this.Logger.debug("Setting 'Vash' as view engine");
         this.app.set("view engine", "vash");
     }
 
     private configureViewFolder() {
-        this.logger.debug("Setting 'Views' folder");
-        var viewsFolder = path.dirname(module.parent.filename) + '/views';
-        this.app.set('views', viewsFolder);
+        this.Logger.debug("Setting 'Views' folder");
+        let viewsFolder = Path.dirname(module.parent.filename) + "/views";
+        this.app.set("views", viewsFolder);
     }
 
     private configureCompression() {
-        this.logger.debug("Enabling GZip compression.");
+        this.Logger.debug("Enabling GZip compression.");
 
-        this.app.use(compression({
-            threshold: 512
+        this.app.use(Compression({
+            threshold: 512,
         }));
     }
 
     private configurePublicFolder() {
-        this.logger.debug("Setting 'Public' folder with caching maxAge: 1 Day.");
-        var publicFolder = path.dirname(module.parent.filename) + "/public";
-        var oneYear = 31557600000;
-        this.app.use(express.static(publicFolder, {
-            maxAge: oneYear
+        this.Logger.debug("Setting 'Public' folder with caching maxAge: 1 Day.");
+        let publicFolder = Path.dirname(module.parent.filename) + "/public";
+        let oneYear = 31557600000;
+        this.app.use(Express.static(publicFolder, {
+            maxAge: oneYear,
         }));
     }
 
     private configureBodyParser() {
-        this.logger.debug("Setting parse urlencoded request bodies into req.body.");
-        var bodyParser = require('body-parser');
+        this.Logger.debug("Setting parse urlencoded request bodies into req.body.");
+        let bodyParser = require("body-parser");
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({
-            extended: true
+            extended: true,
         }));
     }
 
     private configureValidator() {
-        this.logger.debug("Enabling validation....");
-        this.app.use(expressValidator());
+        this.Logger.debug("Enabling validation....");
+        this.app.use(ExpressValidator.default());
     }
 
     private configureCookieParser() {
-        this.logger.debug("Enabling cookie parser....");
-        this.app.use(cookieParser());
+        this.Logger.debug("Enabling cookie parser....");
+        this.app.use(CookieParser());
     }
 
     private configureSession() {
-        this.logger.debug("Enabling session....");
-        this.app.use(session({
-            secret: credentials.session.secretPhrase,
-            saveUninitialized: true,
-            resave: true
+        this.Logger.debug("Enabling session....");
+        this.app.use(Session({
+			resave: true,
+			saveUninitialized: true,
+            secret: Credentials.Session.SecretPhrase,
         }));
     }
 
     private configureCsurf() {
-        this.logger.debug("Enabling csurf....");
-        this.app.use(csrf());
+        this.Logger.debug("Enabling csurf....");
+        this.app.use(Csrf());
     }
 
     private configureLog() {
-        this.logger.debug("Overriding 'Express' logger");
-        this.app.use(require('morgan')("combined", {
+        this.Logger.debug("Overriding 'Express' logger");
+        this.app.use(require("morgan")("combined", {
             "stream": {
                 write: (message: string, encoding: any) => {
-                    this.logger.info(message);
-                }
-            }
+                    this.Logger.info(message);
+                },
+            },
         }));
     }
 
+	private configurePassport(){
+		this.app.use(Passport.initialize());
+	}
+
     private configure404() {
-        this.logger.info("Configuring 404 page");
-        this.app.use((err: any, req: express.Request, res: express.Response, next: Function) => {
-            this.logger.debug("Unable to locate the specified url: " + req.url);
+        this.Logger.info("Configuring 404 page");
+        this.app.use((err: any, req: Express.Request, res: Express.Response, next: Function) => {
+            this.Logger.debug("Unable to locate the specified url: " + req.url);
             res.statusCode = 404;
             res.render("404");
         });
     }
 
     private configure500() {
-        this.logger.info("Configuring 500 page");
-        this.app.use((err: any, req: express.Request, res: express.Response, next: Function) => {
-            this.logger.error(err.stack);
+        this.Logger.info("Configuring 500 page");
+        this.app.use((err: any, req: Express.Request, res: Express.Response, next: Function) => {
+            this.Logger.error(err.stack);
             res.statusCode = 500;
             res.render("500");
         });

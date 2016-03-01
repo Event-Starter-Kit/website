@@ -1,10 +1,10 @@
-import { loggerFactory } from './utils/loggerFactory'
-import * as winston from 'winston';
+import { LoggerFactory } from "./utils/loggerFactory";
+import * as Winston from "winston";
 
-export class loggerBaseClass {
-	protected logger: winston.LoggerInstance;
+export class LoggerBaseClass {
+	protected Logger: Winston.LoggerInstance;
 
 	constructor() {
-		this.logger = loggerFactory.logger();
+		this.Logger = LoggerFactory.Logger();
 	}
 }

@@ -1,39 +1,18 @@
-import { loggerBaseClass } from '../loggerBaseClass';
-import { dbBaseClass } from './dbHelpers/dbBaseClass';
-import { dbContext } from './dbHelpers/dbContext';
-import { dbFacility } from './dbHelpers/dbFacility';
-import { talk } from './model/talk';
+import { DbBaseClass } from "./dbHelpers/dbBaseClass";
+import { Talk } from "./model/talk";
 
-import * as mongodb from 'mongodb';
-
-export class scheduleData extends dbBaseClass {
+export class ScheduleData extends DbBaseClass {
     constructor() {
         super();
     }
 
-    getTalks(): Promise<talk[]> {
-
-        var p = new Promise<talk[]>((resolve, reject) => {
-
-            this.getDatabase()
-                .then(db => {
-                    db.talk
-                        .find()
+    public async GetTalks(): Promise<Talk[]> {
+		let db = await this.GetDatabase();
+		let result = await db.Talk
+                        .find({})
                         .sort({ "time": 1 })
-                        .toArray((err: Error, results:any) => {
-                            if (err) {
-                                this.logger.error(err.message, err);
-                                reject(err);
-                            } else {
-                                resolve(results);
-                            }
-                        });
-                })
-                 .catch((reason) => {
-                    reject(reason);
-                });
-        });
+						.toArray();
 
-        return p;
+       return result;
     }
 }

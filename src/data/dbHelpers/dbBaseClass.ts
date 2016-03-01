@@ -1,19 +1,17 @@
-import { loggerBaseClass } from '../../loggerBaseClass';
-import { dbContext } from './dbContext';
-import { dbFacility } from './dbFacility';
+import { LoggerBaseClass } from "../../loggerBaseClass";
+import { DbContext } from "./dbContext";
+import { DbFacility } from "./dbFacility";
 
-import * as mongodb from 'mongodb';
-
-export class dbBaseClass extends loggerBaseClass {
-	private dbContext : dbContext;
+export class DbBaseClass extends LoggerBaseClass {
+	private dbContext: DbContext;
 
 	constructor() {
         super();
 
-		this.dbContext = new dbContext();
+		this.dbContext = new DbContext();
     }
-	
-	protected getDatabase(): Promise<dbFacility> {
+
+	protected GetDatabase(): Promise<DbFacility> {
 		return this.dbContext.GetDbContext();
 	}
 }

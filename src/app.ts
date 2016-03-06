@@ -2,7 +2,6 @@ import { LoggerBaseClass } from "./loggerBaseClass";
 import { ExpressConfig } from "./config/ExpressConfig";
 
 import * as Express from "express";
-import * as _ from "underscore";
 
 class Startup extends LoggerBaseClass {
     private app: Express.Express;

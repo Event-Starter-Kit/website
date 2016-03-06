@@ -16,7 +16,7 @@ export class Mongo {
     public static ConnectionString: string = process.env.MONGODB_CONNECTION_STRING || "mongodb://<dbuser>:<dbpassword>@ds047632.mongolab.com:47632/dbname";
 }
 export class Eventbrite {
-    public static ApiKey: string = process.env.EVENTBRITE_API_KEY || "my secret api key"
+    public static ApiKey: string = process.env.EVENTBRITE_API_KEY || "my secret api key";
 }
 export class Facebook {
     public static ClientID: string = process.env.FACEBOOK_CLIENT_ID || "your-secret-clientID-here";

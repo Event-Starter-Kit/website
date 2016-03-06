@@ -44,6 +44,7 @@
     "passport-ldapauth": "0.5.0",
     "passport-twitter": "^1.0.4",
     "promised-mongo": "^1.2.0",
+    "swig": "^1.4.2",
     "underscore": "^1.8.3",
     "winston": "^2.2.0"
   }

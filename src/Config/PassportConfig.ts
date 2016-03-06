@@ -31,7 +31,7 @@ export class PassportConfig extends LoggerBaseClass {
 		},
 			async (accessToken: string,
 				refreshToken: string,
-				profile: twitterProfile,
+				profile: googleProfile,
 				done: (error: any, user?: any) => void) => {
 				try {
 					this.Logger.debug("Retriving user with google id: " + profile.id);

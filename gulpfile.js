@@ -24,7 +24,8 @@ gulp.task("superBuild", ["tslint","build-ts"], () => {
 	
 });
 
-gulp.task("build-ts", ["clean"], () => {
+// Compile Typescript
+gulp.task("build-ts", ["clean","copyViews"], () => {
 	var tsResult = source
 		.pipe(sourcemaps.init())
 		.pipe(ts(tsOptions));
@@ -43,12 +44,21 @@ gulp.task("watch", () => {
 	gulp.watch(tsFiles, ['build-ts']);
 });
 
+// Cleare Release folde
 gulp.task('clean', () => {
 	return $.del(["build/Release/*"]);
 });
 
+
+// Run TS-Lint
 gulp.task("tslint", () => {
 	gulp.src(["src/**/*.ts"])
 		.pipe(tslint())
 		.pipe(tslint.report("verbose"));
+});
+
+// Copy views
+gulp.task('copyViews', function() {
+   gulp.src('./src/views/**/*.{html,htm}')
+   .pipe(gulp.dest('./build/Release/Views'));
 });

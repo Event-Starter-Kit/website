@@ -8,6 +8,8 @@ import * as Compression from "compression";
 import * as CookieParser from "cookie-parser";
 import * as Session from "express-session";
 import * as Passport from "passport";
+import * as swig from "swig";
+import * as path from "path";
 import { PassportConfig } from "./PassportConfig";
 
 const ExpressValidator = require("express-validator");
@@ -22,13 +24,14 @@ export class ExpressConfig extends LoggerBaseClass {
     }
 
     public Configure() {
-
+		this.configureViewEngine();
         this.configureCompression();
         this.configurePublicFolder();
         this.configureBodyParser();
         this.configureValidator();
         this.configureCookieParser();
         this.configureSession();
+
         this.configureLog();
         this.configurePassport();
 
@@ -73,6 +76,17 @@ export class ExpressConfig extends LoggerBaseClass {
         this.Logger.debug("Enabling validation....");
         this.app.use(ExpressValidator());
     }
+
+	private configureViewEngine() {
+		this.Logger.debug("Configuring view engine....");
+		// This is where all the magic happens!
+		this.app.engine("html", swig.renderFile);
+		let viewPath = path.dirname(module.parent.filename) + "/Views";
+		
+		this.Logger.debug("Configuring view path: " + viewPath);
+		this.app.set("view engine", "html");
+		this.app.set("views", viewPath);
+	}
 
     private configureCookieParser() {
         this.Logger.debug("Enabling cookie parser....");

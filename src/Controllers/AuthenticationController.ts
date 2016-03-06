@@ -7,7 +7,7 @@ export class AuthenticationController extends ControllerBase {
 	constructor(app: express.Express) {
         super(app);
 
-		this.app.get("/auth/test", async (req: express.Request, res: Express.Response) => {
+		this.app.get("/auth/test", async (req: express.Request, res: any) => {
 			try {
 				let response = await new SpeakerRepository().GetTalks();
 				res.json(response);

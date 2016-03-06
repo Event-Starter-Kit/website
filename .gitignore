@@ -26,3 +26,5 @@ build/Release
 node_modules
 typings
 
+#Variables....
+configureVariables.sh

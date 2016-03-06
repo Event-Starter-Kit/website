@@ -4,15 +4,15 @@ import * as credentials from "../../config/credentials";
 import * as mongodb from "mongodb";
 
 export class DbContext extends LoggerBaseClass {
-    private static facility: DbFacility;
+    private facility: DbFacility;
 
     public async GetDbContext(): Promise<DbFacility> {
-		 if (!DbContext.facility) {
-			let db = await mongodb.MongoClient.connect(credentials.Mongo.ConnectionString);	
-			DbContext.facility = new DbFacility(db);
-		 }
+		if (!this.facility) {
+			this.Logger.info("Connecting to mongodb .....");
+			let db = await mongodb.MongoClient.connect(credentials.Mongo.ConnectionString);
+			this.facility = new DbFacility(db);
+		}
 
-		 return DbContext.facility;
+		return this.facility;
     }
 }
-

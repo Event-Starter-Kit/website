@@ -15,10 +15,10 @@ export class Folder extends LoggerBaseClass {
 
         Fs.readdirSync(foldername)
             .forEach((file) => {
-                let f  = Path.parse(file);
+                let f = Path.parse(file);
 
                 if (f.ext === ".js" && file !== "index.js") {
-                    this.Logger.debug("Requiring '" + f.name + "' from '" + foldername + "/" + file + "''");
+                    this.Logger.debug("Importing '" + f.name + "' from '" + foldername + "/" + file + "''");
 
                     let ctrl = require(foldername + file);
 

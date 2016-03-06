@@ -2,19 +2,25 @@
 {
 	// Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the file.exclude setting.
 	"search.exclude": {
+		".git": true,
+		".tscache": true,
 		"**/node_modules": true,
 		"**/bower_components": true,
-		"**/build" : true
-	}
+		"**/build": true,
+		"**/typings": true
+	},
 	
-	// VSCode is set to use typescript 1.5 internally, to use a newer version:
-	// MUST USE ABSOLUTE PATHS actually
+	// Controls the rendering size of tabs in characters. Accepted values: "auto", 2, 4, 6, etc. If set to "auto", the value will be guessed when a file is opened.
+	"editor.tabSize": 4,
+    
+    // Controls if the editor will insert spaces for tabs. Accepted values:  "auto", true, false. If set to "auto", the value will be guessed when a file is opened.
+	"editor.insertSpaces": false,
 	
-	// Specifies the folder path containing the tsserver and lib*.d.ts files to use.
-	//"typescript.tsdk": "C:\\Work\\esk\\website\\node_modules\\typescript\\lib"
+	"files.exclude": {
+		"**/*.js.map": true,
+       	"**/*.js": { "when": "$(basename).ts"}
+    },
 	
-	// relative path is not working
-	//"typescript.tsdk": "${workspaceRoot}\\node_modules\\typescript\\lib"
-	//"typescript.tsdk": "node_modules/typescript/lib"
-	
+	"tslint.enable": true,
+	"tslint.configFile": "tslint.json"
 }

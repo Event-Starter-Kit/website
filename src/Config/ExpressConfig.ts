@@ -1,16 +1,16 @@
 import { LoggerBaseClass } from "../loggerBaseClass";
 import { Folder } from "../utils/folder";
-
-import * as Credentials from "../config/credentials";
+import { HostingEnvironment } from "./HostingEnvironment";
+import * as credentials from "../config/credentials";
 import * as Express from "express";
 import * as Path from "path";
 import * as Compression from "compression";
-// Changed d.ts with this https://github.com/Microsoft/TypeScript/issues/3612#issuecomment-114822973
-import * as ExpressValidator from "express-validator"; 
 import * as CookieParser from "cookie-parser";
 import * as Session from "express-session";
-import * as Csrf from "csurf";
 import * as Passport from "passport";
+import { PassportConfig } from "./PassportConfig";
+
+const ExpressValidator = require("express-validator");
 
 export class ExpressConfig extends LoggerBaseClass {
     private app: Express.Express;
@@ -22,16 +22,15 @@ export class ExpressConfig extends LoggerBaseClass {
     }
 
     public Configure() {
-        this.configureViewEngine();
-        this.configureViewFolder();
+
         this.configureCompression();
         this.configurePublicFolder();
         this.configureBodyParser();
         this.configureValidator();
         this.configureCookieParser();
         this.configureSession();
-        this.configureCsurf();
-        this.configureLog();;
+        this.configureLog();
+        this.configurePassport();
 
         let controllerFolder = Path.dirname(module.parent.filename) + "/controllers/";
         let ctrls = new Folder().RequireAll(controllerFolder);
@@ -40,20 +39,8 @@ export class ExpressConfig extends LoggerBaseClass {
             new ctrl[Object.keys(ctrl)[0]](this.app);
         });
 
-		this.configurePassport();
         this.configure404();
         this.configure500();
-    }
-
-    private configureViewEngine() {
-        this.Logger.debug("Setting 'Vash' as view engine");
-        this.app.set("view engine", "vash");
-    }
-
-    private configureViewFolder() {
-        this.Logger.debug("Setting 'Views' folder");
-        let viewsFolder = Path.dirname(module.parent.filename) + "/views";
-        this.app.set("views", viewsFolder);
     }
 
     private configureCompression() {
@@ -78,13 +65,13 @@ export class ExpressConfig extends LoggerBaseClass {
         let bodyParser = require("body-parser");
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({
-            extended: true,
+            extended: false,
         }));
     }
 
     private configureValidator() {
         this.Logger.debug("Enabling validation....");
-        this.app.use(ExpressValidator.default());
+        this.app.use(ExpressValidator());
     }
 
     private configureCookieParser() {
@@ -95,15 +82,12 @@ export class ExpressConfig extends LoggerBaseClass {
     private configureSession() {
         this.Logger.debug("Enabling session....");
         this.app.use(Session({
-			resave: true,
-			saveUninitialized: true,
-            secret: Credentials.Session.SecretPhrase,
+            cookie: { maxAge: 3600000 * 12 },
+            resave: false,
+            saveUninitialized: true,
+            secret: credentials.Session.SecretPhrase,
+            unset: "destroy",
         }));
-    }
-
-    private configureCsurf() {
-        this.Logger.debug("Enabling csurf....");
-        this.app.use(Csrf());
     }
 
     private configureLog() {
@@ -117,25 +101,40 @@ export class ExpressConfig extends LoggerBaseClass {
         }));
     }
 
-	private configurePassport(){
-		this.app.use(Passport.initialize());
-	}
+    private configurePassport() {
+        let pspConfig = new PassportConfig(Passport);
+
+        this.Logger.debug("Adding Facebook Authentication.....");
+        pspConfig.ConfigureFacebookStrategy();
+
+        this.Logger.debug("Passport initializing.....");
+        this.app.use(Passport.initialize());
+
+        this.Logger.debug("Passport session.....");
+        this.app.use(Passport.session());
+    }
 
     private configure404() {
-        this.Logger.info("Configuring 404 page");
-        this.app.use((err: any, req: Express.Request, res: Express.Response, next: Function) => {
+        this.Logger.debug("Configuring 404 page");
+        this.app.use((err: any, req: Express.Request, res: Express.Response, next: Express.NextFunction) => {
+			if (err) {
+				return next();
+			}
+
             this.Logger.debug("Unable to locate the specified url: " + req.url);
-            res.statusCode = 404;
-            res.render("404");
+            res.status(404).json({ Message: "404 - NotFound" });
         });
     }
 
     private configure500() {
-        this.Logger.info("Configuring 500 page");
-        this.app.use((err: any, req: Express.Request, res: Express.Response, next: Function) => {
-            this.Logger.error(err.stack);
-            res.statusCode = 500;
-            res.render("500");
+        this.Logger.debug("Configuring 500 page");
+        this.app.use((err: any, req: Express.Request, res: Express.Response, next: Express.NextFunction) => {
+            this.Logger.error(err);
+
+            let responseMessage = { message: HostingEnvironment.IsDevelopment ? err.stack : "500 - Internal Server Error" };
+
+			res.status(500).json({ error: responseMessage });
+
         });
     }
 }

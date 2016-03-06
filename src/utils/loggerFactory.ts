@@ -1,4 +1,4 @@
-import { Environment }  from "../config/environment";
+import { HostingEnvironment }  from "../config/HostingEnvironment";
 import * as winston from "winston";
 
 export class LoggerFactory {
@@ -12,47 +12,46 @@ export class LoggerFactory {
 
     private static Configure() {
         if (!this.isConfigured) {
-            if (Environment.IsDevEnvironment) {
+            if (HostingEnvironment.IsDevelopment) {
                 this.ColoredConsole();
-            }
-            else {
+            } else {
                 this.File();
             }
 
+			this.isConfigured = true;
+
             LoggerFactory.winston.info("Logger Up & Running....");
-            LoggerFactory.winston.info("Environment: " + (Environment.IsDevEnvironment ? "Dev" : "Production"));
         }
     }
 
     private static File() {
         LoggerFactory.winston = new winston.Logger({
-            transports: [
-                new winston.transports.File({
-                    level: "info",
-                    filename: "./public/logs/all-logs.log",
-                    handleExceptions: true,
-                    json: true,
-                    maxsize: 5242880, //5MB
+            exitOnError: false,
+			transports: [
+				new winston.transports.File({
+                    colorize: false,
+					filename: "./public/logs/all-logs.log",
+					handleExceptions: true,
+					json: true,
+					level: "info",
                     maxFiles: 5,
-                    colorize: false
-                })
+                    maxsize: 5242880,
+                }),
             ],
-            exitOnError: false
         });
     }
 
     private static ColoredConsole() {
         LoggerFactory.winston = new winston.Logger({
+			exitOnError: false,
             transports: [
                 new winston.transports.Console({
+					colorize: true,
+					handleExceptions: false,
+					json: false,
                     level: "debug",
-                    handleExceptions: false,
-                    json: false,
-                    colorize: true
                 }),
-
             ],
-            exitOnError: false
         });
     }
 }

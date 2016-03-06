@@ -18,10 +18,18 @@ export class Mongo {
 export class Eventbrite {
     public static ApiKey: string = process.env.EVENTBRITE_API_KEY || "my secret api key"
 }
-export class Ldap {
-    public static ServerUrl: URL = process.env.LDAP_SERVER_URL || "my LDAP server URL";
-    public static BindDomain: string = "admin account for the domain (eg. uid=admin,cn=users,dc=example,dc=com)";
-    public static BindPassword: string = "admin password";
-    public static SearchBase: string = "base search (eg. cn=users,dc=example,dc=com)";
-    public static SearchFilter: string = "my search filter";
+export class Facebook {
+    public static ClientID: string = process.env.FACEBOOK_CLIENT_ID || "your-secret-clientID-here";
+    public static ClientSecret: string = process.env.FACEBOOK_CLIENT_SECRET || "your-client-secret-here";
+    public static CallbackURL: string = process.env.FACEBOOK_CLIENT_CALLBACK || "http://localhost:5000/auth/facebook/callback";
+}
+export class Twitter {
+    public static ConsumerKey: string = process.env.TWITTER_CONSUMER_KEY || "your-consumer-key-here";
+    public static ConsumerSecret: string = process.env.TWITTER_CONSUMER_SECRET || "your-consumer-secret-here";
+    public static CallbackURL: string = process.env.TWITTER_CLIENT_CALLBACK || "http://localhost:5000/auth/twitter/callback";
+}
+export class Google {
+    public static ClientID: string = process.env.GOOGLE_CLIENT_ID || "your-secret-clientID-here";
+    public static ClientSecret: string = process.env.GOOGLE_CLIENT_SECRET || "your-client-secret-here";
+    public static CallbackURL: string = process.env.GOOGLE_CLIENT_CALLBACK || "http://localhost:5000/auth/google/callback";
 }

@@ -9,6 +9,8 @@ export class WebsiteConfiguration {
 		this.Tracks.push(new Track(2, "track2", 4, 100));
 		this.Tracks.push(new Track(3, "track3", 4, 100));
 		this.Tracks.push(new Track(4, "track4", 4, 100));
+        this.Tracks.push(new Track(5, "track5", 4, 100));
+        this.Tracks.push(new Track(6, "track6", 4, 100));
 	}
 }
 
@@ -16,8 +18,7 @@ class Track {
 	constructor(trackNumber: number,
 		name: string,
 		numberOfSlot: number,
-		numberOfSeats: number) 
-	{
+		numberOfSeats: number) {
 		this.TrackNumber = trackNumber;
 		this.Name = name;
 		this.NumberOfSlot = numberOfSlot;

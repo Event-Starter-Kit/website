@@ -9,25 +9,30 @@
 			// Type of configuration. Possible values: "node", "mono".
 			"type": "node",
 			// Workspace relative or absolute path to the program.
-			"program": "src/app.ts",
+			"program": "${workspaceRoot}/src/App.ts",
 			// Automatically stop program after launch.
 			"stopOnEntry": false,
 			// Command line arguments passed to the program.
-			"args": [],
-			// Workspace relative or absolute path to the working directory of the program being debugged. Default is the current workspace.
-			"cwd": ".",
+			"args": [
+				"PORT=5000"
+			],
 			// Workspace relative or absolute path to the runtime executable to be used. Default is the runtime executable on the PATH.
 			"runtimeExecutable": null,
 			// Optional arguments passed to the runtime executable.
-			"runtimeArgs": ["--nolazy"],
+			"runtimeArgs": [
+				"--nolazy"
+			],
 			// Environment variables passed to the program.
 			"env": {
-				"NODE_ENV": "development"
+				"NODE_ENV": "development",
+				"MONGODB_CONNECTION_STRING": "",
+				"FACEBOOK_CLIENT_ID": "",
+				"FACEBOOK_CLIENT_SECRET": ""
 			},
 			// Use JavaScript source maps (if they exist).
 			"sourceMaps": true,
 			// If JavaScript source maps are enabled, the generated code is expected in this directory.
-			"outDir": "build/Release",
+			"outDir": "${workspaceRoot}/build/Release",
 			// specifies which action to run before launching the debugger
 			"preLaunchTask": "build-ts"
 		},

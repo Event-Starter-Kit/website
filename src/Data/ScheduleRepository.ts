@@ -1,7 +1,7 @@
 import { DbBaseClass } from "./dbHelpers/dbBaseClass";
-import { Talk } from "./model/talk";
+import { Talk } from "./Models/Talk";
 
-export class ScheduleData extends DbBaseClass {
+export class ScheduleRepository extends DbBaseClass {
     constructor() {
         super();
     }

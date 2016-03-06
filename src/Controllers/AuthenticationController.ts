@@ -1,6 +1,5 @@
 import * as express from "express";
 import * as passport from "passport";
-import { User } from "../Data/Models/User";
 import { SpeakerRepository } from "../Data/SpeakerRepository";
 import { ControllerBase } from "./helpers/controllerBase";
 

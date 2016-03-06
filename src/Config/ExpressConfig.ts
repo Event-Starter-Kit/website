@@ -107,6 +107,12 @@ export class ExpressConfig extends LoggerBaseClass {
         this.Logger.debug("Adding Facebook Authentication.....");
         pspConfig.ConfigureFacebookStrategy();
 
+		this.Logger.debug("Adding Twitter Authentication.....");
+        pspConfig.ConfigureTwitterStrategy();
+
+		this.Logger.debug("Adding Google Authentication.....");
+        pspConfig.ConfigureTwitterStrategy();
+
         this.Logger.debug("Passport initializing.....");
         this.app.use(Passport.initialize());
 

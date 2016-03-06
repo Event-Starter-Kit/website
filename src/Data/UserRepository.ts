@@ -17,6 +17,28 @@ export class UserRepository extends DbBaseClass {
         return result[0];
     }
 
+	public async GetUserByGoogleId(googleId: string): Promise<User> {
+        let db = await this.GetDatabase();
+
+        let result = await db.Users
+            .find({ "Google.Id": googleId })
+            .limit(1)
+            .toArray();
+
+        return result[0];
+    }
+
+	public async GetUserByTwitterId(twitterId: string): Promise<User> {
+        let db = await this.GetDatabase();
+
+        let result = await db.Users
+            .find({ "Twitter.Id": twitterId })
+            .limit(1)
+            .toArray();
+
+        return result[0];
+    }
+
     public async SaveOrUpdate(user: User): Promise<void> {
         let db = await this.GetDatabase();
 

@@ -1,5 +1,5 @@
-import { LoggerBaseClass } from "./loggerBaseClass";
-import { ExpressConfig } from "./config/ExpressConfig";
+import { LoggerBaseClass } from "./LoggerBaseClass";
+import { ExpressConfig } from "./Config/ExpressConfig";
 
 import * as Express from "express";
 
@@ -20,11 +20,15 @@ class Startup extends LoggerBaseClass {
     }
 
     private ConfigureExpress() {
-        this.app = Express();
+        try {
+			this.app = Express();
 
-        this.Logger.debug("configuring express....");
-        new ExpressConfig(this.app).Configure();
-        this.Logger.debug("Express configured");
+			this.Logger.debug("configuring express....");
+			new ExpressConfig(this.app).Configure();
+			this.Logger.debug("Express configured");
+		} catch (error) {
+			this.Logger.error("Error configuring Express", error);
+		}
     }
 }
 

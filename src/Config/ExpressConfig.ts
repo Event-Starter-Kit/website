@@ -1,7 +1,9 @@
-import { LoggerBaseClass } from "../loggerBaseClass";
-import { Folder } from "../utils/folder";
+import { LoggerBaseClass } from "../LoggerBaseClass";
+import { Folder } from "../Utils/Folder";
 import { HostingEnvironment } from "./HostingEnvironment";
-import * as credentials from "../config/credentials";
+import * as credentials from "../Config/Credentials";
+import {ConfigurationRepository} from "../Data/ConfigurationRepository";
+import {Configuration} from "../Data/Models/Configuration";
 import * as Express from "express";
 import * as Path from "path";
 import * as Compression from "compression";
@@ -23,8 +25,7 @@ export class ExpressConfig extends LoggerBaseClass {
         this.app = app;
     }
 
-    public Configure() {
-		this.configureViewEngine();
+    public async Configure(): Promise<void> {
         this.configureCompression();
         this.configurePublicFolder();
         this.configureBodyParser();
@@ -33,13 +34,25 @@ export class ExpressConfig extends LoggerBaseClass {
         this.configureSession();
 
         this.configureLog();
+		this.configureViewEngine();
         this.configurePassport();
 
         let controllerFolder = Path.dirname(module.parent.filename) + "/controllers/";
         let ctrls = new Folder().RequireAll(controllerFolder);
+		let configurationRepository = new ConfigurationRepository();
+		let configuration: Configuration;
+		try {
+			configuration = await configurationRepository
+				.GetConfiguration();
+		} catch (error) {
+			this.Logger.error(error);
+			return;
+		}
+
+		this.Logger.debug("Site configuration", configuration);
 
         ctrls.forEach((ctrl) => {
-            new ctrl[Object.keys(ctrl)[0]](this.app);
+            new ctrl[Object.keys(ctrl)[0]](this.app, configuration);
         });
 
         this.configure404();
@@ -75,14 +88,14 @@ export class ExpressConfig extends LoggerBaseClass {
     private configureValidator() {
         this.Logger.debug("Enabling validation....");
         this.app.use(ExpressValidator());
-    }
+	   }
 
 	private configureViewEngine() {
 		this.Logger.debug("Configuring view engine....");
-		// This is where all the magic happens!
+
 		this.app.engine("html", swig.renderFile);
 		let viewPath = path.dirname(module.parent.filename) + "/Views";
-		
+
 		this.Logger.debug("Configuring view path: " + viewPath);
 		this.app.set("view engine", "html");
 		this.app.set("views", viewPath);
@@ -119,10 +132,10 @@ export class ExpressConfig extends LoggerBaseClass {
         let pspConfig = new PassportConfig(Passport);
 
         this.Logger.debug("Adding Facebook Authentication.....");
-        pspConfig.ConfigureFacebookStrategy();
+		      pspConfig.ConfigureFacebookStrategy();
 
 		this.Logger.debug("Adding Twitter Authentication.....");
-        pspConfig.ConfigureTwitterStrategy();
+		      pspConfig.ConfigureTwitterStrategy();
 
 		this.Logger.debug("Adding Google Authentication.....");
         pspConfig.ConfigureTwitterStrategy();
@@ -135,12 +148,8 @@ export class ExpressConfig extends LoggerBaseClass {
     }
 
     private configure404() {
-        this.Logger.debug("Configuring 404 page");
-        this.app.use((err: any, req: Express.Request, res: Express.Response, next: Express.NextFunction) => {
-			if (err) {
-				return next();
-			}
-
+		this.Logger.debug("Configuring 404 page");
+		this.app.use((req: Express.Request, res: Express.Response) => {
             this.Logger.debug("Unable to locate the specified url: " + req.url);
             res.status(404).json({ Message: "404 - NotFound" });
         });
@@ -151,7 +160,7 @@ export class ExpressConfig extends LoggerBaseClass {
         this.app.use((err: any, req: Express.Request, res: Express.Response, next: Express.NextFunction) => {
             this.Logger.error(err);
 
-            let responseMessage = { message: HostingEnvironment.IsDevelopment ? err.stack : "500 - Internal Server Error" };
+			let responseMessage = { message: HostingEnvironment.IsDevelopment ? err.stack : "500 - Internal Server Error" };
 
 			res.status(500).json({ error: responseMessage });
 

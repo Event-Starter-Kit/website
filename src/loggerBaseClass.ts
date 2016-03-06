@@ -1,4 +1,4 @@
-import { LoggerFactory } from "./utils/loggerFactory";
+import { LoggerFactory } from "./Utils/LoggerFactory";
 import * as Winston from "winston";
 
 export class LoggerBaseClass {

@@ -14,7 +14,7 @@
 	],
 	"tasks": [
 		{
-			"taskName": "build-ts",
+			"taskName": "default",
 			"isBuildCommand": true,
 			"showOutput": "always",
 			"problemMatcher": [

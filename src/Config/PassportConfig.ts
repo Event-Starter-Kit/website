@@ -1,5 +1,5 @@
-import { LoggerBaseClass } from "../loggerBaseClass";
-import * as credentials from "../config/credentials";
+import { LoggerBaseClass } from "../LoggerBaseClass";
+import * as credentials from "../Config/Credentials";
 import { Strategy as twitterStrategy} from "passport-twitter";
 import { Profile as twitterProfile} from "passport-twitter";
 import { Strategy as facebookStrategy} from "passport-facebook";

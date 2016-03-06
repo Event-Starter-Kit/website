@@ -1,13 +1,14 @@
 import * as express from "express";
 import * as passport from "passport";
 import { SpeakerRepository } from "../Data/SpeakerRepository";
-import { ControllerBase } from "./helpers/controllerBase";
+import { ControllerBase } from "./Helpers/ControllerBase";
+import {Configuration} from "../Data/Models/Configuration";
 
 export class AuthenticationController extends ControllerBase {
-	constructor(app: express.Express) {
-        super(app);
+	constructor(app: express.Express, configuration: Configuration) {
+        super(app, configuration);
 
-		this.app.get("/auth/test", async (req: express.Request, res: any) => {
+		this.App.get("/auth/test", async (req: express.Request, res: any) => {
 			try {
 				let response = await new SpeakerRepository().GetTalks();
 				res.json(response);
@@ -16,18 +17,18 @@ export class AuthenticationController extends ControllerBase {
 			}
 		});
 
-		this.app.get("/auth/protected", this.IsLoggedIn, (req: express.Request, res: express.Response) => {
+		this.App.get("/auth/protected", this.IsLoggedIn, (req: express.Request, res: express.Response) => {
 			res.json({
 				user: req.user,
 			});
 		});
 
-		this.app.get("/auth/logout", (req: express.Request, res: express.Response) => {
+		this.App.get("/auth/logout", (req: express.Request, res: express.Response) => {
 			req.logout();
 			res.redirect("/");
 		});
 
-		this.app.get("/auth/userInfo", this.IsLoggedIn, (req: express.Request, res: express.Response) => {
+		this.App.get("/auth/userInfo", this.IsLoggedIn, (req: express.Request, res: express.Response) => {
 			res.send(req.user());
 		});
 

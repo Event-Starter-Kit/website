@@ -1,4 +1,4 @@
-import { DbBaseClass } from "./dbHelpers/dbBaseClass";
+import { DbBaseClass } from "./DbHelpers/DbBaseClass";
 import { Speaker } from "./Models/Speaker";
 
 export class SpeakerRepository extends DbBaseClass {

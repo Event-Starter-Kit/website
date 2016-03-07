@@ -19,12 +19,8 @@ var tsOptions = {
 var tsFiles = ["typings/main.d.ts", "typings/main/**/*.d.ts", "src/**/*.ts"];
 var source = gulp.src(tsFiles);
 
-gulp.task("superBuild", ["tslint", "build-ts"], () => {
-
-});
-
 // Compile Typescript
-gulp.task("build-ts", (cb) => {
+gulp.task("build-ts", () => {
 	var tsResult = source
 		.pipe(sourcemaps.init())
 		.pipe(ts(tsOptions));
@@ -37,7 +33,6 @@ gulp.task("build-ts", (cb) => {
 			}
 		}))
 		.pipe(gulp.dest("build"));
-	cb();
 });
 
 // Watch
@@ -46,36 +41,27 @@ gulp.task("watch", () => {
 });
 
 // Cleare Release folde
-gulp.task('clean', (cb) => {
-	del(["build/*"]);
-	cb();
+gulp.task('clean', () => {
+	del.sync(["build/**","!build"]);
 });
 
-/*gulp.task('clean',  () => {
-	return gulp.src('build/*', {read: false})
-		.pipe(clean());
-});*/
-
 // Run TS-Lint
-gulp.task("tslint", (cb) => {
+gulp.task("tslint", () => {
 	gulp.src(["src/**/*.ts"])
 		.pipe(tslint())
 		.pipe(tslint.report("verbose"));
-	cb();
 });
 
 // Copy views
-gulp.task("copyViews", (cb) => {
+gulp.task("copyViews", () => {
 	gulp.src("./src/views/**/*.{html,htm}")
 		.pipe(gulp.dest("./build/Views"));
-	cb();
 });
 
 // Copy public
-gulp.task("copyPublic", (cb) => {
+gulp.task("copyPublic", () => {
 	gulp.src("./src/Public/**/*.*")
 		.pipe(gulp.dest("./build/Public"));
-	cb();
 });
 
 // Default task

@@ -17,6 +17,7 @@
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-sourcemaps": "^1.6.0",
+    "gulp-sync": "^0.1.4",
     "gulp-tslint": "^4.3.2",
     "gulp-typescript": "^2.12.1",
     "path": "^0.12.7",

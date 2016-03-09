@@ -2,7 +2,7 @@ import { Interfaces } from "../interfaces";
 import { Passport } from "passport";
 import { UserRepository } from "../../data/userRepository";
 
-export class Facebook extends Interfaces.ConfigurationModule<Passport> {
+export class UserSerialization extends Interfaces.ConfigurationModule<Passport> {
 	private userRepository: UserRepository;
 
 	constructor(app: Passport) {
@@ -12,6 +12,20 @@ export class Facebook extends Interfaces.ConfigurationModule<Passport> {
 
 	public setup() {
 		this.app.serializeUser(this.serializeUser);
+		this.app.deserializeUser(this.deserializeUser);
+	}
+
+	private async deserializeUser(user: any, done: (err: any, id: any) => void) {
+		this.logger.debug("DeserializeUser user.....", user);
+
+		try {
+			let usr = await this.userRepository.getUserByFacebookId(user.id);
+
+			done(null, usr);
+
+		} catch (error) {
+			done(error, null);
+		}
 	}
 
 	private serializeUser(user: any, done: (err: any, id: any) => void) {

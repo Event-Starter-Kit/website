@@ -7,8 +7,8 @@ export class SpeakerRepository extends DbBaseClass {
         super();
     }
 
-    public async GetTalks(): Promise<Speaker[]> {
-		let db = await this.GetDatabase();
+    public async getTalks(): Promise<Speaker[]> {
+		let db = await this.getDatabase();
 		let result = await db.Speakers
 					.find({})
 					.sort({ "order": 1 })

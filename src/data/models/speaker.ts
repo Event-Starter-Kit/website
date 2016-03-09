@@ -25,11 +25,11 @@ export class Speaker extends Entitybase {
 	}
 
 
-	public AddTalk(talk: Talk) {
+	public addTalk(talk: Talk) {
 		this.Talks.push(talk);
 	}
 
-	public RemoveTalk(talk: Talk) {
+	public removeTalk(talk: Talk) {
 		this.Talks = _.without(this.Talks, _.findWhere(this.Talks, { title: talk.Title }));
 	}
 }

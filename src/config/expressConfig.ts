@@ -25,7 +25,7 @@ export class ExpressConfig extends LoggerBaseClass {
         this.app = app;
     }
 
-    public async Configure(): Promise<void> {
+    public async configure(): Promise<void> {
         this.configureCompression();
         this.configurePublicFolder();
         this.configureBodyParser();
@@ -38,18 +38,18 @@ export class ExpressConfig extends LoggerBaseClass {
         this.configurePassport();
 
         let controllerFolder = Path.dirname(module.parent.filename) + "/controllers/";
-        let ctrls = new Folder().RequireAll(controllerFolder);
+        let ctrls = new Folder().requireAll(controllerFolder);
 		let configurationRepository = new ConfigurationRepository();
 		let configuration: Configuration;
 		try {
 			configuration = await configurationRepository
-				.GetConfiguration();
+				.getConfiguration();
 		} catch (error) {
-			this.Logger.error(error);
+			this.logger.error(error);
 			return;
 		}
 
-		this.Logger.debug("Site configuration", configuration);
+		this.logger.debug("Site configuration", configuration);
 
         ctrls.forEach((ctrl) => {
             new ctrl[Object.keys(ctrl)[0]](this.app, configuration);
@@ -60,7 +60,7 @@ export class ExpressConfig extends LoggerBaseClass {
     }
 
     private configureCompression() {
-        this.Logger.debug("Enabling GZip compression.");
+        this.logger.debug("Enabling GZip compression.");
 
         this.app.use(Compression({
             threshold: 512,
@@ -68,7 +68,7 @@ export class ExpressConfig extends LoggerBaseClass {
     }
 
     private configurePublicFolder() {
-        this.Logger.debug("Setting 'Public' folder with caching maxAge: 1 Day.");
+        this.logger.debug("Setting 'Public' folder with caching maxAge: 1 Day.");
         let publicFolder = Path.dirname(module.parent.filename) + "/public";
         let oneYear = 31557600000;
         this.app.use(Express.static(publicFolder, {
@@ -77,7 +77,7 @@ export class ExpressConfig extends LoggerBaseClass {
     }
 
     private configureBodyParser() {
-        this.Logger.debug("Setting parse urlencoded request bodies into req.body.");
+        this.logger.debug("Setting parse urlencoded request bodies into req.body.");
         let bodyParser = require("body-parser");
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({
@@ -86,43 +86,43 @@ export class ExpressConfig extends LoggerBaseClass {
     }
 
     private configureValidator() {
-        this.Logger.debug("Enabling validation....");
+        this.logger.debug("Enabling validation....");
         this.app.use(ExpressValidator());
 	   }
 
 	private configureViewEngine() {
-		this.Logger.debug("Configuring view engine....");
+		this.logger.debug("Configuring view engine....");
 
 		this.app.engine("html", swig.renderFile);
 		let viewPath = path.dirname(module.parent.filename) + "/Views";
 
-		this.Logger.debug("Configuring view path: " + viewPath);
+		this.logger.debug("Configuring view path: " + viewPath);
 		this.app.set("view engine", "html");
 		this.app.set("views", viewPath);
 	}
 
     private configureCookieParser() {
-        this.Logger.debug("Enabling cookie parser....");
+        this.logger.debug("Enabling cookie parser....");
         this.app.use(CookieParser());
     }
 
     private configureSession() {
-        this.Logger.debug("Enabling session....");
+        this.logger.debug("Enabling session....");
         this.app.use(Session({
             cookie: { maxAge: 3600000 * 12 },
             resave: false,
             saveUninitialized: true,
-            secret: credentials.Session.SecretPhrase,
+            secret: credentials.Session.secretPhrase,
             unset: "destroy",
         }));
     }
 
     private configureLog() {
-        this.Logger.debug("Overriding 'Express' logger");
+        this.logger.debug("Overriding 'Express' logger");
         this.app.use(require("morgan")("combined", {
             "stream": {
                 write: (message: string, encoding: any) => {
-                    this.Logger.info(message);
+                    this.logger.info(message);
                 },
             },
         }));
@@ -131,36 +131,36 @@ export class ExpressConfig extends LoggerBaseClass {
     private configurePassport() {
         let pspConfig = new PassportConfig(Passport);
 
-        this.Logger.debug("Adding Facebook Authentication.....");
-		      pspConfig.ConfigureFacebookStrategy();
+        this.logger.debug("Adding Facebook Authentication.....");
+		      pspConfig.configureFacebookStrategy();
 
-		this.Logger.debug("Adding Twitter Authentication.....");
-		      pspConfig.ConfigureTwitterStrategy();
+		this.logger.debug("Adding Twitter Authentication.....");
+		      pspConfig.configureTwitterStrategy();
 
-		this.Logger.debug("Adding Google Authentication.....");
-        pspConfig.ConfigureTwitterStrategy();
+		this.logger.debug("Adding Google Authentication.....");
+        pspConfig.configureTwitterStrategy();
 
-        this.Logger.debug("Passport initializing.....");
+        this.logger.debug("Passport initializing.....");
         this.app.use(Passport.initialize());
 
-        this.Logger.debug("Passport session.....");
+        this.logger.debug("Passport session.....");
         this.app.use(Passport.session());
     }
 
     private configure404() {
-		this.Logger.debug("Configuring 404 page");
+		this.logger.debug("Configuring 404 page");
 		this.app.use((req: Express.Request, res: Express.Response) => {
-            this.Logger.debug("Unable to locate the specified url: " + req.url);
+            this.logger.debug("Unable to locate the specified url: " + req.url);
             res.status(404).json({ Message: "404 - NotFound" });
         });
     }
 
     private configure500() {
-        this.Logger.debug("Configuring 500 page");
+        this.logger.debug("Configuring 500 page");
         this.app.use((err: any, req: Express.Request, res: Express.Response, next: Express.NextFunction) => {
-            this.Logger.error(err);
+            this.logger.error(err);
 
-			let responseMessage = { message: HostingEnvironment.IsDevelopment ? err.stack : "500 - Internal Server Error" };
+			let responseMessage = { message: HostingEnvironment.isDevelopment ? err.stack : "500 - Internal Server Error" };
 
 			res.status(500).json({ error: responseMessage });
 

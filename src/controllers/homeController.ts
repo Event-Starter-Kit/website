@@ -8,11 +8,10 @@ export class HomeController extends ControllerBase {
         super(app, configuration);
 
 		app.get("/", (req: Express.Request, res: any) => {
-			this.Logger.debug("Home page....");
+			this.logger.debug("Home page....");
 
 			let model = new IndexViewModel();
-			model.Pippo = "Suka";
-			this.PopulateModel(model);
+			this.populateModel(model);
 
 			res.render("Frontoffice/Index", model);
 		});

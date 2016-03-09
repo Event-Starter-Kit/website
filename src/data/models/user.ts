@@ -12,7 +12,7 @@ export class User extends Entitybase {
     public Twitter: Twitter;
     public Google: Google;
 
-	public static CreateUserFromFacebook(
+	public static createUserFromFacebook(
 		id: string,
 		token: string,
 		email: string,
@@ -30,7 +30,7 @@ export class User extends Entitybase {
 		return usr;
 	}
 
-	public static CreateUserFromGoogle(
+	public static createUserFromGoogle(
 		id: string,
 		token: string,
 		email: string,
@@ -48,7 +48,7 @@ export class User extends Entitybase {
 		return usr;
 	}
 
-	public static CreateUserFromTwitter(
+	public static createUserFromTwitter(
 		id: string,
 		token: string,
 		username: string) {
@@ -63,7 +63,7 @@ export class User extends Entitybase {
 		return usr;
 	}
 
-	public UpdateFacebookInformation(
+	public updateFacebookInformation(
 		id: string,
 		token: string,
 		email: string,
@@ -81,7 +81,7 @@ export class User extends Entitybase {
 		}
 	}
 
-	public UpdateGoogleInformation(
+	public updateGoogleInformation(
 		id: string,
 		token: string,
 		email: string,
@@ -99,7 +99,7 @@ export class User extends Entitybase {
 		}
 	}
 
-	public UpdateTwitterInformation(
+	public updateTwitterInformation(
 		id: string,
 		token: string,
 		username: string,

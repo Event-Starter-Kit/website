@@ -6,8 +6,8 @@ export class ScheduleRepository extends DbBaseClass {
         super();
     }
 
-    public async GetTalks(): Promise<Talk[]> {
-		let db = await this.GetDatabase();
+    public async getTalks(): Promise<Talk[]> {
+		let db = await this.getDatabase();
 		let result = await db.Talk
                         .find({})
                         .sort({ "time": 1 })

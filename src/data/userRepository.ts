@@ -6,8 +6,8 @@ export class UserRepository extends DbBaseClass {
         super();
     }
 
-    public async GetUserByFacebookId(facebookId: string): Promise<User> {
-        let db = await this.GetDatabase();
+    public async getUserByFacebookId(facebookId: string): Promise<User> {
+        let db = await this.getDatabase();
 
         let result = await db.Users
             .find({ "Facebook.Id": facebookId })
@@ -17,8 +17,8 @@ export class UserRepository extends DbBaseClass {
         return result[0];
     }
 
-	public async GetUserByGoogleId(googleId: string): Promise<User> {
-        let db = await this.GetDatabase();
+	public async getUserByGoogleId(googleId: string): Promise<User> {
+        let db = await this.getDatabase();
 
         let result = await db.Users
             .find({ "Google.Id": googleId })
@@ -28,8 +28,8 @@ export class UserRepository extends DbBaseClass {
         return result[0];
     }
 
-	public async GetUserByTwitterId(twitterId: string): Promise<User> {
-        let db = await this.GetDatabase();
+	public async getUserByTwitterId(twitterId: string): Promise<User> {
+        let db = await this.getDatabase();
 
         let result = await db.Users
             .find({ "Twitter.Id": twitterId })
@@ -39,8 +39,8 @@ export class UserRepository extends DbBaseClass {
         return result[0];
     }
 
-    public async SaveOrUpdate(user: User): Promise<void> {
-        let db = await this.GetDatabase();
+    public async saveOrUpdate(user: User): Promise<void> {
+        let db = await this.getDatabase();
 
         await db
 			.Users

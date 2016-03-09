@@ -7,9 +7,9 @@ export class Folder extends LoggerBaseClass {
         super();
     }
 
-    public RequireAll(foldername: string): any[] {
+    public requireAll(foldername: string): any[] {
 
-        this.Logger.debug("Reading " + foldername + " .....");
+        this.logger.debug("Reading " + foldername + " .....");
 
         let classes: any[] = [];
 
@@ -18,7 +18,7 @@ export class Folder extends LoggerBaseClass {
                 let f = Path.parse(file);
 
                 if (f.ext === ".js" && file !== "index.js") {
-                    this.Logger.debug("Importing '" + f.name + "' from '" + foldername + "/" + file + "''");
+                    this.logger.debug("Importing '" + f.name + "' from '" + foldername + "/" + file + "''");
 
                     let ctrl = require(foldername + file);
 

@@ -2,9 +2,9 @@ import { LoggerFactory } from "./utils/loggerFactory";
 import * as Winston from "winston";
 
 export class LoggerBaseClass {
-	protected Logger: Winston.LoggerInstance;
+	protected logger: Winston.LoggerInstance;
 
 	constructor() {
-		this.Logger = LoggerFactory.Logger();
+		this.logger = LoggerFactory.logger();
 	}
 }

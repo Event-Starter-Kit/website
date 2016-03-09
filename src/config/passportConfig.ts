@@ -19,95 +19,95 @@ export class PassportConfig extends LoggerBaseClass {
         this.passport = passport;
         this.userRepository = new UserRepository();
 
-		this.passport.serializeUser(this.SerializeUser);
-		this.passport.deserializeUser(this.DeserializeUser);
+		this.passport.serializeUser(this.serializeUser);
+		this.passport.deserializeUser(this.deserializeUser);
     }
 
-	public ConfigureGoogleStrategy() {
+	public configureGoogleStrategy() {
 		this.passport.use(new googleStrategy({
-			callbackURL: credentials.Google.CallbackURL,
-			clientID: credentials.Google.ClientID,
-			clientSecret: credentials.Google.ClientSecret,
+			callbackURL: credentials.Google.callbackURL,
+			clientID: credentials.Google.clientID,
+			clientSecret: credentials.Google.clientSecret,
 		},
 			async (accessToken: string,
 				refreshToken: string,
 				profile: googleProfile,
 				done: (error: any, user?: any) => void) => {
 				try {
-					this.Logger.debug("Retriving user with google id: " + profile.id);
-					let user = await this.userRepository.GetUserByTwitterId(profile.id);
+					this.logger.debug("Retriving user with google id: " + profile.id);
+					let user = await this.userRepository.getUserByTwitterId(profile.id);
 
 					let email = (profile.emails[0].value || "").toLowerCase(); // pull the first email
 
 					if (user) {
-						this.Logger.debug("Updating existing users with google stuff....");
+						this.logger.debug("Updating existing users with google stuff....");
 
-						user.UpdateGoogleInformation(profile.id, accessToken, email, profile.displayName, true);
+						user.updateGoogleInformation(profile.id, accessToken, email, profile.displayName, true);
 
-						await this.userRepository.SaveOrUpdate(user);
+						await this.userRepository.saveOrUpdate(user);
 
 						return done(null, user); // user found, return that user
 					}
 
-					this.Logger.debug("Creating new user with google response....");
+					this.logger.debug("Creating new user with google response....");
 
-					user = User.CreateUserFromGoogle(profile.id, accessToken, email, profile.displayName);
+					user = User.createUserFromGoogle(profile.id, accessToken, email, profile.displayName);
 
-					this.Logger.debug("Storing.....", user);
+					this.logger.debug("Storing.....", user);
 
-					await this.userRepository.SaveOrUpdate(user);
+					await this.userRepository.saveOrUpdate(user);
 
 					return done(null, user);
 				} catch (error) {
-					this.Logger.error(error);
+					this.logger.error(error);
 					return done(error, null);
 				}
 			}));
 	}
 
-	public ConfigureTwitterStrategy() {
+	public configureTwitterStrategy() {
 		this.passport.use(new twitterStrategy({
-			callbackURL: credentials.Twitter.CallbackURL,
-			consumerKey: credentials.Twitter.ConsumerKey,
-			consumerSecret: credentials.Twitter.ConsumerSecret,
+			callbackURL: credentials.Twitter.callbackURL,
+			consumerKey: credentials.Twitter.consumerKey,
+			consumerSecret: credentials.Twitter.consumerSecret,
 		},
 			async (accessToken: string,
 				refreshToken: string,
 				profile: twitterProfile,
 				done: (error: any, user?: any) => void) => {
 				try {
-					this.Logger.debug("Retriving user with twitter id: " + profile.id);
-					let user = await this.userRepository.GetUserByTwitterId(profile.id);
+					this.logger.debug("Retriving user with twitter id: " + profile.id);
+					let user = await this.userRepository.getUserByTwitterId(profile.id);
 
 					if (user) {
-						this.Logger.debug("Updating existing users with twitter stuff....");
+						this.logger.debug("Updating existing users with twitter stuff....");
 
-						user.UpdateTwitterInformation(profile.id, accessToken, profile.username, true);
-						await this.userRepository.SaveOrUpdate(user);
+						user.updateTwitterInformation(profile.id, accessToken, profile.username, true);
+						await this.userRepository.saveOrUpdate(user);
 
 						return done(null, user); // user found, return that user
 					}
 
-					this.Logger.debug("Creating new user with twitter response....");
-					user = User.CreateUserFromTwitter(profile.id, accessToken, profile.username);
+					this.logger.debug("Creating new user with twitter response....");
+					user = User.createUserFromTwitter(profile.id, accessToken, profile.username);
 
-					this.Logger.debug("Storing.....", user);
+					this.logger.debug("Storing.....", user);
 
-					await this.userRepository.SaveOrUpdate(user);
+					await this.userRepository.saveOrUpdate(user);
 
 					return done(null, user);
 				} catch (error) {
-					this.Logger.error(error);
+					this.logger.error(error);
 					return done(error, null);
 				}
 			}));
 	}
 
-    public ConfigureFacebookStrategy() {
+    public configureFacebookStrategy() {
         this.passport.use(new facebookStrategy({
-            callbackURL: credentials.Facebook.CallbackURL,
-            clientID: credentials.Facebook.ClientID,
-            clientSecret: credentials.Facebook.ClientSecret,
+            callbackURL: credentials.Facebook.callbackURL,
+            clientID: credentials.Facebook.clientID,
+            clientSecret: credentials.Facebook.clientSecret,
             profileFields: ["id", "name", "email", "user_hometown", "user_location", "user_photos"],
         },
 			async (accessToken: string,
@@ -117,46 +117,46 @@ export class PassportConfig extends LoggerBaseClass {
 
 				try {
 
-					this.Logger.debug("Retriving user with facebook id: " + profile.id);
-					let user = await this.userRepository.GetUserByFacebookId(profile.id);
+					this.logger.debug("Retriving user with facebook id: " + profile.id);
+					let user = await this.userRepository.getUserByFacebookId(profile.id);
 
 					let displayName = profile.name.givenName + " " + profile.name.familyName;
 					let email = (profile.emails[0].value || "").toLowerCase();
 
 					if (user) {
-						this.Logger.debug("Updating existing users with facebook stuff....");
+						this.logger.debug("Updating existing users with facebook stuff....");
 
-						user.UpdateFacebookInformation(profile.id, accessToken, email, displayName, true);
+						user.updateFacebookInformation(profile.id, accessToken, email, displayName, true);
 
-						await this.userRepository.SaveOrUpdate(user);
+						await this.userRepository.saveOrUpdate(user);
 
 						return done(null, user); // user found, return that user
 					}
 
-					this.Logger.debug("Creating new user with facebook response....");
-					user = User.CreateUserFromFacebook(profile.id, accessToken, email, displayName);
+					this.logger.debug("Creating new user with facebook response....");
+					user = User.createUserFromFacebook(profile.id, accessToken, email, displayName);
 
-					this.Logger.debug("Storing.....", user);
+					this.logger.debug("Storing.....", user);
 
-					await this.userRepository.SaveOrUpdate(user);
+					await this.userRepository.saveOrUpdate(user);
 					return done(null, user);
 				} catch (error) {
-					this.Logger.error(error);
+					this.logger.error(error);
 					return done(error, null);
 				}
 			}));
     }
 
-	private SerializeUser(user: any, done: (err: any, id: any) => void) {
-		this.Logger.debug("Serializing user.....", user);
+	private serializeUser(user: any, done: (err: any, id: any) => void) {
+		this.logger.debug("Serializing user.....", user);
 		done(null, user.id);
 	}
 
-	private async DeserializeUser(user: any, done: (err: any, id: any) => void) {
-		this.Logger.debug("DeserializeUser user.....", user);
+	private async deserializeUser(user: any, done: (err: any, id: any) => void) {
+		this.logger.debug("DeserializeUser user.....", user);
 
 		try {
-			let usr = await this.userRepository.GetUserByFacebookId(user.id);
+			let usr = await this.userRepository.getUserByFacebookId(user.id);
 
 			done(null, usr);
 

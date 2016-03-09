@@ -38,15 +38,15 @@ export class Proposal extends Entitybase {
 		this.Author = new AuthorInfo(firstname, lastname, bio);
     }
 
-	public IncreaseVote() {
+	public increaseVote() {
 		this.NumberOfVotes++;
 	}
 
-	public DecreaseVote() {
+	public decreaseVote() {
 		this.NumberOfVotes--;
 	}
 
-	public UpdateAverage(average: number) {
+	public updateAverage(average: number) {
 		this.VoteAverage = average;
 	}
 }

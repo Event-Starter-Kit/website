@@ -5,17 +5,17 @@ export class LoggerFactory {
 	private static winston: winston.LoggerInstance;
     private static isConfigured: boolean = false;
 
-	public static Logger(): winston.LoggerInstance {
-        LoggerFactory.Configure();
+	public static logger(): winston.LoggerInstance {
+        LoggerFactory.configure();
         return LoggerFactory.winston;
     }
 
-    private static Configure() {
+    private static configure() {
         if (!this.isConfigured) {
-            if (HostingEnvironment.IsDevelopment) {
-                this.ColoredConsole();
+            if (HostingEnvironment.isDevelopment) {
+                this.coloredConsole();
             } else {
-                this.File();
+                this.file();
             }
 
 			this.isConfigured = true;
@@ -24,7 +24,7 @@ export class LoggerFactory {
         }
     }
 
-    private static File() {
+    private static file() {
         LoggerFactory.winston = new winston.Logger({
             exitOnError: false,
 			transports: [
@@ -41,7 +41,7 @@ export class LoggerFactory {
         });
     }
 
-    private static ColoredConsole() {
+    private static coloredConsole() {
         LoggerFactory.winston = new winston.Logger({
 			exitOnError: false,
             transports: [

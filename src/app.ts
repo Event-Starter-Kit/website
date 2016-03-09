@@ -8,26 +8,26 @@ class Startup extends LoggerBaseClass {
 
     constructor() {
         super();
-        this.ConfigureExpress();
+        this.configureExpress();
     }
 
 	public Run() {
         let port = process.env.PORT || 5000;
 
         this.app.listen(port, () => {
-            this.Logger.info("Listening on " + port);
+            this.logger.info("Listening on " + port);
         });
     }
 
-    private ConfigureExpress() {
+    private configureExpress() {
         try {
 			this.app = Express();
 
-			this.Logger.debug("configuring express....");
-			new ExpressConfig(this.app).Configure();
-			this.Logger.debug("Express configured");
+			this.logger.debug("configuring express....");
+			new ExpressConfig(this.app).configure();
+			this.logger.debug("Express configured");
 		} catch (error) {
-			this.Logger.error("Error configuring Express", error);
+			this.logger.error("Error configuring Express", error);
 		}
     }
 }

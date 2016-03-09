@@ -10,14 +10,14 @@ export class AuthenticationController extends ControllerBase {
 
 		this.App.get("/auth/test", async (req: express.Request, res: any) => {
 			try {
-				let response = await new SpeakerRepository().GetTalks();
+				let response = await new SpeakerRepository().getTalks();
 				res.json(response);
 			} catch (error) {
-				this.Logger.error(error);
+				this.logger.error(error);
 			}
 		});
 
-		this.App.get("/auth/protected", this.IsLoggedIn, (req: express.Request, res: express.Response) => {
+		this.App.get("/auth/protected", this.isLoggedIn, (req: express.Request, res: express.Response) => {
 			res.json({
 				user: req.user,
 			});
@@ -28,7 +28,7 @@ export class AuthenticationController extends ControllerBase {
 			res.redirect("/");
 		});
 
-		this.App.get("/auth/userInfo", this.IsLoggedIn, (req: express.Request, res: express.Response) => {
+		this.App.get("/auth/userInfo", this.isLoggedIn, (req: express.Request, res: express.Response) => {
 			res.send(req.user());
 		});
 

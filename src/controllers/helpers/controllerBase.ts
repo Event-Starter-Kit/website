@@ -14,7 +14,7 @@ export class ControllerBase extends LoggerBaseClass {
 		this.Configuration = configuration;
 	}
 
-	protected IsLoggedIn(req: express.Request, res: express.Response, next: express.NextFunction) {
+	protected isLoggedIn(req: express.Request, res: express.Response, next: express.NextFunction) {
 		if (req.isAuthenticated()) {
 			return next();
 		}
@@ -22,7 +22,7 @@ export class ControllerBase extends LoggerBaseClass {
 		res.sendStatus(401);
 	}
 
-	protected PopulateModel(model: ViewModelBase) {
+	protected populateModel(model: ViewModelBase) {
 		model.Configuration = this.Configuration;
 	}
 }

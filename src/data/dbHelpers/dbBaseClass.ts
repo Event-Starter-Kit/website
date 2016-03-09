@@ -11,8 +11,8 @@ export class DbBaseClass extends LoggerBaseClass {
 		this.dbContext = new DbContext();
     }
 
-	protected GetDatabase(): Promise<DbFacility> {
-		this.Logger.debug("Retriving DbContext .... ");
-		return this.dbContext.GetDbContext();
+	protected getDatabase(): Promise<DbFacility> {
+		this.logger.debug("Retriving DbContext .... ");
+		return this.dbContext.getDbContext();
 	}
 }

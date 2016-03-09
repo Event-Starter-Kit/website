@@ -7,10 +7,10 @@ import * as mongodb from "mongodb";
 export class DbContext extends LoggerBaseClass {
     private static facility: DbFacility;
 
-    public async GetDbContext(): Promise<DbFacility> {
+    public async getDbContext(): Promise<DbFacility> {
 		if (!DbContext.facility) {
-			this.Logger.info("Connecting to mongodb .....");
-			let db = await mongodb.MongoClient.connect(credentials.Mongo.ConnectionString);
+			this.logger.info("Connecting to mongodb .....");
+			let db = await mongodb.MongoClient.connect(credentials.Mongo.connectionString);
 			DbContext.facility = new DbFacility(db);
 			let cfgs = await DbContext.facility.Configuration.find({}).limit(1).toArray();
 

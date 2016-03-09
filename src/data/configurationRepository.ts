@@ -6,8 +6,8 @@ export class ConfigurationRepository extends DbBaseClass {
         super();
     }
 
-	public async GetConfiguration(): Promise<Configuration> {
-		let db = await this.GetDatabase();
+	public async getConfiguration(): Promise<Configuration> {
+		let db = await this.getDatabase();
 		let result = await db.Configuration
 			.find({})
 			.limit(1)

@@ -1,6 +1,6 @@
-import { LoggerBaseClass } from "../../LoggerBaseClass";
-import {ViewModelBase} from "../ViewModels/ViewModelBase";
-import {Configuration} from "../../Data/Models/Configuration";
+import { LoggerBaseClass } from "../../loggerBaseClass";
+import {ViewModelBase} from "../viewModels/viewModelBase";
+import {Configuration} from "../../data/models/configuration";
 import * as express from "express";
 
 export class ControllerBase extends LoggerBaseClass {

@@ -1,4 +1,4 @@
-import { Configuration } from "../../Data/Models/Configuration";
+import { Configuration } from "../../data/models/configuration";
 
 export class ViewModelBase {
 	public Configuration: Configuration;

@@ -1,7 +1,7 @@
 import * as express from "express";
-import * as credentials from "../Config/Credentials";
-import { ControllerBase } from "./Helpers/ControllerBase";
-import {Configuration} from "../Data/Models/Configuration";
+import * as credentials from "../config/credentials";
+import { ControllerBase } from "./helpers/controllerBase";
+import {Configuration} from "../data/models/configuration";
 
 const Mailchimp = require("mailchimp-api").Mailchimp;
 

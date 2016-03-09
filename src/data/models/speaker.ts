@@ -1,5 +1,5 @@
-import {Entitybase} from "./Entitybase";
-import {Talk} from "./Talk";
+import {Entitybase} from "./entitybase";
+import {Talk} from "./talk";
 
 import * as _ from "underscore";
 

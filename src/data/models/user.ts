@@ -1,4 +1,4 @@
-import {Entitybase} from "./Entitybase";
+import {Entitybase} from "./entitybase";
 
 export class User extends Entitybase {
     constructor() {

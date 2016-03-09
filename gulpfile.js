@@ -42,7 +42,7 @@ gulp.task("watch", () => {
 
 // Cleare Release folde
 gulp.task('clean', () => {
-	del.sync(["build/**","!build"]);
+	del.sync(["build/*"]);
 });
 
 // Run TS-Lint

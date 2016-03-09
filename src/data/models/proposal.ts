@@ -1,5 +1,5 @@
-import {Entitybase} from "./Entitybase";
-import {AuthorInfo} from "./AuthorInfo";
+import {Entitybase} from "./entitybase";
+import {AuthorInfo} from "./authorInfo";
 
 export class Proposal extends Entitybase {
     public Title: string;

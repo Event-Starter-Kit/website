@@ -1,4 +1,4 @@
-import { HostingEnvironment }  from "../Config/HostingEnvironment";
+import { HostingEnvironment }  from "../config/hostingEnvironment";
 import * as winston from "winston";
 
 export class LoggerFactory {

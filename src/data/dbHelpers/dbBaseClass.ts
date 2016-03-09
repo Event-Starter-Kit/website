@@ -1,6 +1,6 @@
-import { LoggerBaseClass } from "../../LoggerBaseClass";
-import { DbContext } from "./DbContext";
-import { DbFacility } from "./DbFacility";
+import { LoggerBaseClass } from "../../loggerBaseClass";
+import { DbContext } from "./dbContext";
+import { DbFacility } from "./dbFacility";
 
 export class DbBaseClass extends LoggerBaseClass {
 	private dbContext: DbContext;

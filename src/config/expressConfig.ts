@@ -1,9 +1,9 @@
-import { LoggerBaseClass } from "../LoggerBaseClass";
-import { Folder } from "../Utils/Folder";
-import { HostingEnvironment } from "./HostingEnvironment";
-import * as credentials from "../Config/Credentials";
-import {ConfigurationRepository} from "../Data/ConfigurationRepository";
-import {Configuration} from "../Data/Models/Configuration";
+import { LoggerBaseClass } from "../loggerBaseClass";
+import { Folder } from "../utils/folder";
+import { HostingEnvironment } from "./hostingEnvironment";
+import * as credentials from "../config/credentials";
+import {ConfigurationRepository} from "../data/configurationRepository";
+import {Configuration} from "../data/models/configuration";
 import * as Express from "express";
 import * as Path from "path";
 import * as Compression from "compression";
@@ -12,7 +12,7 @@ import * as Session from "express-session";
 import * as Passport from "passport";
 import * as swig from "swig";
 import * as path from "path";
-import { PassportConfig } from "./PassportConfig";
+import { PassportConfig } from "./passportConfig";
 
 const ExpressValidator = require("express-validator");
 

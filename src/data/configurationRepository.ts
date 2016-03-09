@@ -1,5 +1,5 @@
-import { DbBaseClass } from "./DbHelpers/DbBaseClass";
-import { Configuration } from "./Models/Configuration";
+import { DbBaseClass } from "./dbHelpers/dbBaseClass";
+import { Configuration } from "./models/configuration";
 
 export class ConfigurationRepository extends DbBaseClass {
     constructor() {

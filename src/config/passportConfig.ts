@@ -1,5 +1,5 @@
-import { LoggerBaseClass } from "../LoggerBaseClass";
-import * as credentials from "../Config/Credentials";
+import { LoggerBaseClass } from "../loggerBaseClass";
+import * as credentials from "../config/credentials";
 import { Strategy as twitterStrategy} from "passport-twitter";
 import { Profile as twitterProfile} from "passport-twitter";
 import { Strategy as facebookStrategy} from "passport-facebook";
@@ -7,8 +7,8 @@ import { Profile as facebookProfile} from "passport-facebook";
 import { OAuth2Strategy as googleStrategy} from "passport-google-oauth";
 import { Profile as googleProfile} from "passport-google-oauth";
 import { Passport} from "passport";
-import { UserRepository } from "../Data/UserRepository";
-import { User } from "../Data/Models/User";
+import { UserRepository } from "../data/userRepository";
+import { User } from "../data/models/user";
 
 export class PassportConfig extends LoggerBaseClass {
     private passport: Passport;

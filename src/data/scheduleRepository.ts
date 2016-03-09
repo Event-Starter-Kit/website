@@ -1,5 +1,5 @@
-import { DbBaseClass } from "./DbHelpers/DbBaseClass";
-import { Talk } from "./Models/Talk";
+import { DbBaseClass } from "./dbHelpers/dbBaseClass";
+import { Talk } from "./models/talk";
 
 export class ScheduleRepository extends DbBaseClass {
     constructor() {

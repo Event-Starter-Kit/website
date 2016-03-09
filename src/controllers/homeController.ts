@@ -1,7 +1,7 @@
 import * as express from "express";
-import { ControllerBase } from "./Helpers/ControllerBase";
-import {Configuration} from "../Data/Models/Configuration";
-import { IndexViewModel } from "./ViewModels/Home/IndexViewModel";
+import { ControllerBase } from "./helpers/controllerBase";
+import {Configuration} from "../data/models/configuration";
+import { IndexViewModel } from "./viewModels/home/indexViewModel";
 
 export class HomeController extends ControllerBase {
 	constructor(app: express.Express, configuration: Configuration) {

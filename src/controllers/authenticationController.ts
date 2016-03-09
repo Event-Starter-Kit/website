@@ -1,8 +1,8 @@
 import * as express from "express";
 import * as passport from "passport";
-import { SpeakerRepository } from "../Data/SpeakerRepository";
-import { ControllerBase } from "./Helpers/ControllerBase";
-import {Configuration} from "../Data/Models/Configuration";
+import { SpeakerRepository } from "../data/speakerRepository";
+import { ControllerBase } from "./helpers/controllerBase";
+import {Configuration} from "../data/models/configuration";
 
 export class AuthenticationController extends ControllerBase {
 	constructor(app: express.Express, configuration: Configuration) {

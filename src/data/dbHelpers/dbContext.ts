@@ -1,7 +1,7 @@
-import { DbFacility } from "./DbFacility";
-import { LoggerBaseClass } from "../../LoggerBaseClass";
-import * as credentials from "../../Config/Credentials";
-import {Configuration} from "../Models/Configuration";
+import { DbFacility } from "./dbFacility";
+import { LoggerBaseClass } from "../../loggerBaseClass";
+import * as credentials from "../../config/credentials";
+import {Configuration} from "../models/configuration";
 import * as mongodb from "mongodb";
 
 export class DbContext extends LoggerBaseClass {

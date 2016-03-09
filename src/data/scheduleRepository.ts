@@ -1,7 +1,7 @@
-import { DbBaseClass } from "./dbHelpers/dbBaseClass";
+import { RepositoryBase } from "./dbHelpers/RepositoryBase";
 import { Talk } from "./models/talk";
 
-export class ScheduleRepository extends DbBaseClass {
+export class ScheduleRepository extends RepositoryBase<Talk> {
     constructor() {
         super();
     }

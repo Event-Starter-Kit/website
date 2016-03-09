@@ -1,5 +1,5 @@
 import * as express from "express";
-import * as credentials from "../config/credentials";
+import * as credentials from "../setup/credentials";
 import { ControllerBase } from "./helpers/controllerBase";
 import {Configuration} from "../data/models/configuration";
 

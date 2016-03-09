@@ -1,4 +1,4 @@
-import {LoggerBaseClass} from "../loggerBaseClass";
+import {LoggerBaseClass} from "../logging/loggerBaseClass";
 import * as Fs from "fs";
 import * as Path from "path";
 

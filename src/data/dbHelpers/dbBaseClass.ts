@@ -1,4 +1,4 @@
-import { LoggerBaseClass } from "../../loggerBaseClass";
+import { LoggerBaseClass } from "../../logging/loggerBaseClass";
 import { DbContext } from "./dbContext";
 import { DbFacility } from "./dbFacility";
 

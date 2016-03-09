@@ -1,7 +1,7 @@
-import { LoggerBaseClass } from "../loggerBaseClass";
+import { LoggerBaseClass } from "../logging/loggerBaseClass";
 import { Folder } from "../utils/folder";
-import { HostingEnvironment } from "./hostingEnvironment";
-import * as credentials from "../config/credentials";
+import { HostingEnvironment } from "../utils/hostingEnvironment";
+import * as credentials from "../setup/credentials";
 import {ConfigurationRepository} from "../data/configurationRepository";
 import {Configuration} from "../data/models/configuration";
 import * as Express from "express";

@@ -1,6 +1,6 @@
 import { DbFacility } from "./dbFacility";
-import { LoggerBaseClass } from "../../loggerBaseClass";
-import * as credentials from "../../config/credentials";
+import { LoggerBaseClass } from "../../logging/loggerBaseClass";
+import * as credentials from "../../setup/credentials";
 import {Configuration} from "../models/configuration";
 import * as mongodb from "mongodb";
 

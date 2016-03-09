@@ -1,4 +1,4 @@
-import { LoggerBaseClass } from "./loggerBaseClass";
+import { LoggerBaseClass } from "./logging/loggerBaseClass";
 import { ExpressConfig } from "./config/expressConfig";
 
 import * as Express from "express";

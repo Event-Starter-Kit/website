@@ -8,7 +8,7 @@ export class AuthenticationController extends ControllerBase {
 	constructor(app: express.Express, configuration: Configuration) {
         super(app, configuration);
 
-		this.App.get("/auth/test", async (req: express.Request, res: any) => {
+		this.app.get("/auth/test", async (req: express.Request, res: any) => {
 			try {
 				let response = await new SpeakerRepository().getTalks();
 				res.json(response);
@@ -17,18 +17,18 @@ export class AuthenticationController extends ControllerBase {
 			}
 		});
 
-		this.App.get("/auth/protected", this.isLoggedIn, (req: express.Request, res: express.Response) => {
+		this.app.get("/auth/protected", this.isLoggedIn, (req: express.Request, res: express.Response) => {
 			res.json({
 				user: req.user,
 			});
 		});
 
-		this.App.get("/auth/logout", (req: express.Request, res: express.Response) => {
+		this.app.get("/auth/logout", (req: express.Request, res: express.Response) => {
 			req.logout();
 			res.redirect("/");
 		});
 
-		this.App.get("/auth/userInfo", this.isLoggedIn, (req: express.Request, res: express.Response) => {
+		this.app.get("/auth/userInfo", this.isLoggedIn, (req: express.Request, res: express.Response) => {
 			res.send(req.user());
 		});
 

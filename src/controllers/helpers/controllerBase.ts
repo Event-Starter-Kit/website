@@ -1,20 +1,20 @@
-import { LoggerBaseClass } from "../../loggerBaseClass";
-import {ViewModelBase} from "../viewModels/viewModelBase";
-import {Configuration} from "../../data/models/configuration";
+import { LoggerBaseClass } from "../../logging/loggerBaseClass";
+import { ViewModelBase } from "../viewModels/viewModelBase";
+import { Configuration } from "../../data/models/configuration";
 import * as express from "express";
 
 export class ControllerBase extends LoggerBaseClass {
-	protected App: express.Express;
-	protected Configuration: Configuration;
+	protected app: express.Express;
+	protected configuration: Configuration;
 
 	constructor(app: express.Express, configuration: Configuration) {
 		super();
 
-		this.App = app;
-		this.Configuration = configuration;
+		this.app = app;
+		this.configuration = configuration;
 	}
 
-	protected isLoggedIn(req: express.Request, res: express.Response, next: express.NextFunction) {
+	protected isLoggedIn(req: express.Request, res: express.Response, next: express.NextFunction): void {
 		if (req.isAuthenticated()) {
 			return next();
 		}
@@ -22,7 +22,7 @@ export class ControllerBase extends LoggerBaseClass {
 		res.sendStatus(401);
 	}
 
-	protected populateModel(model: ViewModelBase) {
-		model.Configuration = this.Configuration;
+	protected populateModel(model: ViewModelBase): void {
+		model.Configuration = this.configuration;
 	}
 }

@@ -1,10 +1,10 @@
 import { LoggerBaseClass } from "./logging/loggerBaseClass";
-import { ExpressConfig } from "./config/expressConfig";
+import { Folder } from "./utils/folder";
 
 import * as Express from "express";
 
 class Startup extends LoggerBaseClass {
-    private app: Express.Express;
+    private app: Express.Application;
 
     constructor() {
         super();
@@ -21,11 +21,18 @@ class Startup extends LoggerBaseClass {
 
     private configureExpress() {
         try {
+			this.logger.debug("Initializing express");
 			this.app = Express();
 
-			this.logger.debug("configuring express....");
-			new ExpressConfig(this.app).configure();
-			this.logger.debug("Express configured");
+			let ctrls = new Folder().requireAll(__dirname + "/express/setup/");
+
+			ctrls.forEach((exp) => {
+				let module = new exp[Object.keys(exp)[0]](this.app);
+
+				if (module.enabled) {
+					module.setup();
+				}
+			});
 		} catch (error) {
 			this.logger.error("Error configuring Express", error);
 		}

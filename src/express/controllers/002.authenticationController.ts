@@ -1,12 +1,16 @@
 import * as express from "express";
 import * as passport from "passport";
-import { SpeakerRepository } from "../data/speakerRepository";
+import { SpeakerRepository } from "../../data/speakerRepository";
 import { ControllerBase } from "./helpers/controllerBase";
-import {Configuration} from "../data/models/configuration";
+import {Configuration} from "../../data/models/configuration";
 
 export class AuthenticationController extends ControllerBase {
 	constructor(app: express.Express, configuration: Configuration) {
-        super(app, configuration);
+        super(app, configuration, true);
+    }
+
+	public configureRoutes() {
+		this.logger.debug("Configuring routes for Authentication Controller.");
 
 		this.app.get("/auth/test", async (req: express.Request, res: any) => {
 			try {
@@ -37,10 +41,10 @@ export class AuthenticationController extends ControllerBase {
         // ---------------------------------------------
 
         // send to facebook to do the authentication
-        app.get("/auth/facebook", passport.authenticate("facebook", { scope: "email" }));
+        this.app.get("/auth/facebook", passport.authenticate("facebook", { scope: "email" }));
 
         // handle the callback after facebook has authenticated the user
-        app.get("/auth/facebook/callback",
+        this.app.get("/auth/facebook/callback",
             passport.authenticate("facebook", {
                 failureRedirect: "/",
                 successRedirect: "/auth/userInfo",
@@ -51,10 +55,10 @@ export class AuthenticationController extends ControllerBase {
         // ---------------------------------------------
 
         // send to twitter to do the authentication
-        app.get("/auth/twitter", passport.authenticate("twitter", { scope: "email" }));
+        this.app.get("/auth/twitter", passport.authenticate("twitter", { scope: "email" }));
 
         // handle the callback after twitter has authenticated the user
-        app.get("/auth/twitter/callback",
+        this.app.get("/auth/twitter/callback",
             passport.authenticate("twitter", {
 				failureRedirect: "/",
                 successRedirect: "/auth/userInfo",
@@ -65,13 +69,13 @@ export class AuthenticationController extends ControllerBase {
         // ---------------------------------------------
 
         // send to google to do the authentication
-        app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
+        this.app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
         // the callback after google has authenticated the user
-        app.get("/auth/google/callback",
+        this.app.get("/auth/google/callback",
             passport.authenticate("google", {
                 failureRedirect: "/",
                 successRedirect: "/auth/userInfo",
             }));
-    }
+	}
 }

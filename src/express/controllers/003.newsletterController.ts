@@ -1,15 +1,19 @@
 import * as express from "express";
-import * as credentials from "../setup/credentials";
+import * as credentials from "../../setup/credentials";
 import { ControllerBase } from "./helpers/controllerBase";
-import {Configuration} from "../data/models/configuration";
+import {Configuration} from "../../data/models/configuration";
 
 const Mailchimp = require("mailchimp-api").Mailchimp;
 
 export class HomeController extends ControllerBase {
 	constructor(app: express.Express, configuration: Configuration) {
-        super(app, configuration);
+        super(app, configuration, true);
+	}
 
-		app.post("/api/notify/join", async (req: any, res: any) => {
+	public configureRoutes() {
+		this.logger.debug("Configuring routes for Newsletter Controller.");
+
+		this.app.post("/api/notify/join", async (req: any, res: any) => {
 			this.logger.debug("email value: " + req.body.email);
 
             req.assert("email", "Field required").notEmpty();

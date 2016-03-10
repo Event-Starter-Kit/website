@@ -36,11 +36,40 @@ export class AuthenticationController extends ControllerBase {
 			res.send(req.user());
 		});
 
-        // ---------------------------------------------
-        // FACEBOOK --------------------------------
-        // ---------------------------------------------
+		this.configureLocal();
+		this.configureFacebook();
+		this.configureTwitter();
+		this.configureGoogle();
+	}
 
-        // send to facebook to do the authentication
+	private configureLocal() {
+		// show the login form
+		this.app.get("/login", (req: any, res: any) => {
+            res.render("frontoffice/login", { message: req.flash("loginMessage") });
+        });
+
+		// process the login form
+        this.app.post("/login", passport.authenticate("local-login", {
+            successRedirect: "/profile", // redirect to the secure profile section
+            failureRedirect: "/login", // redirect back to the signup page if there is an error
+            failureFlash: true, // allow flash messages
+        }));
+
+		// show the signup form
+        this.app.get("/signup", (req: any, res: any) => {
+            res.render("frontoffice/singup", { message: req.flash("signupMessage") });
+        });
+
+        // process the signup form
+        this.app.post("/signup", passport.authenticate("local-signup", {
+            successRedirect: "/profile", // redirect to the secure profile section
+            failureRedirect: "/signup", // redirect back to the signup page if there is an error
+            failureFlash: true, // allow flash messages
+        }));
+	}
+
+	private configureFacebook(): void {
+		// send to facebook to do the authentication
         this.app.get("/auth/facebook", passport.authenticate("facebook", { scope: "email" }));
 
         // handle the callback after facebook has authenticated the user
@@ -49,12 +78,10 @@ export class AuthenticationController extends ControllerBase {
                 failureRedirect: "/",
                 successRedirect: "/auth/userInfo",
             }));
+	}
 
-        // ---------------------------------------------
-        // TWITTER ----------------------------------
-        // ---------------------------------------------
-
-        // send to twitter to do the authentication
+	private configureTwitter(): void {
+		// send to twitter to do the authentication
         this.app.get("/auth/twitter", passport.authenticate("twitter", { scope: "email" }));
 
         // handle the callback after twitter has authenticated the user
@@ -63,12 +90,10 @@ export class AuthenticationController extends ControllerBase {
 				failureRedirect: "/",
                 successRedirect: "/auth/userInfo",
             }));
+	}
 
-        // ---------------------------------------------
-        // GOOGLE -----------------------------------
-        // ---------------------------------------------
-
-        // send to google to do the authentication
+	private configureGoogle(): void {
+		// send to google to do the authentication
         this.app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
         // the callback after google has authenticated the user

@@ -2,6 +2,7 @@
   "name": "GaiaNet",
   "ambientDependencies": {
     "async": "github:DefinitelyTyped/DefinitelyTyped/async/async.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
+    "bcrypt-nodejs": "registry:dt/bcrypt-nodejs#0.0.0+20151223135507",
     "compression": "github:DefinitelyTyped/DefinitelyTyped/compression/compression.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
     "cookie-parser": "github:DefinitelyTyped/DefinitelyTyped/cookie-parser/cookie-parser.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
     "csurf": "github:DefinitelyTyped/DefinitelyTyped/csurf/csurf.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
@@ -16,6 +17,7 @@
     "passport": "github:DefinitelyTyped/DefinitelyTyped/passport/passport.d.ts#432545c4d99dba86a5229bed0e500f66f43b1baa",
     "passport-facebook": "github:DefinitelyTyped/DefinitelyTyped/passport-facebook/passport-facebook.d.ts#a1915bad2e932a2be44a718818c3b5286793f26c",
     "passport-google-oauth": "github:DefinitelyTyped/DefinitelyTyped/passport-google-oauth/passport-google-oauth.d.ts#a1915bad2e932a2be44a718818c3b5286793f26c",
+    "passport-local": "registry:dt/passport-local#1.0.0+20150413233709",
     "passport-twitter": "github:DefinitelyTyped/DefinitelyTyped/passport-twitter/passport-twitter.d.ts#a1915bad2e932a2be44a718818c3b5286793f26c",
     "serve-static": "github:DefinitelyTyped/DefinitelyTyped/serve-static/serve-static.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
     "swig": "github:DefinitelyTyped/DefinitelyTyped/swig/swig.d.ts#f43a366a923d3e03f23c509a426e5818b72dcca1",

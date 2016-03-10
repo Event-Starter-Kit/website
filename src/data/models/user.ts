@@ -1,4 +1,5 @@
 import {Entitybase} from "./entitybase";
+import {Security} from "../../utils/security";
 
 export class User extends Entitybase {
     constructor() {
@@ -11,6 +12,21 @@ export class User extends Entitybase {
 	public Facebook: Facebook;
     public Twitter: Twitter;
     public Google: Google;
+	public Local: Local;
+
+	public static createUserFromLocal(
+		email: string,
+		password: string) {
+
+		let usr = new User();
+		usr.DisplayName = name;
+		usr.Email = email.toLocaleLowerCase();
+		usr.Local = new Local();
+		usr.Local.Email = email;
+		usr.Local.Password = Security.generateHash(password);
+
+		return usr;
+	}
 
 	public static createUserFromFacebook(
 		id: string,
@@ -114,6 +130,14 @@ export class User extends Entitybase {
 		}
 	}
 
+	public validatePassword(password: string) {
+		return Security.compareHash(password, this.Local.Password);
+	}
+}
+
+class Local {
+	public Email: string;
+	public Password: string;
 }
 
 class Facebook {

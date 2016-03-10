@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "async": "^1.5.2",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.0",
     "compression": "^1.6.1",
     "cookie-parser": "^1.4.1",
@@ -44,6 +45,7 @@
     "passport-facebook": "^2.1.0",
     "passport-google-oauth": "^1.0.0",
     "passport-ldapauth": "0.5.0",
+    "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.4",
     "promised-mongo": "^1.2.0",
     "swig": "^1.4.2",

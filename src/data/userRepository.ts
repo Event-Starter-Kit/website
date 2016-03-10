@@ -6,6 +6,17 @@ export class UserRepository extends RepositoryBase<User> {
         super();
     }
 
+	public async getUserByLocalUsername(email: string): Promise<User> {
+        let db = await this.getDatabase();
+
+        let result = await db.Users
+            .find({ "Local.Email": email })
+            .limit(1)
+            .toArray();
+
+        return result[0];
+    }
+
     public async getUserByFacebookId(facebookId: string): Promise<User> {
         let db = await this.getDatabase();
 

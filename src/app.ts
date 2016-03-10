@@ -24,9 +24,9 @@ class Startup extends LoggerBaseClass {
 			this.logger.debug("Initializing express");
 			this.app = Express();
 
-			let ctrls = new Folder().requireAll(__dirname + "/express/setup/");
+			let module = new Folder().requireAll(__dirname + "/express/setup/");
 
-			ctrls.forEach((exp) => {
+			module.forEach((exp) => {
 				let module = new exp[Object.keys(exp)[0]](this.app);
 
 				if (module.enabled) {

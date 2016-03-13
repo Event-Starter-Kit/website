@@ -46,4 +46,13 @@ export abstract class RepositoryBase<T extends Entitybase> extends DbBaseClass {
 		await db.db.collection(this.collectionName)
 			.deleteOne({ _id: id });
 	}
+
+	public async list(pageIndex: number, pageSize: number): Promise<T[]> {
+		let db = await this.getDatabase();
+		return await db.db.collection(this.collectionName)
+			.find({})
+			.skip(pageSize * (pageIndex - 1))
+			.limit(pageSize)
+			.toArray();
+	}
 }

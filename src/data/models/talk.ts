@@ -1,13 +1,21 @@
+import { ValidateNested, NotEmptyArray, IsLength } from "validator.ts/decorator/Validation";
 import { Entitybase } from "./entitybase";
 import { AuthorInfo } from "./authorinfo";
 
 export class Talk extends Entitybase {
-	public Title: string;
-	public Abstract: string;
-	public Date: number;
-	public Tags: string[];
-	public Author: AuthorInfo;
-	public Track: string;
+	@IsLength(10, 50)
+	public title: string;
+
+	@IsLength(80, 500)
+	public abstract: string;
+	public date: number;
+
+	@NotEmptyArray()
+	public tags: string[];
+
+	@ValidateNested()
+	public author: AuthorInfo;
+	public track: string;
 
 	constructor(title: string,
 		abstract: string,
@@ -30,10 +38,10 @@ export class Talk extends Entitybase {
 			throw new Error("invalid tags");
 		}
 
-		this.Title = title;
-		this.Abstract = abstract;
-		this.Date = Date.now();
-		this.Tags = tags;
-		this.Author = new AuthorInfo(firstname, lastname, bio);
+		this.title = title;
+		this.abstract = abstract;
+		this.date = Date.now();
+		this.tags = tags;
+		this.author = new AuthorInfo(firstname, lastname, bio);
     }
 }

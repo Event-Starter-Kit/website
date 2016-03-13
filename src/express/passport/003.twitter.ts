@@ -2,7 +2,7 @@ import { Interfaces } from "../interfaces";
 import { Passport } from "passport";
 import { Strategy as twitterStrategy} from "passport-twitter";
 import { Profile as twitterProfile} from "passport-twitter";
-import { UserRepository } from "../../data/userRepository";
+import { UserRepository } from "../../data/repositories/userRepository";
 import { User } from "../../data/models/user";
 import * as credentials from "../../setup/credentials";
 

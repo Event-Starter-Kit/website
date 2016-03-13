@@ -1,6 +1,6 @@
 import * as express from "express";
 import * as passport from "passport";
-import { SpeakerRepository } from "../../data/speakerRepository";
+import { SpeakerRepository } from "../../data/repositories/speakerRepository";
 import { ControllerBase } from "./helpers/controllerBase";
 import {Configuration} from "../../data/models/configuration";
 
@@ -12,7 +12,7 @@ export class AuthenticationController extends ControllerBase {
 	public configureRoutes() {
 		this.logger.debug("Configuring routes for Authentication Controller.");
 
-		this.app.get("/auth/test", async (req: express.Request, res: any) => {
+		this.app.get("/api/auth/test", async (req: express.Request, res: any) => {
 			try {
 				let response = await new SpeakerRepository().getTalks();
 				res.json(response);
@@ -21,19 +21,13 @@ export class AuthenticationController extends ControllerBase {
 			}
 		});
 
-		this.app.get("/auth/protected", this.isLoggedIn, (req: express.Request, res: express.Response) => {
-			res.json({
-				user: req.user,
-			});
-		});
-
 		this.app.get("/auth/logout", (req: express.Request, res: express.Response) => {
 			req.logout();
 			res.redirect("/");
 		});
 
-		this.app.get("/auth/userInfo", this.isLoggedIn, (req: express.Request, res: express.Response) => {
-			res.send(req.user());
+		this.app.get("/api/auth/userInfo", this.isLoggedIn, (req: express.Request, res: express.Response) => {
+			res.json(req.user());
 		});
 
 		this.configureLocal();

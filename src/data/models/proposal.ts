@@ -1,14 +1,27 @@
-import {Entitybase} from "./entitybase";
-import {AuthorInfo} from "./authorInfo";
+import { IsLength, NotEmpty, ValidateNested, MinNumber } from "validator.ts/decorator/Validation";
+import { Entitybase } from "./entitybase";
+import { AuthorInfo } from "./authorInfo";
 
 export class Proposal extends Entitybase {
-    public Title: string;
-	public Abstract: string;
-	public Date: number;
-	public Tags: string[];
-	public Author: AuthorInfo;
-	public NumberOfVotes: number;
-	public VoteAverage: number;
+    @IsLength(10, 50)
+	public title: string;
+
+	@IsLength(80, 500)
+	public abstract: string;
+
+	public date: number;
+
+	@NotEmpty()
+	public tags: string[];
+
+	@ValidateNested()
+	public author: AuthorInfo;
+
+	@MinNumber(0)
+	public numberOfVotes: number;
+
+	@MinNumber(0)
+	public voteAverage: number;
 
     constructor(title: string,
 		abstract: string,
@@ -31,23 +44,23 @@ export class Proposal extends Entitybase {
 			throw new Error("invalid tags");
 		}
 
-		this.Title = title;
-		this.Abstract = abstract;
-		this.Date = Date.now();
-		this.Tags = tags;
-		this.Author = new AuthorInfo(firstname, lastname, bio);
+		this.title = title;
+		this.abstract = abstract;
+		this.date = Date.now();
+		this.tags = tags;
+		this.author = new AuthorInfo(firstname, lastname, bio);
     }
 
 	public increaseVote() {
-		this.NumberOfVotes++;
+		this.numberOfVotes++;
 	}
 
 	public decreaseVote() {
-		this.NumberOfVotes--;
+		this.numberOfVotes--;
 	}
 
 	public updateAverage(average: number) {
-		this.VoteAverage = average;
+		this.voteAverage = average;
 	}
 }
 

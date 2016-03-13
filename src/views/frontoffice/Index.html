@@ -1,39 +1,4 @@
-{% extends 'layout.html' %} {% block body %}
-<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-	<div class="container-fluid">
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
-		</div>
-
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav navbar-right">
-				<li>
-					<a class="page-scroll" href="#about">About</a>
-				</li>
-				<li>
-					<a class="page-scroll" href="#services">Services</a>
-				</li>
-				<li>
-					<a class="page-scroll" href="#portfolio">Portfolio</a>
-				</li>
-				<li>
-					<a class="page-scroll" href="#contact">Contact</a>
-				</li>
-			</ul>
-		</div>
-		<!-- /.navbar-collapse -->
-	</div>
-	<!-- /.container-fluid -->
-</nav>
-
+{% extends 'shared/layout.html' %} {% block body %}
 <header>
 	<div class="header-content">
 		<div class="header-content-inner">
@@ -198,6 +163,28 @@
 		</div>
 	</div>
 </section>
+
+<!-- Map -->
+<section id="map" class="dark">
+	<div id="canvas-map"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 col-sm-7 animated hiding location" data-animation="fadeInLeft" data-delay="0">
+				<h3>Location</h3>
+				<ul itemscope="" itemtype="http://schema.org/PostalAddress">
+					<li itemprop="address"><i class="fa fa-map-marker highlight"></i>Universita' degli studi di Milano - Bicocca - <strong>Building U6</strong></li>
+					<li itemprop="address">Piazza dell'Ateneo Nuovo, 1 - 20126 Milano</li>
+					<li itemprop="email"><i class="fa fa-envelope highlight"></i><a href="mailto:info@webnextconf.eu">info@webnextconf.eu</a></li>
+					<li itemscope="" itemtype="http://schema.org/Event"><i class="fa fa-clock-o highlight"></i>
+						<time itemprop="startDate" datetime="2015-09-26T08:30">8:30</time> -
+						<time itemprop="endDate" datetime="2015-09-26T19:00">19:00</time>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End Map -->
 
 <aside class="bg-dark">
 	<div class="container text-center">

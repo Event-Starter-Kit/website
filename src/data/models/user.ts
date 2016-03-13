@@ -1,3 +1,4 @@
+import { ValidateNested, NotEmpty, IsEmail } from "validator.ts/decorator/Validation";
 import {Entitybase} from "./entitybase";
 import {Security} from "../../utils/security";
 
@@ -9,9 +10,16 @@ export class User extends Entitybase {
 	public DisplayName: string;
 	public Email: string;
 
+	@ValidateNested()
 	public Facebook: Facebook;
-    public Twitter: Twitter;
-    public Google: Google;
+
+	@ValidateNested()
+	public Twitter: Twitter;
+
+	@ValidateNested()
+	public Google: Google;
+
+	@ValidateNested()
 	public Local: Local;
 
 	public static createUserFromLocal(
@@ -136,28 +144,50 @@ export class User extends Entitybase {
 }
 
 class Local {
+
+	@IsEmail()
 	public Email: string;
+
+	@NotEmpty()
 	public Password: string;
 }
 
 class Facebook {
-    public Id: string;
-    public Token: string;
-    public Email: string;
+    @NotEmpty()
+	public Id: string;
+
+	public Token: string;
+
+	@IsEmail()
+	public Email: string;
+
+	@NotEmpty()
     public Name: string;
 }
 
 class Twitter {
-    public Id: string;
-    public Token: string;
+    @NotEmpty()
+	public Id: string;
+
+	public Token: string;
+
+	@NotEmpty()
     public DisplayName: string;
+
+	@NotEmpty()
     public Username: string;
 }
 
 class Google {
+	@NotEmpty()
     public Id: string;
-    public Token: string;
+
+	public Token: string;
+
+	@IsEmail()
     public Email: string;
+
+	@NotEmpty()
     public Name: string;
 }
 

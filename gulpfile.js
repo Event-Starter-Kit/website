@@ -11,12 +11,14 @@ var clean = require('gulp-clean');
 var tsOptions = {
 	noImplicitAny: true,
 	target: "es6",
-	experimentalAsyncFunctions: true,
-	noExternalResolve: true, // we provide all the file by ourselves, no <reference> is needed
+	experimentalDecorators: true,
+	//noExternalResolve: true,
 	module: "commonjs" //"AMD" // "commonjs" // values ["AMD", "commonjs", "UMD", "system"]
 };
 
-var tsFiles = ["typings/main.d.ts", "typings/main/**/*.d.ts", "src/**/*.ts"];
+var tsFiles = ["typings/main.d.ts", 
+					"typings/main/**/*.d.ts", 
+					"src/**/*.ts"];
 var source = gulp.src(tsFiles);
 
 // Compile Typescript

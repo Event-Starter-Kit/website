@@ -1,15 +1,67 @@
-export class Configuration {
-	public Title: string = "You conference name";
-	public Description: string = "You event description";
-	public Tags: string[] = ["tag1", "tag2", "tag3"];
-	public Tracks: Track[] ;
+import {Entitybase} from "./entitybase";
+import {NotEmpty, NotEmptyArray, ValidateNested, MinNumber, IsUrl} from "validator.ts/decorator/Validation";
+
+export class Configuration extends Entitybase {
+	@NotEmpty()
+	public name: string;
+
+	@NotEmpty()
+	public description: string;
+
+	@NotEmptyArray()
+	public tags: string[];
+
+	@ValidateNested()
+	public socials: Socials;
+
+	public days: Day[];
 
 	constructor() {
-		this.Tracks = new Array<Track>();
-		this.Tracks.push(new Track(1, "track1", 4, 100));
-		this.Tracks.push(new Track(2, "track2", 4, 100));
-		this.Tracks.push(new Track(3, "track3", 4, 100));
-		this.Tracks.push(new Track(4, "track4", 4, 100));
+		super();
+		this.days = new Array<Day>();
+	}
+
+	public static createDefaultConfiguration(): Configuration {
+		let conf = new Configuration();
+		conf.name = "your conference name";
+		conf.description = "Your conference description";
+		conf.tags = ["tag1", "tag2", "tag3"];
+
+		let day1 = new Day();
+		day1.day = Date.now();
+		day1.location = "Corso Vittorio Emanuele II, Milano, Metropolitan City of Milan, Italy";
+
+		return conf;
+	}
+}
+
+class Day {
+	public day: number;
+	public location: string;
+	public tracks: Track[];
+
+	constructor() {
+		this.tracks = new Array<Track>();
+	}
+
+	public addTrack(trackNumber: number,
+		name: string,
+		numberOfSlot: number,
+		numberOfSeats: number) {
+		this.tracks.push(new Track(trackNumber, name, numberOfSlot, numberOfSeats));
+	}
+
+	public removeTrack(trackNumber: number) {
+		let itemIndex: number = -1;
+
+		for (let i = 0; i < this.tracks.length; i++) {
+			if (this.tracks[i].trackNumber === trackNumber) {
+				itemIndex = i;
+				break;
+			}
+		}
+
+		this.tracks.splice(itemIndex);
 	}
 }
 
@@ -18,14 +70,41 @@ class Track {
 		name: string,
 		numberOfSlot: number,
 		numberOfSeats: number) {
-		this.TrackNumber = trackNumber;
-		this.Name = name;
-		this.NumberOfSlot = numberOfSlot;
-		this.NumberOfSeats = numberOfSeats;
+		this.trackNumber = trackNumber;
+		this.name = name;
+		this.numberOfSlot = numberOfSlot;
+		this.numberOfSeats = numberOfSeats;
 	}
 
-	public TrackNumber: number;
-	public Name: string;
-	public NumberOfSlot: number;
-	public NumberOfSeats: number;
+	@MinNumber(1)
+	public trackNumber: number;
+
+	@NotEmpty()
+	public name: string;
+
+	@MinNumber(1)
+	public numberOfSlot: number;
+
+	@MinNumber(1)
+	public numberOfSeats: number;
+}
+
+class Socials {
+	@IsUrl()
+	public twitterUri: string;
+
+	@IsUrl()
+	public googlePlusUri: string;
+
+	@IsUrl()
+	public facebookUri: string;
+
+	@IsUrl()
+	public githubUri: string;
+
+	@IsUrl()
+	public vimeoUri: string;
+
+	@IsUrl()
+	public youtubeUri: string;
 }

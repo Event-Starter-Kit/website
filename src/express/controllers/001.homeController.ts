@@ -17,7 +17,7 @@ export class HomeController extends ControllerBase {
 			let model = new IndexViewModel();
 			this.populateModel(model);
 
-			res.render("Frontoffice/Index", model);
+			res.render("frontoffice/index", model);
 		});
 	}
 }

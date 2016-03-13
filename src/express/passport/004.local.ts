@@ -3,7 +3,7 @@ import { Passport } from "passport";
 import { Strategy as LocalStrategy} from "passport-local";
 import { IVerifyOptions } from "passport-local";
 
-import { UserRepository } from "../../data/userRepository";
+import { UserRepository } from "../../data/repositories/userRepository";
 
 export class Facebook extends Interfaces.ConfigurationModule<Passport> {
 	private userRepository: UserRepository;

@@ -1,15 +1,15 @@
-import { RepositoryBase } from "./dbHelpers/RepositoryBase";
-import { User } from "./models/user";
+import { RepositoryBase } from "../dbHelpers/RepositoryBase";
+import { User } from "../models/user";
 
 export class UserRepository extends RepositoryBase<User> {
     constructor() {
-        super();
+        super("users");
     }
 
 	public async getUserByLocalUsername(email: string): Promise<User> {
         let db = await this.getDatabase();
 
-        let result = await db.Users
+        let result = await db.users
             .find({ "Local.Email": email })
             .limit(1)
             .toArray();
@@ -20,7 +20,7 @@ export class UserRepository extends RepositoryBase<User> {
     public async getUserByFacebookId(facebookId: string): Promise<User> {
         let db = await this.getDatabase();
 
-        let result = await db.Users
+        let result = await db.users
             .find({ "Facebook.Id": facebookId })
             .limit(1)
             .toArray();
@@ -31,7 +31,7 @@ export class UserRepository extends RepositoryBase<User> {
 	public async getUserByGoogleId(googleId: string): Promise<User> {
         let db = await this.getDatabase();
 
-        let result = await db.Users
+        let result = await db.users
             .find({ "Google.Id": googleId })
             .limit(1)
             .toArray();
@@ -42,7 +42,7 @@ export class UserRepository extends RepositoryBase<User> {
 	public async getUserByTwitterId(twitterId: string): Promise<User> {
         let db = await this.getDatabase();
 
-        let result = await db.Users
+        let result = await db.users
             .find({ "Twitter.Id": twitterId })
             .limit(1)
             .toArray();
@@ -54,7 +54,7 @@ export class UserRepository extends RepositoryBase<User> {
         let db = await this.getDatabase();
 
         await db
-			.Users
+			.users
 			.updateOne({ _id: user._id }, user, { upsert: true });
     }
 }

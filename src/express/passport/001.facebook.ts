@@ -2,7 +2,7 @@ import { Interfaces } from "../interfaces";
 import { Passport } from "passport";
 import { Strategy as facebookStrategy} from "passport-facebook";
 import { Profile as facebookProfile} from "passport-facebook";
-import { UserRepository } from "../../data/userRepository";
+import { UserRepository } from "../../data/repositories/userRepository";
 import { User } from "../../data/models/user";
 import * as credentials from "../../setup/credentials";
 

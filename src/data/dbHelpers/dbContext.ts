@@ -12,11 +12,11 @@ export class DbContext extends LoggerBaseClass {
 			this.logger.info("Connecting to mongodb .....");
 			let db = await mongodb.MongoClient.connect(credentials.Mongo.connectionString);
 			DbContext.facility = new DbFacility(db);
-			let cfgs = await DbContext.facility.Configuration.find({}).limit(1).toArray();
+			let cfgs = await DbContext.facility.configuration.find({}).limit(1).toArray();
 
 			if (!cfgs || !cfgs[0]) {
 				// That's the first start, storing default configuration
-				await DbContext.facility.Configuration.insertOne(new Configuration());
+				await DbContext.facility.configuration.insertOne(new Configuration());
 			}
 		}
 

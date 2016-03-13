@@ -1,14 +1,14 @@
-import { RepositoryBase } from "./dbHelpers/RepositoryBase";
-import { Configuration } from "./models/configuration";
+import { RepositoryBase } from "../dbHelpers/repositoryBase";
+import { Configuration } from "../models/configuration";
 
 export class ConfigurationRepository extends RepositoryBase<Configuration> {
     constructor() {
-        super();
+        super("configurations");
     }
 
 	public async getConfiguration(): Promise<Configuration> {
 		let db = await this.getDatabase();
-		let result = await db.Configuration
+		let result = await db.configuration
 			.find({})
 			.limit(1)
 			.toArray();

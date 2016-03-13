@@ -1,6 +1,6 @@
 import { Interfaces } from "../interfaces";
 import { Passport } from "passport";
-import { UserRepository } from "../../data/userRepository";
+import { UserRepository } from "../../data/repositories/userRepository";
 
 export class UserSerialization extends Interfaces.ConfigurationModule<Passport> {
 	private userRepository: UserRepository;

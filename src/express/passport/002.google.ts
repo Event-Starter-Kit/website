@@ -2,7 +2,7 @@ import { Interfaces } from "../interfaces";
 import { Passport } from "passport";
 import { OAuth2Strategy as googleStrategy} from "passport-google-oauth";
 import { Profile as googleProfile} from "passport-google-oauth";
-import { UserRepository } from "../../data/userRepository";
+import { UserRepository } from "../../data/repositories/userRepository";
 import { User } from "../../data/models/user";
 import * as credentials from "../../setup/credentials";
 

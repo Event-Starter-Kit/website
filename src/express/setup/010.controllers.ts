@@ -1,4 +1,4 @@
-import {ConfigurationRepository} from "../../data/configurationRepository";
+import {ConfigurationRepository} from "../../data/repositories/configurationRepository";
 import {Configuration} from "../../data/models/configuration";
 import { Folder } from "../../utils/folder";
 import { Interfaces } from "../interfaces";

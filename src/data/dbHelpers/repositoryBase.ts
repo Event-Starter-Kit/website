@@ -1,9 +1,8 @@
 import { ObjectID } from "mongodb";
 import { DbBaseClass } from "./dbBaseClass";
 import { Entitybase } from "../models/entitybase";
-import { Validator } from "validator.ts/Validator";
 import { ValidationError } from "../../errors/validationError";
-import { Validator as ModelValidationValidator } from "../modelValidation";
+import { Validator } from "../modelValidation";
 
 export abstract class RepositoryBase<T extends Entitybase> extends DbBaseClass {
 	public collectionName: string;
@@ -33,8 +32,6 @@ export abstract class RepositoryBase<T extends Entitybase> extends DbBaseClass {
 		if (errors) {
 			throw new ValidationError(errors);
 		}
-
-		errors = ModelValidationValidator(object);
 
 		let db = await this.getDatabase();
 		await db.db.collection(this.collectionName)

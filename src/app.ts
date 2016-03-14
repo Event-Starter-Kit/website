@@ -11,7 +11,7 @@ class Startup extends LoggerBaseClass {
         this.configureExpress();
     }
 
-	public Run() {
+	public run() {
         let port = process.env.PORT || 5000;
 
         this.app.listen(port, () => {
@@ -40,7 +40,7 @@ class Startup extends LoggerBaseClass {
 }
 
 let srt = new Startup();
-srt.Run();
+srt.run();
 
 
 

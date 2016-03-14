@@ -10,6 +10,13 @@ export class Controllers extends Interfaces.ConfigurationModule<Application> {
 	}
 
 	public async setup() {
+
+		this.app.use(function(req, res, next) {
+			res.header("Access-Control-Allow-Origin", "*");
+			res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+			next();
+		});
+
 		let ctrls = new Folder().requireAll(__dirname + "/../controllers/");
 		let configurationRepository = new ConfigurationRepository();
 		let configuration: Configuration;

@@ -15,7 +15,6 @@ if you don't have installed the following tools, please run these commands:
 Go into the root folder and execute the following commands:
 
     $ npm install
-    $ bower install
     $ typings install
    
 ## Compile from command line
@@ -33,7 +32,7 @@ From command line runs this command:
 
 If you get some errors, please open an issue [here](https://github.com/Event-Starter-Kit/website/issues).
 
-Now you should get a new folder into your repo `Build/Release`. Go there and run `node app.js' and everything should works (see credential section).
+Now you should get a new folder into your repo `Build`. Go there and run `node app.js' and everything should works (see credential section).
 
 The output should looks like this:
 

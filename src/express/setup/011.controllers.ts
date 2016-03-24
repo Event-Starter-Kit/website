@@ -1,7 +1,7 @@
 import {ConfigurationRepository} from "../../data/repositories/configurationRepository";
 import {Configuration} from "../../data/models/configuration";
 import { Folder } from "../../utils/folder";
-import { Interfaces } from "../interfaces";
+import * as Interfaces from "../../interfaces";
 import { Application} from "express";
 
 export class Controllers extends Interfaces.ConfigurationModule<Application> {
@@ -17,7 +17,7 @@ export class Controllers extends Interfaces.ConfigurationModule<Application> {
 			next();
 		});
 
-		let ctrls = new Folder().requireAll(__dirname + "/../controllers/");
+		let ctrls = new Folder().requireAll(__dirname + "/../routes/");
 		let configurationRepository = new ConfigurationRepository();
 		let configuration: Configuration;
 		try {

@@ -1,15 +1,14 @@
 {
-    "compilerOptions": {
-        "target": "es6",
-        "module": "commonjs",
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
 		"experimentalDecorators": true,
-        "sourceMap": true
-    },
-    "exclude": [
-       "typings/browser", 
-	   "typings/browser.d.ts",
-        "node_modules",
+		"sourceMap": true
+	},
+	"exclude": [
+		"typings/**",
+		"node_modules",
 		"build",
 		".vscode"
-    ]
+	]
 }

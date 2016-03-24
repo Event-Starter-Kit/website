@@ -1,4 +1,4 @@
-import { Interfaces } from "../interfaces";
+import * as Interfaces from "../../interfaces";
 import { Passport } from "passport";
 import { Strategy as facebookStrategy} from "passport-facebook";
 import { Profile as facebookProfile} from "passport-facebook";

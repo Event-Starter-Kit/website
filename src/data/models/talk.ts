@@ -1,5 +1,5 @@
 import { ValidateNested, NotEmptyArray, IsLength } from "validator.ts/decorator/Validation";
-import { Entitybase } from "./entitybase";
+import {Entitybase} from "./shared/entitybase";
 import { AuthorInfo } from "./authorinfo";
 
 export class Talk extends Entitybase {

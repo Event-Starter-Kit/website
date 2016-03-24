@@ -1,4 +1,4 @@
-import { Interfaces } from "../interfaces";
+import * as Interfaces from "../../interfaces";
 import { Passport } from "passport";
 import { Strategy as twitterStrategy} from "passport-twitter";
 import { Profile as twitterProfile} from "passport-twitter";

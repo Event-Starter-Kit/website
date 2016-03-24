@@ -1,8 +1,10 @@
 export class Mailer {
-    public static username: string = process.env.MAILER_USERNAME || "add your email";
-    public static password: string = process.env.MAILER_PASSWORD || "nopassword";
+    public static sender: string = process.env.MAILER_SENDER || "add your email";
+	public static username: string = process.env.MAILER_USERNAME || "add your username";
+    public static password: string = process.env.MAILER_PASSWORD || "add your password";
     public static host: string = process.env.MAILER_HOST || "smtp.gmail.com";
-    public static secureConnection: boolean = true;
+    public static secureConnection: boolean = false;
+	public static requireTLS: boolean = true;
     public static port: number = 465;
 }
 export class Mailchimp {

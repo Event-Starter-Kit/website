@@ -1,4 +1,4 @@
-import {Entitybase} from "./entitybase";
+import {Entitybase} from "./shared/entitybase";
 import {NotEmpty, NotEmptyArray, ValidateNested, MinNumber, IsUrl} from "validator.ts/decorator/Validation";
 
 export class Configuration extends Entitybase {

@@ -1,11 +1,11 @@
 import * as express from "express";
 import * as credentials from "../../setup/credentials";
-import { ControllerBase } from "./helpers/controllerBase";
+import { RouteBase } from "./helpers/routeBase";
 import {Configuration} from "../../data/models/configuration";
 
 const Mailchimp = require("mailchimp-api").Mailchimp;
 
-export class HomeController extends ControllerBase {
+export class Home extends RouteBase {
 	constructor(app: express.Express, configuration: Configuration) {
         super(app, configuration, true);
 	}

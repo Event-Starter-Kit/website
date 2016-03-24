@@ -1,4 +1,4 @@
-import { Interfaces } from "../interfaces";
+import * as Interfaces from "../../interfaces";
 import { Passport } from "passport";
 import { OAuth2Strategy as googleStrategy} from "passport-google-oauth";
 import { Profile as googleProfile} from "passport-google-oauth";

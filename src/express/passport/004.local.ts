@@ -1,4 +1,4 @@
-import { Interfaces } from "../interfaces";
+import * as Interfaces from "../../interfaces";
 import { Passport } from "passport";
 import { Strategy as LocalStrategy} from "passport-local";
 import { IVerifyOptions } from "passport-local";

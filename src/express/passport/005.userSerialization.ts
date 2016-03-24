@@ -1,4 +1,4 @@
-import { Interfaces } from "../interfaces";
+import * as Interfaces from "../../interfaces";
 import { Passport } from "passport";
 import { UserRepository } from "../../data/repositories/userRepository";
 

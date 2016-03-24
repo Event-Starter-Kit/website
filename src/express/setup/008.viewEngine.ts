@@ -1,4 +1,4 @@
-import { Interfaces } from "../interfaces";
+import * as Interfaces from "../../interfaces";
 import { Application} from "express";
 import * as Path from "path";
 import * as swig from "swig";

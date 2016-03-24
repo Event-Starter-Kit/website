@@ -1,7 +1,8 @@
 import { LoggerBaseClass } from "./logging/loggerBaseClass";
 import { Folder } from "./utils/folder";
-
+import * as Scheduler from "node-schedule";
 import * as Express from "express";
+import * as Interfaces from "./interfaces";
 
 class Startup extends LoggerBaseClass {
     private app: Express.Application;
@@ -9,6 +10,7 @@ class Startup extends LoggerBaseClass {
     constructor() {
         super();
         this.configureExpress();
+		this.configureJobs();
     }
 
 	public run() {
@@ -37,11 +39,38 @@ class Startup extends LoggerBaseClass {
 			this.logger.error("Error configuring Express", error);
 		}
     }
+
+	private configureJobs() {
+		this.logger.debug("running scheduler....");
+
+		let jobs = new Folder().requireAll(__dirname + "/jobs/");
+
+		this.logger.debug("Found (%s) jobs", jobs.length);
+
+		for (let job of jobs) {
+			let module = new job[Object.keys(job)[0]]();
+			this.logger.debug("Jobs instance created.");
+
+			if (!module.enabled) {
+				continue;
+			}
+
+			if (module instanceof Interfaces.ConfigurationCronJob) {
+				this.logger.debug("Module enabled, calling setup with cron pattern...");
+				Scheduler.scheduleJob(module.cronPattern, () => {
+					module.run();
+				});
+			}
+
+			if (module instanceof Interfaces.ConfigurationScheduledJob) {
+				this.logger.debug("Module enabled, calling setup with specific date...");
+				Scheduler.scheduleJob(module.date, () => {
+					module.run();
+				});
+			}
+		}
+	}
 }
 
 let srt = new Startup();
 srt.run();
-
-
-
-

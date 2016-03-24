@@ -1,9 +1,9 @@
 import * as express from "express";
-import { ControllerBase } from "./helpers/controllerBase";
+import { RouteBase } from "./helpers/routeBase";
 import {Configuration} from "../../data/models/configuration";
 import { IndexViewModel } from "./viewModels/home/indexViewModel";
 
-export class HomeController extends ControllerBase {
+export class Home extends RouteBase {
 	constructor(app: express.Express, configuration: Configuration) {
         super(app, configuration, true);
 	}

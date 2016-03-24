@@ -15,6 +15,7 @@
     "moment-node": "github:DefinitelyTyped/DefinitelyTyped/moment/moment-node.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
     "mongodb": "github:DefinitelyTyped/DefinitelyTyped/mongodb/mongodb.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
     "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
+    "node-schedule": "registry:dt/node-schedule#0.0.0+20160316155526",
     "passport": "github:DefinitelyTyped/DefinitelyTyped/passport/passport.d.ts#432545c4d99dba86a5229bed0e500f66f43b1baa",
     "passport-facebook": "github:DefinitelyTyped/DefinitelyTyped/passport-facebook/passport-facebook.d.ts#a1915bad2e932a2be44a718818c3b5286793f26c",
     "passport-google-oauth": "github:DefinitelyTyped/DefinitelyTyped/passport-google-oauth/passport-google-oauth.d.ts#a1915bad2e932a2be44a718818c3b5286793f26c",
@@ -22,6 +23,7 @@
     "passport-twitter": "github:DefinitelyTyped/DefinitelyTyped/passport-twitter/passport-twitter.d.ts#a1915bad2e932a2be44a718818c3b5286793f26c",
     "serve-static": "github:DefinitelyTyped/DefinitelyTyped/serve-static/serve-static.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
     "swig": "github:DefinitelyTyped/DefinitelyTyped/swig/swig.d.ts#f43a366a923d3e03f23c509a426e5818b72dcca1",
+    "swig-email-templates": "registry:dt/swig-email-templates#0.0.0+20160316155526",
     "underscore": "github:DefinitelyTyped/DefinitelyTyped/underscore/underscore.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563",
     "validator": "registry:dt/validator#4.5.1+20160124232055",
     "winston": "github:DefinitelyTyped/DefinitelyTyped/winston/winston.d.ts#c0d876601e0f8236fd6b57626eb62c4e485f1563"

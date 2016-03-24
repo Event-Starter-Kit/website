@@ -1,4 +1,4 @@
-import { Interfaces } from "../interfaces";
+import * as Interfaces from "../../interfaces";
 import { Application} from "express";
 import * as PassportMiddleware from "passport";
 import { Folder } from "../../utils/folder";

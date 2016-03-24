@@ -1,9 +1,9 @@
 import { ViewModelBase } from "../viewModels/viewModelBase";
 import { Configuration } from "../../../data/models/configuration";
-import { Interfaces } from "../../interfaces";
+import * as Interfaces from "../../../interfaces";
 import * as Express from "express";
 
-export abstract class ControllerBase extends Interfaces.ConfigurationModule<Express.Application> {
+export abstract class RouteBase extends Interfaces.ConfigurationModule<Express.Application> {
 	protected configuration: Configuration;
 
 	constructor(app: Express.Application, configuration: Configuration, enable: boolean) {

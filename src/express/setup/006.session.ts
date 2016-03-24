@@ -1,4 +1,4 @@
-import { Interfaces } from "../interfaces";
+import * as Interfaces from "../../interfaces";
 import { Application} from "express";
 import * as expressSession from "express-session";
 import * as credentials from "../../setup/credentials";

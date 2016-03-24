@@ -1,5 +1,5 @@
 import { IsUrl, NotEmpty, IsEmail, NotEmptyArray, IsLength } from "validator.ts/decorator/Validation";
-import {Entitybase} from "./entitybase";
+import {Entitybase} from "./shared/entitybase";
 import {Talk} from "./talk";
 
 import * as _ from "underscore";

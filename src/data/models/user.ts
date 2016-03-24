@@ -1,5 +1,5 @@
 import { ValidateNested, NotEmpty, IsEmail } from "validator.ts/decorator/Validation";
-import {Entitybase} from "./entitybase";
+import {Entitybase} from "./shared/entitybase";
 import {Security} from "../../utils/security";
 
 export class User extends Entitybase {

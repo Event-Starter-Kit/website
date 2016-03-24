@@ -1,4 +1,4 @@
-import { Interfaces } from "../interfaces";
+import * as Interfaces from "../../interfaces";
 import * as Express from "express";
 import * as expressCompression from "compression";
 

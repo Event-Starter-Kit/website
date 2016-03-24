@@ -1,9 +1,9 @@
 import * as Express from "express";
-import { ControllerBase } from "./helpers/controllerBase";
+import { RouteBase } from "./helpers/routeBase";
 import {Configuration} from "../../data/models/configuration";
 import { HostingEnvironment } from "../../utils/hostingEnvironment";
 
-export class Errors extends ControllerBase {
+export class Errors extends RouteBase {
 	constructor(app: Express.Application, configuration: Configuration) {
         super(app, configuration, true);
 	}

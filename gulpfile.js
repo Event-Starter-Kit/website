@@ -1,70 +1,27 @@
-var gulp = require("gulp");
-var ts = require("gulp-typescript");
-var sourcemaps = require("gulp-sourcemaps");
-var typescript = require("typescript");
-var tslint = require("gulp-tslint");
-var path = require('path');
-var del = require('del');
-var clean = require('gulp-clean');
+/**
+ *  Welcome to your gulpfile!
+ *  The gulp tasks are split into several files in the gulp directory
+ *  because putting it all here was too long
+ */
 
-// define some compiler options https://www.npmjs.com/package/gulp-typescript
-var tsOptions = {
-	noImplicitAny: true,
-	target: "es6",
-	experimentalDecorators: true,
-	//noExternalResolve: true,
-	module: "commonjs" //"AMD" // "commonjs" // values ["AMD", "commonjs", "UMD", "system"]
-};
+'use strict';
 
-var tsFiles = ["typings/main.d.ts", 
-					"typings/main/**/*.d.ts", 
-					"src/**/*.ts"];
-var source = gulp.src(tsFiles);
+var gulp = require('gulp');
+var wrench = require('wrench');
 
-// Compile Typescript
-gulp.task("build-ts", () => {
-	var tsResult = source
-		.pipe(sourcemaps.init())
-		.pipe(ts(tsOptions));
-
-	tsResult.js
-		.pipe(sourcemaps.write(".", {
-			sourceRoot: (file) => {
-				var sourceFile = path.join(file.cwd, file.sourceMap.file);
-				return path.relative(path.dirname(sourceFile), file.cwd) + "/../../src";
-			}
-		}))
-		.pipe(gulp.dest("build"));
+/**
+ *  This will load all js or coffee files in the gulp directory
+ *  in order to load all gulp tasks
+ */
+wrench.readdirSyncRecursive('./gulp').filter(function(file) {
+    return (/\.(js|coffee)$/i).test(file);
+}).map(function(file) {
+    require('./gulp/' + file);
 });
 
-// Watch
-gulp.task("watch", () => {
-	gulp.watch(tsFiles, ['build-ts']);
-});
 
-// Cleare Release folde
-gulp.task('clean', () => {
-	del.sync(["build/*"]);
-});
-
-// Run TS-Lint
-gulp.task("tslint", () => {
-	gulp.src(["src/**/*.ts"])
-		.pipe(tslint())
-		.pipe(tslint.report("verbose"));
-});
-
-// Copy views
-gulp.task("copyViews", () => {
-	gulp.src("./src/views/**/*.{html,htm}")
-		.pipe(gulp.dest("./build/Views"));
-});
-
-// Copy public
-gulp.task("copyPublic", () => {
-	gulp.src("./src/Public/**/*.*")
-		.pipe(gulp.dest("./build/Public"));
-});
-
-// Default task
-gulp.task('default',  ["clean", "tslint", "build-ts","copyViews", "copyPublic"])
+/**
+ *  Default task run the build, serve enable the developer mode.
+ */
+gulp.task('default', ['tslint', 'typescript:dist', 'copyPublicFolder:dist', 'copyViews:dist']);
+gulp.task('serve', ['tslint', 'clean:serve', 'browser-sync']);

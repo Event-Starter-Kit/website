@@ -1,6 +1,6 @@
 # Event Starter Kit Website
 
-Welcome ESK project. if you don't know what ESK is please read these links [link1](https://github.com/Event-Starter-Kit/docs) [link2](http://tostring.it/2014/09/02/introducing-event-starter-kit/) 
+Welcome ESK project. if you don't know what ESK is please read these links [link1](https://github.com/Event-Starter-Kit/docs) [link2](http://tostring.it/2014/09/02/introducing-event-starter-kit/)
 
 To run this application you have to install `Node 4.x` or greather (get it [here](https://nodejs.org/en/)) and an instance  [MongoDB](https://www.mongodb.org/) ([mlab](https://mlab.com/) offers a free MongoDB installation)
 
@@ -10,13 +10,13 @@ if you don't have installed the following tools, please run these commands:
     $ npm install -g gulp
     $ npm install -g typings
     $ npm install -g typescript
-    
+
 ## First run
 Go into the root folder and execute the following commands:
 
     $ npm install
     $ typings install
-   
+
 ## Compile from command line
 This project uses Typescript, if you don't know what Typescript is, here the definition
 
@@ -26,9 +26,13 @@ Any browser. Any host. Any OS. Open Source.
 
 For more info, take a look [here](http://www.typescriptlang.org/)
 
-From command line runs this command:
+To run the website as developer from command line runs this command:
 
-    $ gulp default
+    $ gulp serve
+
+To create the dist folder, run:
+
+    $ gulp
 
 If you get some errors, please open an issue [here](https://github.com/Event-Starter-Kit/website/issues).
 
@@ -57,4 +61,3 @@ $ export MONGODB_CONNECTION_STRING ='mongodb://<dbuser>:<dbpassword>@ds047632.mo
 ```
 
 >you have to do this for all variables available on ```credentials.ts```
-

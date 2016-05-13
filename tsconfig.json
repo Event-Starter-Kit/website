@@ -1,14 +1,32 @@
 {
-	"compilerOptions": {
-		"target": "es6",
-		"module": "commonjs",
-		"experimentalDecorators": true,
-		"sourceMap": true
-	},
-	"exclude": [
-		"typings/**",
-		"node_modules",
-		"build",
-		".vscode"
-	]
+    "compileOnSave": false,
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "moduleResolution": "classic",
+        "removeComments": true,
+        "outDir": "build/"
+    },
+    "exclude": [
+        "postman",
+        "node_modules",
+        "build",
+        ".vscode",
+		"dist",
+		".tmp",
+        "typings/browser",
+        "typings/browser.d.ts"
+    ],
+    "filesGlob": [
+        "typings/**/*.ts",
+        "!typings/browser/**/*.ts",
+        "!typings/browser.d.ts",
+		"src/**/*.ts",
+        "node_modules/class-validator/**/*.ts"
+    ],
+    "atom": {
+        "rewriteTsconfig": false
+    }
 }

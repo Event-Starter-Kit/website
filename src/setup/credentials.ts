@@ -35,3 +35,7 @@ export class Google {
     public static clientSecret: string = process.env.GOOGLE_CLIENT_SECRET || "your-client-secret-here";
     public static callbackURL: string = process.env.GOOGLE_CLIENT_CALLBACK || "http://localhost:5000/auth/google/callback";
 }
+export class Express {
+    public static viewPath: string = process.env.VIEW_PATH || "/views/";
+    public static publicPath: string = process.env.PUBLIC_PATH || "/public/";
+}

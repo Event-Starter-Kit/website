@@ -15,7 +15,7 @@ let tsOptions = {
     module: "commonjs" // possible values ["AMD", "commonjs", "UMD", "system"]
 };
 
-let srcPath = path.join(conf.paths.src, '/**/*.ts');
+let srcPath = path.join(conf.paths.src, '/node/**/*.ts');
 
 let tsFiles = ["typings/main.d.ts",
     "typings/main/**/*.d.ts",
@@ -55,7 +55,7 @@ gulp.task("typescript:serve", () => {
                 return path.relative(path.dirname(sourceFile), file.cwd) + "/../../src";
             }
         }))
-        .pipe(gulp.dest(conf.paths.tmp));
+        .pipe(gulp.dest(path.join(conf.paths.tmp, "/node")));
 
     return tsResult;
 

@@ -24,4 +24,4 @@ wrench.readdirSyncRecursive('./gulp').filter(function(file) {
  *  Default task run the build, serve enable the developer mode.
  */
 gulp.task('default', ['tslint', 'typescript:dist', 'copyPublicFolder:dist', 'copyViews:dist']);
-gulp.task('serve', ['tslint', 'clean:serve', 'browser-sync']);
+gulp.task('serve', ['tslint', 'clean:serve', 'watch:serve']);

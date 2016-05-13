@@ -4,7 +4,7 @@ const path = require('path');
 const conf = require('./conf');
 
 gulp.task('nodemon:serve', ['typescript:serve'], (cb) => {
-    let startupFile = path.join('./', conf.paths.tmp, conf.paths.startupFile);
+    let startupFile = path.join('./', conf.paths.tmp, 'node', conf.paths.startupFile);
 
     let started = false;
 
@@ -12,8 +12,7 @@ gulp.task('nodemon:serve', ['typescript:serve'], (cb) => {
         script: startupFile,
         env: {
             'ENVIRONMENT': 'dev',
-            'VIEW_PATH': '/../src/views',
-            'PUBLIC_PATH': '/../src/public'
+            'VIEW_PATH': '/../app/',
         }
     }).on('start', () => {
         // to avoid nodemon being started multiple times

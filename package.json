@@ -17,6 +17,7 @@
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
+    "gulp-filter": "^4.0.0",
     "gulp-nodemon": "^2.0.7",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-sync": "^0.1.4",
